@@ -34,7 +34,7 @@ public class TextAdventure {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
 			
-			if (input.equals("H")) {
+			if (input.equalsIgnoreCase("H")) {
 				System.out.println("Press N to go North.");
 				System.out.println("Press S to go South.");
 				System.out.println("Press E to go East.");
