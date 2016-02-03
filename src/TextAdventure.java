@@ -33,6 +33,7 @@ public class TextAdventure {
 		while(true) {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
+			direction = input;
 			
 			if (input.equalsIgnoreCase("H")) {
 				System.out.println("Press N to go North.");
@@ -40,6 +41,29 @@ public class TextAdventure {
 				System.out.println("Press E to go East.");
 				System.out.println("Press W to go West.");
 			}
+			
+			else if (input.equalsIgnoreCase("N")) {
+				direction = "North";
+			}
+			
+			else if (input.equalsIgnoreCase("S")) {
+				direction = "South";
+			}
+			
+			else if (input.equalsIgnoreCase("E")) {
+				direction = "East";
+			}
+			
+			else if (input.equalsIgnoreCase("W")) {
+				direction = "West";
+			}
+			
+			else {
+				System.out.println("Invalid command!\n");
+				continue;
+			}
+				
+			System.out.print("You moved " + direction + ".\n");
 		}
 		
 
