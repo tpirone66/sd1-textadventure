@@ -70,6 +70,9 @@ public class TextAdventure {
 			System.out.print("You moved " + direction + ".\n");
 		}
 		
+		System.out.println("Thank you for playing this game!");
+		System.out.println("Please come back soon!\n");
+		System.out.println("Trevor Pirone Copyright 2016");
 
 	}
 
