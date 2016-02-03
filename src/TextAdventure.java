@@ -58,6 +58,10 @@ public class TextAdventure {
 				direction = "West";
 			}
 			
+			else if (input.equalsIgnoreCase("Q")) {
+				break;
+			}
+			
 			else {
 				System.out.println("Invalid command!\n");
 				continue;
