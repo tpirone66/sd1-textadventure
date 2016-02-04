@@ -35,38 +35,47 @@ public class TextAdventure {
 			input = inputSource.nextLine();
 			direction = input;
 			
+			//what happens when the user types in H
 			if (input.equalsIgnoreCase("H")) {
 				System.out.println("Press N to go North.");
 				System.out.println("Press S to go South.");
 				System.out.println("Press E to go East.");
 				System.out.println("Press W to go West.");
+				System.out.println("Press Q to quit the game.");
 			}
 			
+			//what happens when the user types in N
 			else if (input.equalsIgnoreCase("N")) {
 				direction = "North";
 			}
 			
+			//what happens when the user types in S
 			else if (input.equalsIgnoreCase("S")) {
 				direction = "South";
 			}
 			
+			//what happens when the user types in E
 			else if (input.equalsIgnoreCase("E")) {
 				direction = "East";
 			}
 			
+			//what happens when the user types in W
 			else if (input.equalsIgnoreCase("W")) {
 				direction = "West";
 			}
 			
+			//what happens when the user types in Q
 			else if (input.equalsIgnoreCase("Q")) {
 				break;
 			}
 			
+			//if the user types in any other keys not mentioned above, it will print this message
 			else {
 				System.out.println("Invalid command!\n");
 				continue;
 			}
-				
+			
+			//the result of pressing the directional keys
 			System.out.print("You moved " + direction + ".\n");
 		}
 		
