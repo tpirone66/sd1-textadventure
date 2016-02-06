@@ -33,9 +33,22 @@ public class TextAdventure {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
 			direction = input;
+			//locations and their descriptions
 			String[] locationDescription = {"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Leo seems like the place where all the rich children live. $$$", "Marian is home to the hobbits and the hermits. Sure seems clicky around here.", "Midrise is Midrise...yeah...", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?"};
 			int[] location;
 			location = new int[6];
+			int Marist = 0;
+			int Champagnat = 1;
+			int Leo = 2;
+			int Marian = 3;
+			int Midrise = 4;
+			int Sheahan = 5;
+			location[0] = Marist;
+			location[1] = Champagnat;
+			location[2] = Leo;
+			location[3] = Marian;
+			location[4] = Midrise;
+			location[5] = Sheahan;
 			
 			//what happens when the user types in H
 			if (input.equalsIgnoreCase("H")) {
