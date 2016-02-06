@@ -8,6 +8,7 @@
  */
 
 import java.util.Scanner;//used for reading user input on the keyboard
+
 import java.util.Random;//will be used later on for random generation
 
 public class TextAdventure {
@@ -20,12 +21,10 @@ public class TextAdventure {
 		//prints a greeting message when the user runs the program
 		System.out.println("Welcome to the Text Adventure Game!");
 		System.out.println("-----------------------------------");
-		System.out.print("What is your name? ");
-		input = inputSource.nextLine();
 		
-		//the user will type their name here
-		System.out.println("Hello, " + input + "!");
-		System.out.println("\n");//prints out a new line of whitespace
+		//method for allowing the user to customize their character
+		promptName();
+		
 		System.out.println("Press the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 		//the user will decide to start, get help or exit the game here
@@ -34,6 +33,9 @@ public class TextAdventure {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
 			direction = input;
+			String[] locationDescription = {"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Leo seems like the place where all the rich children live. $$$", "Marian is home to the hobbits and the hermits. Sure seems clicky around here.", "Midrise is Midrise...yeah...", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?"};
+			int[] location;
+			location = new int[6];
 			
 			//what happens when the user types in H
 			if (input.equalsIgnoreCase("H")) {
@@ -47,6 +49,7 @@ public class TextAdventure {
 			//what happens when the user types in N
 			else if (input.equalsIgnoreCase("N")) {
 				direction = "North";
+				//System.out.println
 			}
 			
 			//what happens when the user types in S
@@ -79,10 +82,21 @@ public class TextAdventure {
 			System.out.print("You moved " + direction + ".\n");
 		}
 		
+		//closing message for the game
 		System.out.println("Thank you for playing this game!");
 		System.out.println("Please come back soon!\n");
 		System.out.println("Trevor Pirone Copyright 2016");
 
 	}
+	
+	public static void promptName() {
+		Scanner inputSource = new Scanner(System.in);
+		String input;
+		System.out.print("What is your name? ");
+		input = inputSource.nextLine();
+		System.out.println("Hello, " + input + "!");
+		System.out.println("\n");//prints out a new line of whitespace
+		
+	};
 
 }
