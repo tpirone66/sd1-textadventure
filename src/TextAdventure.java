@@ -17,33 +17,30 @@ public class TextAdventure {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		String direction;
+		//locations and their descriptions
+		String[] locationDescription = {"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Leo seems like the place where all the rich children live. $$$", "Marian is home to the hobbits and the hermits. Sure seems clicky around here.", "Midrise is Midrise...yeah...", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?"};
+		String[] location = {"Marist", "Champagnat", "Leo", "Marian", "Midrise", "Sheahan"};
+		int playerLocation = 0;
 		
 		//prints a greeting message when the user runs the program
-		System.out.println("Welcome to the Text Adventure Game!");
+		System.out.println("Welcome to Marist Mayhem!");
 		System.out.println("-----------------------------------");
 		
 		//method for allowing the user to customize their character
 		promptName();
 		
+		//the user will decide to start, get help or exit the game here
 		System.out.println("Press the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
-		//the user will decide to start, get help or exit the game here
+		
+		
+		System.out.print("Current location: "+playerLocation+".");
+		System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
 		
 		while(true) {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
 			direction = input;
-			//locations and their descriptions
-			String[] locationDescription = {"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Leo seems like the place where all the rich children live. $$$", "Marian is home to the hobbits and the hermits. Sure seems clicky around here.", "Midrise is Midrise...yeah...", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?"};
-			String[] location = {"Marist", "Champagnat", "Leo", "Marian", "Midrise", "Sheahan"};
-			int[] locator;
-			locator = new int[6];
-			locator[0] = 0;
-			locator[1] = 1;
-			locator[2] = 2;
-			locator[3] = 3;
-			locator[4] = 4;
-			locator[5] = 5;
 			
 			//what happens when the user types in H
 			if (input.equalsIgnoreCase("H")) {
@@ -55,27 +52,53 @@ public class TextAdventure {
 			}
 			
 			//what happens when the user types in N
-			else if (input.equalsIgnoreCase("N")) {
+			if (input.equalsIgnoreCase("N")) {
 				direction = "North";
+				playerLocation = 1;
+				System.out.print("Current location: "+1+".");
+				System.out.print(" You are now in " + location[1] + "." + " " + locationDescription[1]);
+				
 			}
 			
 			//what happens when the user types in S
-			else if (input.equalsIgnoreCase("S")) {
+			if (input.equalsIgnoreCase("S")) {
 				direction = "South";
+				playerLocation = 3;
+				System.out.print("Current location: "+3+".");
+				System.out.print(" You are now in " + location[3] + "." + " " + locationDescription[3]);
 			}
 			
 			//what happens when the user types in E
-			else if (input.equalsIgnoreCase("E")) {
+			if (input.equalsIgnoreCase("E")) {
 				direction = "East";
+				playerLocation = 4;
+				System.out.print("Current location: "+4+".");
+				System.out.print(" You are now in " + location[4] + "." + " " + locationDescription[4]);
 			}
 			
 			//what happens when the user types in W
-			else if (input.equalsIgnoreCase("W")) {
-				direction = "West";
+			if (input.equalsIgnoreCase("W")) {
+				if (playerLocation == 0){
+					direction = "West";
+					playerLocation = 2;
+					System.out.print("Current location: "+2+".");
+					System.out.print(" You are now in " + location[2] + "." + " " + locationDescription[2]);
+				}
+				
+				else if (input.equalsIgnoreCase("W")&&playerLocation==2) {
+					direction = "West" ;
+					playerLocation = 5;
+					System.out.print("Current location: "+playerLocation+".");
+					System.out.print(" You are now in " + location[5] + "." + " " + locationDescription[5]);
+				}
 			}
-			
+				
 			//what happens when the user types in Q
 			else if (input.equalsIgnoreCase("Q")) {
+				//closing message for the game
+				System.out.println("Thank you for playing this game!");
+				System.out.println("Please come back soon!\n");
+				System.out.println("Trevor Pirone Copyright 2016");
 				break;
 			}
 			
@@ -86,20 +109,13 @@ public class TextAdventure {
 			}
 			
 			//the result of pressing the directional keys
-			System.out.print("You moved " + direction + ".\n");
-			System.out.print("You are now in " + location[0] + "." + " " + locationDescription[0]);
-			System.out.print("Current location: "+locator[0]);
-			
-		}
+			System.out.print("\nYou moved " + direction + ".\n");
 		
-		//closing message for the game
-		System.out.println("Thank you for playing this game!");
-		System.out.println("Please come back soon!\n");
-		System.out.println("Trevor Pirone Copyright 2016");
-
 	}
 	
-	public static void promptName() {
+	}
+
+	private static void promptName() {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		System.out.print("What is your name? ");
@@ -107,6 +123,6 @@ public class TextAdventure {
 		System.out.println("Hello, " + input + "!");
 		System.out.println("\n");//prints out a new line of whitespace
 		
-	};
-
+		
+	}
 }
