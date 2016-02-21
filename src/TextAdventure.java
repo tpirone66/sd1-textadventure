@@ -25,6 +25,7 @@ public class TextAdventure {
 		//prints a greeting message when the user runs the program
 		System.out.println("Welcome to Marist Mayhem!");
 		System.out.println("-----------------------------------");
+		System.out.println("Marist Mayhem is a text-adventure game where the user will explore the scary grounds of MArist and try to\n find out what is happening on the campus and revert it back to normal.");
 		
 		//method for allowing the user to customize their character
 		promptName();
