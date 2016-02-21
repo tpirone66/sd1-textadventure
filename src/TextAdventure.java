@@ -17,15 +17,14 @@ public class TextAdventure {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		String direction;
+		
 		//locations and their descriptions
 		String[] locationDescription = {"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Leo seems like the place where all the rich children live. $$$", "Marian is home to the hobbits and the hermits. Sure seems clicky around here.", "Midrise is Midrise...yeah...", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?"};
 		String[] location = {"Marist", "Champagnat", "Leo", "Marian", "Midrise", "Sheahan"};
 		int playerLocation = 0;
 		
-		//prints a greeting message when the user runs the program
-		System.out.println("Welcome to Marist Mayhem!");
-		System.out.println("-----------------------------------");
-		System.out.println("Marist Mayhem is a text-adventure game where the user will explore the scary grounds of MArist and try to\n find out what is happening on the campus and revert it back to normal.");
+		//method that will display the name of the game and description
+		titleMessage();
 		
 		//method for allowing the user to customize their character
 		promptName();
@@ -33,7 +32,6 @@ public class TextAdventure {
 		//the user will decide to start, get help or exit the game here
 		System.out.println("Press the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
-		
 		
 		System.out.print("\nCurrent location: "+playerLocation+".");
 		System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
@@ -154,9 +152,7 @@ public class TextAdventure {
 			//what happens when the user types in Q
 			else if (input.equalsIgnoreCase("Q")) {
 				//closing message for the game
-				System.out.println("Thank you for playing this game!");
-				System.out.println("Please come back soon!\n");
-				System.out.println("Trevor Pirone Copyright 2016");
+				showCredits();
 				break;
 			}
 			
@@ -169,6 +165,14 @@ public class TextAdventure {
 	}
 	
 	}
+	
+	private static void titleMessage() {
+		//prints a greeting message when the user runs the program
+		System.out.println("Welcome to Marist Mayhem!");
+		System.out.println("-----------------------------------");
+		System.out.println("Marist Mayhem is a text-adventure game where the user will explore the scary grounds of Marist and try to\nfind out what is happening on the campus and revert it back to normal.");
+		System.out.println("-----------------------------------");
+	}
 
 	private static void promptName() {
 		Scanner inputSource = new Scanner(System.in);
@@ -177,7 +181,11 @@ public class TextAdventure {
 		input = inputSource.nextLine();
 		System.out.println("Hello, " + input + "!");
 		System.out.println("\n");//prints out a new line of whitespace
-		
-		
+	}
+	
+	private static void showCredits() {
+		System.out.println("Thank you for playing this game!");
+		System.out.println("Please come back soon!\n");
+		System.out.println("Trevor Pirone Copyright 2016");
 	}
 }
