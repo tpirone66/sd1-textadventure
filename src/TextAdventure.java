@@ -161,11 +161,14 @@ public class TextAdventure {
 				System.out.println("Invalid command!\n");
 				continue;
 			}
-			
 	}
+}
 	
+	private static void promptName() {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	private static void titleMessage() {
 		//prints a greeting message when the user runs the program
 		System.out.println("Welcome to Marist Mayhem!");
@@ -174,15 +177,6 @@ public class TextAdventure {
 		System.out.println("-----------------------------------");
 	}
 
-	private static void promptName() {
-		Scanner inputSource = new Scanner(System.in);
-		String input;
-		System.out.print("What is your name? ");
-		input = inputSource.nextLine();
-		System.out.println("Hello, " + input + "!");
-		System.out.println("\n");//prints out a new line of whitespace
-	}
-	
 	private static void showCredits() {
 		System.out.println("Thank you for playing this game!");
 		System.out.println("Please come back soon!\n");

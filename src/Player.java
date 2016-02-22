@@ -10,8 +10,17 @@ public class Player {
 		String location;
 		int inventory;
 		int score;
-		
-
 	}
 
+
+	public static void promptName() {
+		Scanner inputSource = new Scanner(System.in);
+		String input;
+		System.out.print("What is your name? ");
+		input = inputSource.nextLine();
+		System.out.println("Hello, " + input + "!");
+		System.out.println("\n");//prints out a new line of whitespace
+	}
+	
+	
 }
