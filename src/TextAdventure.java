@@ -11,7 +11,9 @@ import java.util.Scanner;//used for reading user input on the keyboard
 
 import java.util.Random;//will be used later on for random generation
 
-public class TextAdventure {
+import java.io.*;
+
+public class TextAdventure extends Player{
 
 	public static void main(String[] args) {
 		Scanner inputSource = new Scanner(System.in);
@@ -163,12 +165,7 @@ public class TextAdventure {
 			}
 	}
 }
-	
-	private static void promptName() {
-		// TODO Auto-generated method stub
 		
-	}
-
 	private static void titleMessage() {
 		//prints a greeting message when the user runs the program
 		System.out.println("Welcome to Marist Mayhem!");
@@ -182,4 +179,5 @@ public class TextAdventure {
 		System.out.println("Please come back soon!\n");
 		System.out.println("Trevor Pirone Copyright 2016");
 	}
+
 }
