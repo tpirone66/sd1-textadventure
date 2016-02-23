@@ -13,7 +13,7 @@ import java.util.Random;//will be used later on for random generation
 
 import java.io.*;
 
-public class TextAdventure extends Player{
+public class TextAdventure{
 
 	public static void main(String[] args) {
 		Scanner inputSource = new Scanner(System.in);
@@ -23,19 +23,18 @@ public class TextAdventure extends Player{
 		//locations and their descriptions
 		String[] locationDescription = {"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Leo seems like the place where all the rich children live. $$$", "Marian is home to the hobbits and the hermits. Sure seems clicky around here.", "Midrise is Midrise...yeah...", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?"};
 		String[] location = {"Marist", "Champagnat", "Leo", "Marian", "Midrise", "Sheahan"};
-		int playerLocation = 0;
 		
 		//method that will display the name of the game and description
 		titleMessage();
 		
 		//method for allowing the user to customize their character
-		promptName();
+		Player.promptName();
 		
 		//the user will decide to start, get help or exit the game here
 		System.out.println("Press the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 		
-		System.out.print("\nCurrent location: "+playerLocation+".");
+		System.out.print("\nCurrent location: "+Player.playerLocation+".");
 		System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
 		
 		while(true) {
@@ -54,18 +53,18 @@ public class TextAdventure extends Player{
 			
 			//what happens when the user types in N
 			else if (input.equalsIgnoreCase("N")) {
-				if (playerLocation == 0){
+				if (Player.playerLocation == 0){
 					direction = "North";
-					playerLocation = 1;
+					Player.playerLocation = 1;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print("Current location: "+ playerLocation +".");
+					System.out.print("Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[1] + "." + " " + locationDescription[1]);
 					}
-				else if (input.equalsIgnoreCase("N") && playerLocation == 3){
+				else if (input.equalsIgnoreCase("N") && Player.playerLocation == 3){
 					direction = "North";
-					playerLocation = 0;
+					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print("Current location: "+ playerLocation +".");
+					System.out.print("Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
 				}
 				else {
@@ -76,18 +75,18 @@ public class TextAdventure extends Player{
 			
 			//what happens when the user types in S
 			else if (input.equalsIgnoreCase("S")) {
-				if (playerLocation == 0){
+				if (Player.playerLocation == 0){
 					direction = "South";
-					playerLocation = 3;
+					Player.playerLocation = 3;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print("Current location: "+ playerLocation +".");
+					System.out.print("Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[3] + "." + " " + locationDescription[3]);
 					}
-				else if (input.equalsIgnoreCase("S") && playerLocation == 1){
+				else if (input.equalsIgnoreCase("S") && Player.playerLocation == 1){
 						direction = "South";
-						playerLocation = 0;
+						Player.playerLocation = 0;
 						System.out.print("\nYou moved " + direction + ". ");
-						System.out.print("Current location: "+ playerLocation +".");
+						System.out.print("Current location: "+ Player.playerLocation +".");
 						System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
 				}
 				else {
@@ -97,25 +96,25 @@ public class TextAdventure extends Player{
 			
 			//what happens when the user types in E
 			else if (input.equalsIgnoreCase("E")) {
-				if (playerLocation == 0){
+				if (Player.playerLocation == 0){
 					direction = "East";
-					playerLocation = 4;
+					Player.playerLocation = 4;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print(" Current location: "+ playerLocation +".");
+					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[4] + "." + " " + locationDescription[4]);
 					}
-				else if (input.equalsIgnoreCase("E") && playerLocation == 5){
+				else if (input.equalsIgnoreCase("E") && Player.playerLocation == 5){
 					direction = "East";
-					playerLocation = 2;
+					Player.playerLocation = 2;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print(" Current location: "+ playerLocation +".");
+					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[2] + "." + " " + locationDescription[2]);
 				}
-				else if (input.equalsIgnoreCase("E") && playerLocation == 2){
+				else if (input.equalsIgnoreCase("E") && Player.playerLocation == 2){
 					direction = "East";
-					playerLocation = 0;
+					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print(" Current location: "+ playerLocation +".");
+					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
 				}
 				else {
@@ -125,25 +124,25 @@ public class TextAdventure extends Player{
 			
 			//what happens when the user types in W
 			else if (input.equalsIgnoreCase("W")) {
-				if (playerLocation == 0){
+				if (Player.playerLocation == 0){
 					direction = "West";
-					playerLocation = 2;
+					Player.playerLocation = 2;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print(" Current location: "+ playerLocation +".");
+					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[2] + "." + " " + locationDescription[2]);
 				}
-				else if (input.equalsIgnoreCase("W") && playerLocation==2) {
+				else if (input.equalsIgnoreCase("W") && Player.playerLocation==2) {
 					direction = "West" ;
-					playerLocation = 5;
+					Player.playerLocation = 5;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print(" Current location: "+ playerLocation +".");
+					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[5] + "." + " " + locationDescription[5]);
 				}
-				else if (input.equalsIgnoreCase("W") && playerLocation == 4){
+				else if (input.equalsIgnoreCase("W") && Player.playerLocation == 4){
 					direction = "West";
-					playerLocation = 0;
+					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction + ". ");
-					System.out.print(" Current location: "+ playerLocation +".");
+					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
 				}
 				else {

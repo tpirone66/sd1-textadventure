@@ -6,7 +6,7 @@ public class Player{
 	Scanner inputSource = new Scanner(System.in);
 	//Some of the player variables that will be in this class
 	String name;
-	int playerLocation = 0;
+	static int playerLocation = 0;
 	int inventory;
 	int score = 0;
 
