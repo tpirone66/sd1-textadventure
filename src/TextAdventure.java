@@ -27,7 +27,7 @@ public class TextAdventure{
 		Player.promptName();
 		
 		//the user will decide to start, get help or exit the game here
-		System.out.println("Press the H key on the keyboard before playing the game to read the instructions.");
+		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 		
 		System.out.print("\nCurrent location: "+Player.playerLocation+".");
@@ -45,6 +45,8 @@ public class TextAdventure{
 				System.out.println("Press E to go East.");
 				System.out.println("Press W to go West.");
 				System.out.println("Press Q to quit the game.");
+				System.out.println("Press T to take an item.");
+				System.out.println("Type 'Score' to display the score.");
 			}
 			
 			//what happens when the user types in N
@@ -66,14 +68,15 @@ public class TextAdventure{
 				else if (input.equalsIgnoreCase("N") && Player.playerLocation == 7){
 					direction = "North";
 					Player.playerLocation = 3;
+					Locale.item = "Liquid Silicone Dagger";
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + Locale.location[3] + "." + " " + Locale.locationDescription[3]);
+					System.out.print("\nYou found " + Locale.item + ". That's pretty trippy, man!");
 				}
 				else {
 					System.out.print("\nCannot move North anymore!");
 				}
-				
 			}
 			
 			//what happens when the user types in S
@@ -86,11 +89,11 @@ public class TextAdventure{
 					System.out.print(" You are now in " + Locale.location[3] + "." + " " + Locale.locationDescription[3]);
 					}
 				else if (input.equalsIgnoreCase("S") && Player.playerLocation == 1){
-						direction = "South";
-						Player.playerLocation = 0;
-						System.out.print("\nYou moved " + direction + ". ");
-						System.out.print("Current location: "+ Player.playerLocation +".");
-						System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
+					direction = "South";
+					Player.playerLocation = 0;
+					System.out.print("\nYou moved " + direction + ". ");
+					System.out.print("Current location: "+ Player.playerLocation +".");
+					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 				}
 				else if (input.equalsIgnoreCase("S") && Player.playerLocation == 3){
 					direction = "South";
@@ -99,9 +102,8 @@ public class TextAdventure{
 					System.out.print("Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + Locale.location[7] + "." + " " + Locale.locationDescription[7]);
 			}
-				else {
+				else 
 					System.out.print("\nCannot move South anymore!");
-				}
 			}
 			
 			//what happens when the user types in E
@@ -134,9 +136,8 @@ public class TextAdventure{
 					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + Locale.location[6] + "." + " " + Locale.locationDescription[6]);
 				}
-				else {
+				else 
 					System.out.print("\nCannot move East anymore!");
-				}
 			}
 			
 			//what happens when the user types in W
@@ -169,9 +170,8 @@ public class TextAdventure{
 					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + Locale.location[4] + "." + " " + Locale.locationDescription[4]);
 				}
-				else {
+				else 
 					System.out.print("\nCannot move West anymore!");
-				}
 			}
 				
 			//what happens when the user types in Q
@@ -181,14 +181,31 @@ public class TextAdventure{
 				break;
 			}
 			
+			//what happens when the user types in T
+			else if (input.equalsIgnoreCase("T")) {
+				if (input.equalsIgnoreCase("T") && Player.playerLocation == 3 && !Player.inInventory){
+					System.out.print("You obtained " + Locale.item + "!");
+					Player.inventory.add(Locale.item);
+					Player.score += 5;
+					Locale.removeItem(Locale.location[3], Locale.item);
+				}
+				else if (input.equalsIgnoreCase("T") && Player.playerLocation == 3 && Player.inInventory){
+					System.out.print("The item is already in the inventory!");
+				}
+			}
+			
+			//what happens when the user types in score
+			else if (input.equalsIgnoreCase("Score")) {
+				System.out.print(Player.score);
+			}
+			
 			//if the user types in any other keys not mentioned above, it will print this message
-			else {
+			else 
 				System.out.println("Invalid command!\n");
 				continue;
-			}
+		}	
 	}
-}
-		
+
 	private static void titleMessage() {
 		//prints a greeting message when the user runs the program
 		System.out.println("Welcome to Marist Mayhem!");
