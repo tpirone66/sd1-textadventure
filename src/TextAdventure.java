@@ -63,6 +63,13 @@ public class TextAdventure{
 					System.out.print("Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 				}
+				else if (input.equalsIgnoreCase("N") && Player.playerLocation == 7){
+					direction = "North";
+					Player.playerLocation = 3;
+					System.out.print("\nYou moved " + direction + ". ");
+					System.out.print("Current location: "+ Player.playerLocation +".");
+					System.out.print(" You are now in " + Locale.location[3] + "." + " " + Locale.locationDescription[3]);
+				}
 				else {
 					System.out.print("\nCannot move North anymore!");
 				}
@@ -85,6 +92,13 @@ public class TextAdventure{
 						System.out.print("Current location: "+ Player.playerLocation +".");
 						System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 				}
+				else if (input.equalsIgnoreCase("S") && Player.playerLocation == 3){
+					direction = "South";
+					Player.playerLocation = 7;
+					System.out.print("\nYou moved " + direction + ". ");
+					System.out.print("Current location: "+ Player.playerLocation +".");
+					System.out.print(" You are now in " + Locale.location[7] + "." + " " + Locale.locationDescription[7]);
+			}
 				else {
 					System.out.print("\nCannot move South anymore!");
 				}
@@ -113,6 +127,13 @@ public class TextAdventure{
 					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 				}
+				else if (input.equalsIgnoreCase("E") && Player.playerLocation == 4){
+					direction = "East";
+					Player.playerLocation = 6;
+					System.out.print("\nYou moved " + direction + ". ");
+					System.out.print(" Current location: "+ Player.playerLocation +".");
+					System.out.print(" You are now in " + Locale.location[6] + "." + " " + Locale.locationDescription[6]);
+				}
 				else {
 					System.out.print("\nCannot move East anymore!");
 				}
@@ -140,6 +161,13 @@ public class TextAdventure{
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
 					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
+				}
+				else if (input.equalsIgnoreCase("W") && Player.playerLocation == 6){
+					direction = "West";
+					Player.playerLocation = 4;
+					System.out.print("\nYou moved " + direction + ". ");
+					System.out.print(" Current location: "+ Player.playerLocation +".");
+					System.out.print(" You are now in " + Locale.location[4] + "." + " " + Locale.locationDescription[4]);
 				}
 				else {
 					System.out.print("\nCannot move West anymore!");
