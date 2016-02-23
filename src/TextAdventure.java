@@ -20,10 +20,6 @@ public class TextAdventure{
 		String input;
 		String direction;
 		
-		//locations and their descriptions
-		String[] locationDescription = {"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Leo seems like the place where all the rich children live. $$$", "Marian is home to the hobbits and the hermits. Sure seems clicky around here.", "Midrise is Midrise...yeah...", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?"};
-		String[] location = {"Marist", "Champagnat", "Leo", "Marian", "Midrise", "Sheahan"};
-		
 		//method that will display the name of the game and description
 		titleMessage();
 		
@@ -35,7 +31,7 @@ public class TextAdventure{
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 		
 		System.out.print("\nCurrent location: "+Player.playerLocation+".");
-		System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
+		System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 		
 		while(true) {
 			System.out.print("\nEnter a command: ");
@@ -58,14 +54,14 @@ public class TextAdventure{
 					Player.playerLocation = 1;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[1] + "." + " " + locationDescription[1]);
+					System.out.print(" You are now in " + Locale.location[1] + "." + " " + Locale.locationDescription[1]);
 					}
 				else if (input.equalsIgnoreCase("N") && Player.playerLocation == 3){
 					direction = "North";
 					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
+					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 				}
 				else {
 					System.out.print("\nCannot move North anymore!");
@@ -80,14 +76,14 @@ public class TextAdventure{
 					Player.playerLocation = 3;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[3] + "." + " " + locationDescription[3]);
+					System.out.print(" You are now in " + Locale.location[3] + "." + " " + Locale.locationDescription[3]);
 					}
 				else if (input.equalsIgnoreCase("S") && Player.playerLocation == 1){
 						direction = "South";
 						Player.playerLocation = 0;
 						System.out.print("\nYou moved " + direction + ". ");
 						System.out.print("Current location: "+ Player.playerLocation +".");
-						System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
+						System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 				}
 				else {
 					System.out.print("\nCannot move South anymore!");
@@ -101,21 +97,21 @@ public class TextAdventure{
 					Player.playerLocation = 4;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[4] + "." + " " + locationDescription[4]);
+					System.out.print(" You are now in " + Locale.location[4] + "." + " " + Locale.locationDescription[4]);
 					}
 				else if (input.equalsIgnoreCase("E") && Player.playerLocation == 5){
 					direction = "East";
 					Player.playerLocation = 2;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[2] + "." + " " + locationDescription[2]);
+					System.out.print(" You are now in " + Locale.location[2] + "." + " " + Locale.locationDescription[2]);
 				}
 				else if (input.equalsIgnoreCase("E") && Player.playerLocation == 2){
 					direction = "East";
 					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
+					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 				}
 				else {
 					System.out.print("\nCannot move East anymore!");
@@ -129,21 +125,21 @@ public class TextAdventure{
 					Player.playerLocation = 2;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[2] + "." + " " + locationDescription[2]);
+					System.out.print(" You are now in " + Locale.location[2] + "." + " " + Locale.locationDescription[2]);
 				}
 				else if (input.equalsIgnoreCase("W") && Player.playerLocation==2) {
 					direction = "West" ;
 					Player.playerLocation = 5;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[5] + "." + " " + locationDescription[5]);
+					System.out.print(" You are now in " + Locale.location[5] + "." + " " + Locale.locationDescription[5]);
 				}
 				else if (input.equalsIgnoreCase("W") && Player.playerLocation == 4){
 					direction = "West";
 					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + location[0] + "." + " " + locationDescription[0]);
+					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
 				}
 				else {
 					System.out.print("\nCannot move West anymore!");
