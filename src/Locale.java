@@ -8,17 +8,11 @@ public class Locale{
 		public static String[] location = {"Marist", "Champagnat", "Leo", "Marian", "Midrise", "Sheahan", "Lower Townhouses", "Lower West Cedar Townhouses"};
 		public static String item;
 		
-		private static Locale[] InitializelocationDescriptions(int location){
+		private static Locale[] InitializelocationDescriptions(int location) {
 			Locale[] locationDescription = new Locale[location + 1];
 			for(int i = 0; i < location + 1; i++){
 				locationDescription[i] = new Locale();
 			}
 			return locationDescription;
 		}
-
-		public static void removeItem(String item, String location) {
-			// TODO Auto-generated method stub
-			
-		}
-
 }
