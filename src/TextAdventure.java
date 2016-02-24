@@ -225,6 +225,36 @@ public class TextAdventure{
 				}
 			}
 			
+			else if (input.equalsIgnoreCase("M")) {
+				System.out.println("                           ------------                                         ");
+				System.out.println("                           |Champagnat|                                         ");
+				System.out.println("                           ------------                                         ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("     ---------     -----     --------     ---------     ------------------      ");
+				System.out.println("     |Sheahan|-----|Leo|-----|Marist|-----|Midrise|-----|Lower Townhouses|      ");
+				System.out.println("     ---------     -----     --------     ---------     ------------------      ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            --------                                            ");
+				System.out.println("                            |Marian|                                            ");
+				System.out.println("                            --------                                            ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("                            	|                                               ");
+				System.out.println("             	 -----------------------------                                  ");
+				System.out.println("              	 |Lower West Cedar Townhouses|                                  ");
+				System.out.println("              	 -----------------------------                                  ");
+			}
+			
 			//what happens when the user types in score
 			else if (input.equalsIgnoreCase("Score")) {
 				System.out.print(Player.score);
