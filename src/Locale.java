@@ -46,10 +46,9 @@ public class Locale{
 			{3, -1, -1, -1},//Lower West Cedar Townhouses
 		};
 		
-		public static void move() {
-			int dest = map[Player.playerLocation][TextAdventure.direction];
+		public Locale(int dest) {
 			if (dest != -1){
-				dest = Player.playerLocation;
+				dest = map[Player.playerLocation][TextAdventure.direction];
 			}
 			else {
 				Player.playerLocation = dest;
@@ -59,4 +58,7 @@ public class Locale{
 		public static Locale createLocation(Locale locale) {
 			return new Locale(location, locationDescription, item, number);
 		}
+
 }
+
+	

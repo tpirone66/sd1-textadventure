@@ -47,6 +47,7 @@ public class TextAdventure{
 				System.out.println("Press W to go West.");
 				System.out.println("Press Q to quit the game.");
 				System.out.println("Press T to take an item.");
+				System.out.println("Press I to view your inventory.");
 				System.out.println("Type 'Score' to display the score.");
 			}
 			
@@ -197,6 +198,7 @@ public class TextAdventure{
 					Locale.hasDagger = true;
 					Player.inventory.add(Locale.item);
 					Player.score += 5;
+					System.out.print(" Score: " + Player.score);
 				}
 				else if (Player.playerLocation == 3 && Locale.hasDagger == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
@@ -206,6 +208,7 @@ public class TextAdventure{
 					Locale.hasHandbook = true;
 					Player.inventory.add(Locale.item);
 					Player.score += 5;
+					System.out.print(" Score: " + Player.score);
 				}
 				else if (Player.playerLocation == 1 && Locale.hasHandbook == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
@@ -215,6 +218,7 @@ public class TextAdventure{
 					Locale.hasMap = true;
 					Player.inventory.add(Locale.item);
 					Player.score += 5;
+					System.out.print(" Score: " + Player.score);
 				}
 				else if (Player.playerLocation == 5 && Locale.hasMap == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
@@ -224,6 +228,7 @@ public class TextAdventure{
 					Locale.hasApple = true;
 					Player.inventory.add(Locale.item);
 					Player.score += 5;
+					System.out.print(" Score: " + Player.score);
 				}
 				else if (Player.playerLocation == 6 && Locale.hasApple == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
