@@ -21,13 +21,13 @@ public class Player{
 	}
 
 	//will check to see if item is in the inventory and put it in
-	static boolean inInventory = false;{
-	for (String itemInv: inventory){
-		if (itemInv.equals(Locale.item)){
+	//static boolean inInventory = false;{
+	/*for (String itemInv: inventory){
+		if (itemInv.equals(locale[Player.playerLocation].getItem())){
 			inInventory = true;
 			break;
 		}
 	}
-	}
+	}*/
 	
 }
