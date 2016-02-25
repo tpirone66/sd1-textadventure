@@ -21,6 +21,18 @@ public class TextAdventure{
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		String[] direction = {"North", "South", "East", "West"} ;
+		int dest = Locale.map[Player.playerLocation][TextAdventure.direction];
+		
+		Locale[] locale = new Locale[]{
+				new Locale("Marist", "Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", null, 0),
+				new Locale("Champagnat", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Handbook", 1),
+				new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", null, 2),
+				new Locale("Marian", "Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Dagger", 3),
+				new Locale("Midrise", "Midrise is Midrise...yeah...", null, 4),
+				new Locale("Sheahan", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?", "Map", 5),
+				new Locale("Lower Townhouses", "Lower Townhouses are not too shabby to live in. Right behind the world famous 'Nerd Palace'.", "Apple", 6),
+				new Locale("Lower West Cedar Townhouses", "Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.", null, 7),
+		}; 
 		
 		//method that will display the name of the game and description
 		titleMessage();
@@ -33,7 +45,7 @@ public class TextAdventure{
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 		
 		System.out.print("\nCurrent location: "+ Player.playerLocation +".");
-		System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
+		System.out.print(" You are now in " + locale[Player.playerLocation].getLocation());
 		
 		while(true) {
 			System.out.print("\nEnter a command: ");
@@ -59,7 +71,7 @@ public class TextAdventure{
 					Locale.item = "Handbook";
 					System.out.print("\nYou moved " + direction[0] + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
+					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " " + locale[Player.playerLocation].getLocationDescription());
 					System.out.print("\nYou found " + Locale.item + ". Everyone should read this!");
 					}
 				else if (input.equalsIgnoreCase("N") && Player.playerLocation == 3) {

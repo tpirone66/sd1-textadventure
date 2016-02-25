@@ -18,17 +18,6 @@ public class Locale{
 			this.number = number;
 		}
 		
-		public static void createLocation(String location, String locationDescription, String item, int number) {
-			new Locale("Marist", "Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", null, 0);
-			new Locale("Champagnat", "Champagnat is really loud tonight! Why is there a fire drill every weekend?", "Handbook", 1);
-			new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", null, 2);
-			new Locale("Marian", "Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", "Dagger", 3);
-			new Locale("Midrise", "Midrise is Midrise...yeah...", null, 4);
-			new Locale("Sheahan", "Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?", "Map", 5);
-			new Locale("Lower Townhouses", "Lower Townhouses are not too shabby to live in. Right behind the world famous 'Nerd Palace'.", "Apple", 6);
-			new Locale("Lower West Cedar Townhouses", "Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.", null, 7);
-		}
-		
 		static boolean hasDagger = false;
 		static boolean hasMap = false;
 		static boolean hasApple = false;
@@ -45,20 +34,18 @@ public class Locale{
 			{-1, -1, -1, 4},//Lower Townhouses
 			{3, -1, -1, -1},//Lower West Cedar Townhouses
 		};
-		
-		public Locale(int dest) {
-			if (dest != -1){
-				dest = map[Player.playerLocation][TextAdventure.direction];
-			}
-			else {
-				Player.playerLocation = dest;
-			}
-		}
 
 		public static Locale createLocation(Locale locale) {
 			return new Locale(location, locationDescription, item, number);
 		}
-
+		
+		public String getLocation(){
+			return location;
+		}
+		
+		public String getLocationDescription(){
+			return locationDescription;
+		}
 }
 
 	
