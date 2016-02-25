@@ -16,11 +16,6 @@ import java.io.*;
 public class TextAdventure{
 
 	public static final int direction = 0;
-	
-	static boolean hasDagger = false;
-	static boolean hasMap = false;
-	static boolean hasApple = false;
-	static boolean hasHandbook = false;
 
 	public static void main(String[] args) {
 		Scanner inputSource = new Scanner(System.in);
@@ -37,8 +32,8 @@ public class TextAdventure{
 		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 		
-		System.out.print("\nCurrent location: "+Player.playerLocation+".");
-		System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
+		System.out.print("\nCurrent location: "+ Player.playerLocation +".");
+		System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 		
 		while(true) {
 			System.out.print("\nEnter a command: ");
@@ -63,7 +58,7 @@ public class TextAdventure{
 					Locale.item = "Handbook";
 					System.out.print("\nYou moved " + direction[0] + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[1] + "." + " " + Locale.locationDescription[1]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 					System.out.print("\nYou found " + Locale.item + ". Everyone should read this!");
 					}
 				else if (input.equalsIgnoreCase("N") && Player.playerLocation == 3) {
@@ -71,15 +66,15 @@ public class TextAdventure{
 					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction[0] + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 				}
 				else if (input.equalsIgnoreCase("N") && Player.playerLocation == 7) {
 					direction[0] = "North";
 					Player.playerLocation = 3;
-					Locale.item = "Liquid Silicone Dagger";
+					Locale.item = "Dagger";
 					System.out.print("\nYou moved " + direction + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[3] + "." + " " + Locale.locationDescription[3]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 					System.out.print("\nYou found " + Locale.item + ". That's pretty trippy, man!");
 				}
 				else {
@@ -95,7 +90,7 @@ public class TextAdventure{
 					Locale.item = "Dagger";
 					System.out.print("\nYou moved " + direction[1] + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[3] + "." + " " + Locale.locationDescription[3]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 					System.out.print("\nYou found " + Locale.item + ". That's pretty trippy, man!");
 					}
 				else if (input.equalsIgnoreCase("S") && Player.playerLocation == 1) {
@@ -103,14 +98,14 @@ public class TextAdventure{
 					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction[1] + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 				}
 				else if (input.equalsIgnoreCase("S") && Player.playerLocation == 3) {
 					direction[1] = "South";
 					Player.playerLocation = 7;
 					System.out.print("\nYou moved " + direction[1] + ". ");
 					System.out.print("Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[7] + "." + " " + Locale.locationDescription[7]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 			}
 				else 
 					System.out.print("\nCannot move South anymore!");
@@ -123,21 +118,21 @@ public class TextAdventure{
 					Player.playerLocation = 4;
 					System.out.print("\nYou moved " + direction[2] + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[4] + "." + " " + Locale.locationDescription[4]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 					}
 				else if (input.equalsIgnoreCase("E") && Player.playerLocation == 5) {
 					direction[2] = "East";
 					Player.playerLocation = 2;
 					System.out.print("\nYou moved " + direction[2] + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[2] + "." + " " + Locale.locationDescription[2]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 				}
 				else if (input.equalsIgnoreCase("E") && Player.playerLocation == 2) {
 					direction[2] = "East";
 					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction[2] + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 				}
 				else if (input.equalsIgnoreCase("E") && Player.playerLocation == 4) {
 					direction[2] = "East";
@@ -145,7 +140,7 @@ public class TextAdventure{
 					Locale.item = "Apple";
 					System.out.print("\nYou moved " + direction[2] + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[6] + "." + " " + Locale.locationDescription[6]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 					System.out.print("\nYou found " + Locale.item + ". What a tasty treat!");
 				}
 				else 
@@ -159,7 +154,7 @@ public class TextAdventure{
 					Player.playerLocation = 2;
 					System.out.print("\nYou moved " + direction[3] + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[2] + "." + " " + Locale.locationDescription[2]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 				}
 				else if (input.equalsIgnoreCase("W") && Player.playerLocation==2) {
 					direction[3] = "West" ;
@@ -167,7 +162,7 @@ public class TextAdventure{
 					Locale.item = "Map";
 					System.out.print("\nYou moved " + direction[3] + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[5] + "." + " " + Locale.locationDescription[5]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 					System.out.print("\nYou found " + Locale.item + ". Not sure why you did not have one in the first place.");
 				}
 				else if (input.equalsIgnoreCase("W") && Player.playerLocation == 4) {
@@ -175,14 +170,14 @@ public class TextAdventure{
 					Player.playerLocation = 0;
 					System.out.print("\nYou moved " + direction[3] + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[0] + "." + " " + Locale.locationDescription[0]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 				}
 				else if (input.equalsIgnoreCase("W") && Player.playerLocation == 6) {
 					direction[3] = "West";
 					Player.playerLocation = 4;
 					System.out.print("\nYou moved " + direction[3] + ". ");
 					System.out.print(" Current location: "+ Player.playerLocation +".");
-					System.out.print(" You are now in " + Locale.location[4] + "." + " " + Locale.locationDescription[4]);
+					System.out.print(" You are now in " + Locale.location + "." + " " + Locale.locationDescription);
 				}
 				else 
 					System.out.print("\nCannot move West anymore!");
@@ -197,45 +192,45 @@ public class TextAdventure{
 			
 			//what happens when the user types in T
 			else if (input.equalsIgnoreCase("T")) {
-				if (Player.playerLocation == 3 && !Player.inInventory && hasDagger == false) {
+				if (Player.playerLocation == 3 && !Player.inInventory && Locale.hasDagger == false) {
 					System.out.print("You obtained " + Locale.item + "!");
-					hasDagger = true;
+					Locale.hasDagger = true;
 					Player.inventory.add(Locale.item);
 					Player.score += 5;
 				}
-				else if (Player.playerLocation == 3 && hasDagger == true) {
+				else if (Player.playerLocation == 3 && Locale.hasDagger == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 				}
-				if (Player.playerLocation == 1 && !Player.inInventory && hasHandbook == false) {
+				if (Player.playerLocation == 1 && !Player.inInventory && Locale.hasHandbook == false) {
 					System.out.print("You obtained " + Locale.item + "!");
-					hasHandbook = true;
+					Locale.hasHandbook = true;
 					Player.inventory.add(Locale.item);
 					Player.score += 5;
 				}
-				else if (Player.playerLocation == 1 && hasHandbook == true) {
+				else if (Player.playerLocation == 1 && Locale.hasHandbook == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 				}
-				if (Player.playerLocation == 5 && !Player.inInventory && hasMap == false) {
+				if (Player.playerLocation == 5 && !Player.inInventory && Locale.hasMap == false) {
 					System.out.print("You obtained " + Locale.item + "!");
-					hasMap = true;
+					Locale.hasMap = true;
 					Player.inventory.add(Locale.item);
 					Player.score += 5;
 				}
-				else if (Player.playerLocation == 5 && hasMap == true) {
+				else if (Player.playerLocation == 5 && Locale.hasMap == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 				}
-				if (Player.playerLocation == 6 && !Player.inInventory && hasApple == false) {
+				if (Player.playerLocation == 6 && !Player.inInventory && Locale.hasApple == false) {
 					System.out.print("You obtained " + Locale.item + "!");
-					hasApple = true;
+					Locale.hasApple = true;
 					Player.inventory.add(Locale.item);
 					Player.score += 5;
 				}
-				else if (Player.playerLocation == 6 && hasApple == true) {
+				else if (Player.playerLocation == 6 && Locale.hasApple == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 				}
 			}
 			
-			else if (input.equalsIgnoreCase("M") && hasMap == true) {
+			else if (input.equalsIgnoreCase("M") && Locale.hasMap == true) {
 				System.out.println("                           ------------                                         ");
 				System.out.println("                           |Champagnat|                                         ");
 				System.out.println("                           ------------                                         ");
@@ -268,6 +263,10 @@ public class TextAdventure{
 			//what happens when the user types in score
 			else if (input.equalsIgnoreCase("Score")) {
 				System.out.print(Player.score);
+			}
+			
+			else if (input.equalsIgnoreCase("I")) {
+				System.out.print(Player.inventory);
 			}
 			
 			//if the user types in any other keys not mentioned above, it will print this message
