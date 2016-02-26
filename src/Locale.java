@@ -1,11 +1,9 @@
+//Locale class for Marist Mayhem
 import java.util.Collection;
 
-//Locale class for Marist Mayhem
 public class Locale{
 		
-		//locations and their descriptions
-		//public static String[] locationDescription = {    "Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop."};
-		//public static String[] location = {"Marist", "Champagnat", "Leo", "Marian", "Midrise", "Sheahan", "Lower Townhouses", "Lower West Cedar Townhouses"};
+		//variables for the locale array of objects
 		public String item;
 		public String itemDescription;
 		public String location;
@@ -18,23 +16,13 @@ public class Locale{
 			this.itemDescription = itemDescription;
 		}
 		
+		//items are by default false if the user does not have them
 		static boolean hasDagger = false;
 		static boolean hasMap = false;
 		static boolean hasApple = false;
 		static boolean hasHandbook = false;
 		
-		static int[][] map = {
-		//  N   S  E  W
-			{1, 3, 4, 2},	//Marist		
-			{-1, 0, -1, -1},//Champagnat
-			{-1, -1, 0, 5}, //Leo
-			{0, 7, -1, -1}, //Marian
-			{-1, -1, 6, 0}, //Midrise
-			{-1, -1, 2, -1},//Sheahan
-			{-1, -1, -1, 4},//Lower Townhouses
-			{3, -1, -1, -1},//Lower West Cedar Townhouses
-		};
-		
+		//these get methods look for the corresponding variables and returns them
 		public String getLocation(){
 			return location;
 		}
