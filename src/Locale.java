@@ -9,6 +9,7 @@ public class Locale{
 		public String location;
 		public String locationDescription;
 		
+		//constructor with four parameters
 		public Locale(String location, String locationDescription, String item, String itemDescription) {
 			this.location = location;
 			this.locationDescription = locationDescription;

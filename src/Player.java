@@ -6,7 +6,7 @@ public class Player{
 	
 	Scanner inputSource = new Scanner(System.in);
 	//Some of the player variables that will be in this class
-	String name;
+	static String name;
 	static int playerLocation = 0;
 	static ArrayList<String> inventory = new ArrayList<>();
 	static int score = 0;
@@ -17,7 +17,8 @@ public class Player{
 		String input;
 		System.out.print("What is your name? ");
 		input = inputSource.nextLine();
-		System.out.println("Hello, " + input + "!");
+		name = input;
+		System.out.println("Hello, " + name + "!");
 	}
 	
 }
