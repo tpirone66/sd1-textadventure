@@ -1,3 +1,4 @@
+//BreadcrumbTrail class for MArist Mayhem
 import java.util.ArrayList;
 
 public class BreadcrumbTrail {
