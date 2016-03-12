@@ -15,33 +15,33 @@ import java.util.Random;//will be used later on for random generation
 import java.io.*;
 
 public class TextAdventure {
+	
+	// array of locale objects
+	final static Locale[] locale = new Locale[] {
+			new Locale("Marist",
+					"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", null,
+					" Nothing here."),
+			new Locale("Champagnat", "Champagnat is really loud tonight! Why is there a fire drill every weekend?",
+					"Handbook", " Everyone should read this!"),
+			new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", null,
+					" Nothing here."),
+			new Locale("Marian",
+					"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!",
+					"Dagger", " That's pretty trippy, man!"),
+			new Locale("Midrise", "Midrise is Midrise...yeah...", null, " Nothing here."),
+			new Locale("Sheahan",
+					"Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?",
+					"Map", " Not sure why you did not have one in the first place."),
+			new Locale("Lower Townhouses",
+					"Lower Townhouses are not too shabby to live in. Right behind the world famous 'Nerd Palace'.",
+					"Apple", " What a tasty treat!"),
+			new Locale("Lower West Cedar Townhouses",
+					"Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.",
+					null, " Nothing here."), };
 
 	public static void main(String[] args) {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
-
-		// array of locale objects
-		Locale[] locale = new Locale[] {
-				new Locale("Marist",
-						"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", null,
-						" Nothing here."),
-				new Locale("Champagnat", "Champagnat is really loud tonight! Why is there a fire drill every weekend?",
-						"Handbook", " Everyone should read this!"),
-				new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", null,
-						" Nothing here."),
-				new Locale("Marian",
-						"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!",
-						"Dagger", " That's pretty trippy, man!"),
-				new Locale("Midrise", "Midrise is Midrise...yeah...", null, " Nothing here."),
-				new Locale("Sheahan",
-						"Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?",
-						"Map", " Not sure why you did not have one in the first place."),
-				new Locale("Lower Townhouses",
-						"Lower Townhouses are not too shabby to live in. Right behind the world famous 'Nerd Palace'.",
-						"Apple", " What a tasty treat!"),
-				new Locale("Lower West Cedar Townhouses",
-						"Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.",
-						null, " Nothing here."), };
 
 		// navigation matrix map
 		int[][] map = {
@@ -160,45 +160,7 @@ public class TextAdventure {
 
 			// what happens when the user types in T
 			else if (input.equalsIgnoreCase("T")) {
-				if (Player.playerLocation == 3 && Item.hasDagger == false) {
-					System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
-					Item.hasDagger = true;
-					Player.inventory.add(locale[Player.playerLocation].getItem());
-					Player.score += 5;
-					System.out.print(" Score: " + Player.score);
-				} else if (Player.playerLocation == 3 && Item.hasDagger == true) {
-					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-				}
-				if (Player.playerLocation == 1 && Item.hasHandbook == false) {
-					System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
-					Item.hasHandbook = true;
-					Player.inventory.add(locale[Player.playerLocation].getItem());
-					Player.score += 5;
-					System.out.print(" Score: " + Player.score);
-				} else if (Player.playerLocation == 1 && Item.hasHandbook == true) {
-					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-				}
-				if (Player.playerLocation == 5 && Item.hasMap == false) {
-					System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
-					Item.hasMap = true;
-					Player.inventory.add(locale[Player.playerLocation].getItem());
-					Player.score += 5;
-					System.out.print(" Score: " + Player.score);
-				} else if (Player.playerLocation == 5 && Item.hasMap == true) {
-					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-				}
-				if (Player.playerLocation == 6 && Item.hasApple == false) {
-					System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
-					Item.hasApple = true;
-					Player.inventory.add(locale[Player.playerLocation].getItem());
-					Player.score += 5;
-					System.out.print(" Score: " + Player.score);
-				} else if (Player.playerLocation == 6 && Item.hasApple == true) {
-					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-				}
-				if (locale[Player.playerLocation].getItem() == null) {
-					System.out.print("There is nothing to take.");
-				}
+				take();
 			}
 
 			// prints out a map if the user has it by typing M
@@ -276,5 +238,46 @@ public class TextAdventure {
 		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 	}
+	
+	public static void take() {
+		if (Player.playerLocation == 3 && Item.hasDagger == false) {
+			System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
+			Item.hasDagger = true;
+			Player.inventory.add(locale[Player.playerLocation].getItem());
+			Player.score += 5;
+			System.out.print(" Score: " + Player.score);
+		} else if (Player.playerLocation == 3 && Item.hasDagger == true) {
+			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
+		}
+		if (Player.playerLocation == 1 && Item.hasHandbook == false) {
+			System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
+			Item.hasHandbook = true;
+			Player.inventory.add(locale[Player.playerLocation].getItem());
+			Player.score += 5;
+			System.out.print(" Score: " + Player.score);
+		} else if (Player.playerLocation == 1 && Item.hasHandbook == true) {
+			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
+		}
+		if (Player.playerLocation == 5 && Item.hasMap == false) {
+			System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
+			Item.hasMap = true;
+			Player.inventory.add(locale[Player.playerLocation].getItem());
+			Player.score += 5;
+			System.out.print(" Score: " + Player.score);
+		} else if (Player.playerLocation == 5 && Item.hasMap == true) {
+			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
+		}
+		if (Player.playerLocation == 6 && Item.hasApple == false) {
+			System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
+			Item.hasApple = true;
+			Player.inventory.add(locale[Player.playerLocation].getItem());
+			Player.score += 5;
+			System.out.print(" Score: " + Player.score);
+		} else if (Player.playerLocation == 6 && Item.hasApple == true) {
+			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
+		}
+		if (locale[Player.playerLocation].getItem() == null) {
+			System.out.print("There is nothing to take.");
+		}
 
 }

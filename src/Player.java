@@ -21,5 +21,4 @@ public class Player {
 		name = input;
 		System.out.println("Hello, " + name + "!");
 	}
-
 }
