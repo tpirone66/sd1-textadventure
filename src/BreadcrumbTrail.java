@@ -1,10 +1,10 @@
-//BreadcrumbTrail class for MArist Mayhem
+//BreadcrumbTrail class for Marist Mayhem
 import java.util.ArrayList;
 
 public class BreadcrumbTrail {
 	
-	private Object[] pickupCrumb;
-	private int crumb;
+	private Object[] pickupCrumb = new Object[5];
+	private int crumb = -1;
 	
 	public void dropCrumb() {
 		 if (this.hasMoreCrumb() == false) {

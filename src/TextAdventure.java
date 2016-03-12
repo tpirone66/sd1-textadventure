@@ -147,44 +147,44 @@ public class TextAdventure{
 			
 			//what happens when the user types in T
 			else if (input.equalsIgnoreCase("T")) {
-				if (Player.playerLocation == 3 && Locale.hasDagger == false) {
+				if (Player.playerLocation == 3 && Item.hasDagger == false) {
 					System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
-					Locale.hasDagger = true;
+					Item.hasDagger = true;
 					Player.inventory.add(locale[Player.playerLocation].getItem());
 					Player.score += 5;
 					System.out.print(" Score: " + Player.score);
 				}
-				else if (Player.playerLocation == 3 && Locale.hasDagger == true) {
+				else if (Player.playerLocation == 3 && Item.hasDagger == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 				}
-				if (Player.playerLocation == 1 && Locale.hasHandbook == false) {
+				if (Player.playerLocation == 1 && Item.hasHandbook == false) {
 					System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
-					Locale.hasHandbook = true;
+					Item.hasHandbook = true;
 					Player.inventory.add(locale[Player.playerLocation].getItem());
 					Player.score += 5;
 					System.out.print(" Score: " + Player.score);
 				}
-				else if (Player.playerLocation == 1 && Locale.hasHandbook == true) {
+				else if (Player.playerLocation == 1 && Item.hasHandbook == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 				}
-				if (Player.playerLocation == 5 && Locale.hasMap == false) {
+				if (Player.playerLocation == 5 && Item.hasMap == false) {
 					System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
-					Locale.hasMap = true;
+					Item.hasMap = true;
 					Player.inventory.add(locale[Player.playerLocation].getItem());
 					Player.score += 5;
 					System.out.print(" Score: " + Player.score);
 				}
-				else if (Player.playerLocation == 5 && Locale.hasMap == true) {
+				else if (Player.playerLocation == 5 && Item.hasMap == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 				}
-				if (Player.playerLocation == 6 && Locale.hasApple == false) {
+				if (Player.playerLocation == 6 && Item.hasApple == false) {
 					System.out.print("You obtained " + locale[Player.playerLocation].getItem() + "!");
-					Locale.hasApple = true;
+					Item.hasApple = true;
 					Player.inventory.add(locale[Player.playerLocation].getItem());
 					Player.score += 5;
 					System.out.print(" Score: " + Player.score);
 				}
-				else if (Player.playerLocation == 6 && Locale.hasApple == true) {
+				else if (Player.playerLocation == 6 && Item.hasApple == true) {
 					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 				}
 				if (locale[Player.playerLocation].getItem() == null) {
@@ -193,7 +193,7 @@ public class TextAdventure{
 			}
 			
 			//prints out a map if the user has it by typing M
-			else if (input.equalsIgnoreCase("M") && Locale.hasMap == true) {
+			else if (input.equalsIgnoreCase("M") && Item.hasMap == true) {
 				System.out.println("                           ------------                                         ");
 				System.out.println("                           |Champagnat|                                         ");
 				System.out.println("                           ------------                                         ");

@@ -17,12 +17,6 @@ public class Locale{
 			this.itemDescription = itemDescription;
 		}
 		
-		//items are by default false if the user does not have them
-		static boolean hasDagger = false;
-		static boolean hasMap = false;
-		static boolean hasApple = false;
-		static boolean hasHandbook = false;
-		
 		//these get methods look for the corresponding variables and returns them
 		public String getLocation(){
 			return location;
