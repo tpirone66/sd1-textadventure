@@ -20,20 +20,19 @@ public class TextAdventure {
 	static ArrayList<Item> MarianItemList = new ArrayList<Item>();
 	static ArrayList<Item> LowerTownhouseItemList = new ArrayList<Item>();
 	static ArrayList<Item> SheahanItemList = new ArrayList<Item>();
-	//make rest of arrayLists for locales with items
-	//make rest of items
+	// make rest of arrayLists for locales with items
+	// make rest of items
 	static Item handbook = new Item("Handbook", " Everyone should read this!");
 	static Item dagger = new Item("Dagger", " That's pretty trippy, man!");
 	static Item apple = new Item("Apple", " What a tasty treat!");
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.");
-	
+
 	static void populateArrayList(ArrayList<Item> list, Item item) {
 		list.add(item);
 	}
-	
+
 	// array of locale objects
-	
-	
+
 	static Locale[] locale = new Locale[] {
 			new Locale("Marist",
 					"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", null),
@@ -57,8 +56,8 @@ public class TextAdventure {
 	public static void main(String[] args) {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
-		
-		//call populateArrayList method 
+
+		// call populateArrayList method
 		populateArrayList(ChampItemList, handbook);
 		populateArrayList(MarianItemList, dagger);
 		populateArrayList(SheahanItemList, map);
@@ -115,7 +114,18 @@ public class TextAdventure {
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 							+ locale[Player.playerLocation].getLocationDescription());
 					if (locale[Player.playerLocation].getItemList() == null) {
-						System.out.print("\nYou found nothing. There is nothing here." /*locale[Player.playerLocation].getItemDescription()*/);
+						System.out.print("\nYou found nothing. There is nothing here." /*
+																						 * locale
+																						 * [
+																						 * Player
+																						 * .
+																						 * playerLocation
+																						 * ]
+																						 * .
+																						 * getItemDescription
+																						 * (
+																						 * )
+																						 */);
 					} else {
 						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
 								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
@@ -133,7 +143,18 @@ public class TextAdventure {
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 							+ locale[Player.playerLocation].getLocationDescription());
 					if (locale[Player.playerLocation].getItemList() == null) {
-						System.out.print("\nYou found nothing. There is nothing here." /*locale[Player.playerLocation].getItemDescription()*/);
+						System.out.print("\nYou found nothing. There is nothing here." /*
+																						 * locale
+																						 * [
+																						 * Player
+																						 * .
+																						 * playerLocation
+																						 * ]
+																						 * .
+																						 * getItemDescription
+																						 * (
+																						 * )
+																						 */);
 					} else {
 						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
 								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
@@ -151,7 +172,18 @@ public class TextAdventure {
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 							+ locale[Player.playerLocation].getLocationDescription());
 					if (locale[Player.playerLocation].getItemList() == null) {
-						System.out.print("\nYou found nothing. There is nothing here." /*locale[Player.playerLocation].getItemDescription()*/);
+						System.out.print("\nYou found nothing. There is nothing here." /*
+																						 * locale
+																						 * [
+																						 * Player
+																						 * .
+																						 * playerLocation
+																						 * ]
+																						 * .
+																						 * getItemDescription
+																						 * (
+																						 * )
+																						 */);
 					} else {
 						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
 								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
@@ -169,7 +201,18 @@ public class TextAdventure {
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 							+ locale[Player.playerLocation].getLocationDescription());
 					if (locale[Player.playerLocation].getItemList() == null) {
-						System.out.print("\nYou found nothing. There is nothing here." /*locale[Player.playerLocation].getItemDescription()*/);
+						System.out.print("\nYou found nothing. There is nothing here." /*
+																						 * locale
+																						 * [
+																						 * Player
+																						 * .
+																						 * playerLocation
+																						 * ]
+																						 * .
+																						 * getItemDescription
+																						 * (
+																						 * )
+																						 */);
 					} else {
 						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
 								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
@@ -221,12 +264,12 @@ public class TextAdventure {
 			}
 
 			else if (input.equalsIgnoreCase("I")) {
-					int size = Player.inventory.size();
-					int finalIndex = size - 1;
-					
-					for (int x = 0; x < size; x ++) {
-						if (x != finalIndex){
-						System.out.print(Player.inventory.get(x).item+ ", ");
+				int size = Player.inventory.size();
+				int finalIndex = size - 1;
+
+				for (int x = 0; x < size; x++) {
+					if (x != finalIndex) {
+						System.out.print(Player.inventory.get(x).item + ", ");
 					} else {
 						System.out.println(Player.inventory.get(x).item);
 					}
@@ -283,8 +326,7 @@ public class TextAdventure {
 			Player.score += 5;
 			System.out.print(" Score: " + Player.score);
 		}
-		
-		
+
 	}
 
 }

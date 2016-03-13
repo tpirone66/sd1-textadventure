@@ -21,7 +21,7 @@ public class Player {
 		name = input;
 		System.out.println("Hello, " + name + "!");
 	}
-	
+
 	public static int getPlayerLocation() {
 		return Player.playerLocation;
 	}
