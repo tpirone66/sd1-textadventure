@@ -27,6 +27,7 @@ public class TextAdventure {
 	static Item apple = new Item("Apple", " What a tasty treat!");
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.");
 
+	//method for populateArrayList which takes the items and adds them to the location to be picked up
 	static void populateArrayList(ArrayList<Item> list, Item item) {
 		list.add(item);
 	}
@@ -83,7 +84,7 @@ public class TextAdventure {
 
 			// what happens when the user types in H
 			if (input.equalsIgnoreCase("H")) {
-				Item.help();
+				Item.showHelp();
 			}
 
 			// what happens when the user types in N
@@ -108,56 +109,21 @@ public class TextAdventure {
 
 			// what happens when the user types in T
 			else if (input.equalsIgnoreCase("T")) {
-				take();
+				Item.takeItem();
 			}
 
 			// prints out a map if the user has it by typing M
 			else if (input.equalsIgnoreCase("M") && Item.hasMap == true) {
-				System.out.println("                           ------------                                         ");
-				System.out.println("                           |Champagnat|                                         ");
-				System.out.println("                           ------------                                         ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("     ---------     -----     --------     ---------     ------------------      ");
-				System.out.println("     |Sheahan|-----|Leo|-----|Marist|-----|Midrise|-----|Lower Townhouses|      ");
-				System.out.println("     ---------     -----     --------     ---------     ------------------      ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            --------                                            ");
-				System.out.println("                            |Marian|                                            ");
-				System.out.println("                            --------                                            ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("                            	|                                               ");
-				System.out.println("             	 -----------------------------                                  ");
-				System.out.println("              	 |Lower West Cedar Townhouses|                                  ");
-				System.out.println("              	 -----------------------------                                  ");
+				Item.hasMap();
 			}
-
+				
 			// what happens when the user types in score
 			else if (input.equalsIgnoreCase("Score")) {
 				System.out.print(Player.score);
 			}
 
 			else if (input.equalsIgnoreCase("I")) {
-				int size = Player.inventory.size();
-				int finalIndex = size - 1;
-
-				for (int x = 0; x < size; x++) {
-					if (x != finalIndex) {
-						System.out.print(Player.inventory.get(x).item + ", ");
-					} else {
-						System.out.println(Player.inventory.get(x).item);
-					}
-				}
+				Item.showInventory();
 			}
 
 			// what happens when the user types in Q
@@ -194,23 +160,6 @@ public class TextAdventure {
 		// the user will decide to start, get help or exit the game here
 		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
-	}
-
-	public static void take() {
-		int currLoc = Player.getPlayerLocation();
-		ArrayList<Item> currentRoomList = locale[currLoc].getItemList();
-		if (currentRoomList == null) {
-			System.out.println("There is nothing to take.");
-		} else if (currentRoomList != null && currentRoomList.isEmpty()) {
-			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-		} else {
-			System.out.print("You obtained " + locale[Player.playerLocation].getItemList().get(0).item + "!");
-			Player.inventory.add(currentRoomList.get(0));
-			currentRoomList.remove(0);
-			Player.score += 5;
-			System.out.print(" Score: " + Player.score);
-		}
-
 	}
 
 }
