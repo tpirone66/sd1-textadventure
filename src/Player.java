@@ -9,7 +9,7 @@ public class Player {
 	// Some of the player variables that will be in this class
 	static String name;
 	static int playerLocation = 0;
-	static ArrayList<String> inventory = new ArrayList<>();
+	static ArrayList<Item> inventory = new ArrayList<>();
 	static int score = 0;
 
 	public static void promptName() {
@@ -20,5 +20,9 @@ public class Player {
 		input = inputSource.nextLine();
 		name = input;
 		System.out.println("Hello, " + name + "!");
+	}
+	
+	public static int getPlayerLocation() {
+		return Player.playerLocation;
 	}
 }

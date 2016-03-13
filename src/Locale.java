@@ -1,5 +1,6 @@
 
 //Locale class for Marist Mayhem
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Locale {
@@ -9,13 +10,13 @@ public class Locale {
 	public String itemDescription;
 	public String location;
 	public String locationDescription;
+	ArrayList<Item> itemList = new ArrayList<Item>();
 
 	// constructor with four parameters
-	public Locale(String location, String locationDescription, String item, String itemDescription) {
+	public Locale(String location, String locationDescription, ArrayList<Item> listOfItems) {
 		this.location = location;
 		this.locationDescription = locationDescription;
-		this.item = item;
-		this.itemDescription = itemDescription;
+		this.itemList = listOfItems;
 	}
 
 	// these get methods look for the corresponding variables and returns them
@@ -27,8 +28,8 @@ public class Locale {
 		return locationDescription;
 	}
 
-	public String getItem() {
-		return item;
+	public ArrayList<Item> getItemList() {
+		return itemList;
 	}
 
 	public String getItemDescription() {
