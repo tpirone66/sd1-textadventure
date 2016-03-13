@@ -63,19 +63,6 @@ public class TextAdventure {
 		populateArrayList(SheahanItemList, map);
 		populateArrayList(LowerTownhouseItemList, apple);
 
-		// navigation matrix map
-		int[][] map = {
-				// N S E W
-				{ 1, 3, 4, 2 }, // Marist
-				{ -1, 0, -1, -1 }, // Champagnat
-				{ -1, -1, 0, 5 }, // Leo
-				{ 0, 7, -1, -1 }, // Marian
-				{ -1, -1, 6, 0 }, // Midrise
-				{ -1, -1, 2, -1 }, // Sheahan
-				{ -1, -1, -1, 4 }, // Lower Townhouses
-				{ 3, -1, -1, -1 },// Lower West Cedar Townhouses
-		};
-
 		// method that will display the name of the game and description
 		titleMessage();
 
@@ -108,118 +95,22 @@ public class TextAdventure {
 
 			// what happens when the user types in N
 			else if (input.equalsIgnoreCase("N")) {
-				if (map[Player.playerLocation][0] != -1) {
-					Player.playerLocation = map[Player.playerLocation][0];
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList() == null) {
-						System.out.print("\nYou found nothing. There is nothing here." /*
-																						 * locale
-																						 * [
-																						 * Player
-																						 * .
-																						 * playerLocation
-																						 * ]
-																						 * .
-																						 * getItemDescription
-																						 * (
-																						 * )
-																						 */);
-					} else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
-				} else if (map[Player.playerLocation][0] == -1) {
-					System.out.print("\nCannot move that way!");
-				}
+				Player.moveNorth();
 			}
 
 			// what happens when the user types in S
 			else if (input.equalsIgnoreCase("S")) {
-				if (map[Player.playerLocation][1] != -1) {
-					Player.playerLocation = map[Player.playerLocation][1];
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList() == null) {
-						System.out.print("\nYou found nothing. There is nothing here." /*
-																						 * locale
-																						 * [
-																						 * Player
-																						 * .
-																						 * playerLocation
-																						 * ]
-																						 * .
-																						 * getItemDescription
-																						 * (
-																						 * )
-																						 */);
-					} else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
-				} else if (map[Player.playerLocation][1] == -1) {
-					System.out.print("\nCannot move that way!");
-				}
+				Player.moveSouth();
 			}
 
 			// what happens when the user types in E
 			else if (input.equalsIgnoreCase("E")) {
-				if (map[Player.playerLocation][2] != -1) {
-					Player.playerLocation = map[Player.playerLocation][2];
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList() == null) {
-						System.out.print("\nYou found nothing. There is nothing here." /*
-																						 * locale
-																						 * [
-																						 * Player
-																						 * .
-																						 * playerLocation
-																						 * ]
-																						 * .
-																						 * getItemDescription
-																						 * (
-																						 * )
-																						 */);
-					} else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
-				} else if (map[Player.playerLocation][2] == -1) {
-					System.out.print("\nCannot move that way!");
-				}
+				Player.moveEast();
 			}
 
 			// what happens when the user types in W
 			else if (input.equalsIgnoreCase("W")) {
-				if (map[Player.playerLocation][3] != -1) {
-					Player.playerLocation = map[Player.playerLocation][3];
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList() == null) {
-						System.out.print("\nYou found nothing. There is nothing here." /*
-																						 * locale
-																						 * [
-																						 * Player
-																						 * .
-																						 * playerLocation
-																						 * ]
-																						 * .
-																						 * getItemDescription
-																						 * (
-																						 * )
-																						 */);
-					} else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
-				} else if (map[Player.playerLocation][3] == -1) {
-					System.out.print("\nCannot move that way!");
-				}
+				Player.moveWest();
 			}
 
 			// what happens when the user types in T
