@@ -82,6 +82,5 @@ public class Item {
 		System.out.println("              	 |Lower West Cedar Townhouses|                                  ");
 		System.out.println("              	 -----------------------------                                  ");
 	}
-	
-	static boolean hasMap = false;
+
 }

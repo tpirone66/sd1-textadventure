@@ -11,8 +11,8 @@
 import java.util.Scanner;//used for reading user input on the keyboard
 import java.util.ArrayList;
 import java.util.Random;//will be used later on for random generation
-
 import java.io.*;
+@SuppressWarnings("unused")
 
 public class TextAdventure {
 
@@ -33,7 +33,6 @@ public class TextAdventure {
 	}
 
 	// array of locale objects
-
 	static Locale[] locale = new Locale[] {
 			new Locale("Marist",
 					"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", null),
@@ -55,6 +54,7 @@ public class TextAdventure {
 					null), };
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 
@@ -113,7 +113,7 @@ public class TextAdventure {
 			}
 
 			// prints out a map if the user has it by typing M
-			else if (input.equalsIgnoreCase("M") && Item.hasMap == true) {
+			else if (input.equalsIgnoreCase("M")) {
 				Item.hasMap();
 			}
 				

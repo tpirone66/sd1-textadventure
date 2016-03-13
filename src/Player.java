@@ -19,6 +19,7 @@ public class Player {
 
 	public static void promptName() {
 		// method that will allow character customization
+		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		System.out.print("What is your name? ");
