@@ -83,14 +83,7 @@ public class TextAdventure {
 
 			// what happens when the user types in H
 			if (input.equalsIgnoreCase("H")) {
-				System.out.println("Press N to go North.");
-				System.out.println("Press S to go South.");
-				System.out.println("Press E to go East.");
-				System.out.println("Press W to go West.");
-				System.out.println("Press Q to quit the game.");
-				System.out.println("Press T to take an item.");
-				System.out.println("Press I to view your inventory.");
-				System.out.println("Type 'Score' to display the score.");
+				Item.help();
 			}
 
 			// what happens when the user types in N

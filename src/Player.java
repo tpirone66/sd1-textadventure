@@ -52,11 +52,15 @@ public class Player {
 					+ playerLocDesc);
 			if (playerLocItem == null) {
 				System.out.print("\nYou found nothing. There is nothing here.");
-			} else {
+			} 
+			else {
+				playerGetLocItem = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
+				playerGetLocItemDesc = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription;
 				System.out.print("\nYou found " + playerGetLocItem + "."
 						+ playerGetLocItemDesc);
 			}
-		} else if (map[Player.playerLocation][0] == -1) {
+		} 
+		else if (map[Player.playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -69,13 +73,15 @@ public class Player {
 					+ playerLocDesc);
 			if (playerLocItem == null) {
 				System.out.print("\nYou found nothing. There is nothing here.");
-			} else {
+			} 
+			else {
 				playerGetLocItem = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
 				playerGetLocItemDesc = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription;
 				System.out.print("\nYou found " + playerGetLocItem + "."
 						+ playerGetLocItemDesc);
 			}
-		} else if (map[Player.playerLocation][1] == -1) {
+		} 
+		else if (map[Player.playerLocation][1] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -88,13 +94,15 @@ public class Player {
 					+ playerLocDesc);
 			if (playerLocItem == null) {
 				System.out.print("\nYou found nothing. There is nothing here.");
-			} else {
+			} 
+			else {
 				playerGetLocItem = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
 				playerGetLocItemDesc = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription;
 				System.out.print("\nYou found " + playerGetLocItem + "."
 						+ playerGetLocItemDesc);
 			}
-		} else if (map[Player.playerLocation][2] == -1) {
+		} 
+		else if (map[Player.playerLocation][2] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -107,13 +115,15 @@ public class Player {
 					+ playerLocDesc);
 			if (playerLocItem == null) {
 				System.out.print("\nYou found nothing. There is nothing here.");
-			} else {
+			} 
+			else {
 				playerGetLocItem = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
 				playerGetLocItemDesc = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription;
 				System.out.print("\nYou found " + playerGetLocItem + "."
 						+ playerGetLocItemDesc);
 			}
-		} else if (map[Player.playerLocation][3] == -1) {
+		} 
+		else if (map[Player.playerLocation][3] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
