@@ -125,7 +125,16 @@ public class TextAdventure {
 			else if (input.equalsIgnoreCase("I")) {
 				Item.showInventory();
 			}
+			
+			else if (input.equalsIgnoreCase("D")) {
+				Item.dropItem();
+			}
+			
+			else if (input.equalsIgnoreCase("B")) {
+				Player.backtrackLocale();
+			}
 
+			
 			// what happens when the user types in Q
 			else if (input.equalsIgnoreCase("Q")) {
 				// closing message for the game

@@ -128,4 +128,9 @@ public class Player {
 			System.out.print("\nCannot move that way!");
 		}
 	}
+
+	public static void backtrackLocale() {
+		// TODO Auto-generated method stub
+		
+	}
 }

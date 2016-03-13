@@ -3,7 +3,6 @@
 import java.util.ArrayList;
 import java.util.Collection;
 
-@SuppressWarnings("unused")
 public class Locale {
 
 	// variables for the locale array of objects

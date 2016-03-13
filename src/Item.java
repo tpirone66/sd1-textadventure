@@ -53,6 +53,18 @@ public class Item {
 		}
 	}
 	
+	public static void dropItem() {
+		int currLoc = Player.getPlayerLocation();
+		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+		if (currentRoomList == null || currentRoomList.isEmpty()) {
+			System.out.print("You dropped " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
+			Player.inventory.remove(currentRoomList.get(0));
+			currentRoomList.addAll(0, currentRoomList);
+			Player.score -= 5;
+			System.out.print(" Score: " + Player.score);
+		}
+	}
+	
 	public static void hasMap() {
 		System.out.println("                           ------------                                         ");
 		System.out.println("                           |Champagnat|                                         ");
