@@ -1,4 +1,3 @@
-
 //Player class for Marist Mayhem
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class Player {
 	}
 	
 	// navigation matrix map
-			static int[][] map = {
+			/*static int[][] map = {
 					// N S E W
 					{ 1, 3, 4, 2 }, // Marist
 					{ -1, 0, -1, -1 }, // Champagnat
@@ -51,14 +50,12 @@ public class Player {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + playerLocName + "." + " "
 					+ playerLocDesc);
-			if (playerLocItem == null) {
-				System.out.print("\nYou found nothing. There is nothing here.");
-			} 
-			else {
-				playerGetLocItem = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
-				playerGetLocItemDesc = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription;
+			if (playerLocItem != null) {
 				System.out.print("\nYou found " + playerGetLocItem + "."
 						+ playerGetLocItemDesc);
+			} 
+			else {
+				System.out.print("\nYou found nothing. There is nothing here.");
 			}
 		} 
 		else if (map[Player.playerLocation][0] == -1) {
@@ -72,14 +69,12 @@ public class Player {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + playerLocName + "." + " "
 					+ playerLocDesc);
-			if (playerLocItem == null) {
-				System.out.print("\nYou found nothing. There is nothing here.");
-			} 
-			else {
-				playerGetLocItem = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
-				playerGetLocItemDesc = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription;
+			if (playerLocItem != null) {
 				System.out.print("\nYou found " + playerGetLocItem + "."
 						+ playerGetLocItemDesc);
+			} 
+			else {
+				System.out.print("\nYou found nothing. There is nothing here.");
 			}
 		} 
 		else if (map[Player.playerLocation][1] == -1) {
@@ -93,14 +88,12 @@ public class Player {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + playerLocName + "." + " "
 					+ playerLocDesc);
-			if (playerLocItem == null) {
-				System.out.print("\nYou found nothing. There is nothing here.");
-			} 
-			else {
-				playerGetLocItem = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
-				playerGetLocItemDesc = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription;
+			if (playerLocItem != null) {
 				System.out.print("\nYou found " + playerGetLocItem + "."
 						+ playerGetLocItemDesc);
+			} 
+			else {
+				System.out.print("\nYou found nothing. There is nothing here.");
 			}
 		} 
 		else if (map[Player.playerLocation][2] == -1) {
@@ -114,20 +107,18 @@ public class Player {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + playerLocName + "." + " "
 					+ playerLocDesc);
-			if (playerLocItem == null) {
-				System.out.print("\nYou found nothing. There is nothing here.");
-			} 
-			else {
-				playerGetLocItem = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
-				playerGetLocItemDesc = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription;
+			if (playerLocItem != null) {
 				System.out.print("\nYou found " + playerGetLocItem + "."
 						+ playerGetLocItemDesc);
+			} 
+			else {
+				System.out.print("\nYou found nothing. There is nothing here.");
 			}
 		} 
 		else if (map[Player.playerLocation][3] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
-	}
+	}*/
 
 	public static void backtrackLocale() {
 		// TODO Auto-generated method stub

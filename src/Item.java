@@ -1,6 +1,6 @@
+//Item class for Marist Mayhem
 import java.util.ArrayList;
 
-//Item class for Marist Mayhem
 public class Item {
 
 	public String item;
@@ -31,7 +31,8 @@ public class Item {
 		for (int x = 0; x < size; x++) {
 			if (x != finalIndex) {
 				System.out.print(Player.inventory.get(x).item + ", ");
-			} else {
+			} 
+			else {
 				System.out.println(Player.inventory.get(x).item);
 			}
 		}
@@ -42,9 +43,11 @@ public class Item {
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		if (currentRoomList == null) {
 			System.out.println("There is nothing to take.");
-		} else if (currentRoomList != null && currentRoomList.isEmpty()) {
+		} 
+		else if (currentRoomList != null && currentRoomList.isEmpty()) {
 			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-		} else {
+		} 
+		else {
 			System.out.print("You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
 			Player.inventory.add(currentRoomList.get(0));
 			currentRoomList.remove(0);
@@ -57,9 +60,10 @@ public class Item {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		if (currentRoomList == null || currentRoomList.isEmpty()) {
-			System.out.print("You dropped " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
-			Player.inventory.remove(currentRoomList.get(0));
-			currentRoomList.addAll(0, currentRoomList);
+			System.out.print("You dropped " + Player.inventory.get(Player.inventory.size() - 1).item + "!"
+					+ " I would advise youto pick it up.");
+			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
+			TextAdventure.locale[currLoc].addItem(droppedItem);
 			Player.score -= 5;
 			System.out.print(" Score: " + Player.score);
 		}

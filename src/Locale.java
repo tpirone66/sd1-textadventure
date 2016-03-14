@@ -1,7 +1,7 @@
-
 //Locale class for Marist Mayhem
 import java.util.ArrayList;
 import java.util.Collection;
+@SuppressWarnings("unused")
 
 public class Locale {
 
@@ -34,5 +34,10 @@ public class Locale {
 
 	public String getItemDescription() {
 		return itemDescription;
+	}
+	
+	public void addItem(Item i)
+	{
+		itemList.add(i);
 	}
 }
