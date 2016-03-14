@@ -121,7 +121,6 @@ public class Player {
 	}*/
 
 	public static void backtrackLocale() {
-		// TODO Auto-generated method stub
-		
+		BreadcrumbTrail.pickupCrumb();
 	}
 }

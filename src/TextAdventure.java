@@ -82,6 +82,9 @@ public class TextAdventure {
 
 		// method for allowing the user to customize their character
 		Player.promptName();
+		
+		//method to call a new Breadcrumb trail
+		BreadcrumbTrail.startTrail();
 
 		// method that begins the game
 		startGame();
@@ -103,6 +106,7 @@ public class TextAdventure {
 			// what happens when the user types in N
 			else if (input.equalsIgnoreCase("N")) {
 				if (Map[Player.playerLocation][0] != -1) {
+					BreadcrumbTrail.dropCrumb(Player.playerLocation);
 					Player.playerLocation = Map[Player.playerLocation][0];
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -124,6 +128,7 @@ public class TextAdventure {
 			// what happens when the user types in S
 			else if (input.equalsIgnoreCase("S")) {
 				if (Map[Player.playerLocation][1] != -1) {
+					BreadcrumbTrail.dropCrumb(Player.playerLocation);
 					Player.playerLocation = Map[Player.playerLocation][1];
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -145,6 +150,7 @@ public class TextAdventure {
 			// what happens when the user types in E
 			else if (input.equalsIgnoreCase("E")) {
 				if (Map[Player.playerLocation][2] != -1) {
+					BreadcrumbTrail.dropCrumb(Player.playerLocation);
 					Player.playerLocation = Map[Player.playerLocation][2];
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -166,6 +172,7 @@ public class TextAdventure {
 			// what happens when the user types in W
 			else if (input.equalsIgnoreCase("W")) {
 				if (Map[Player.playerLocation][3] != -1) {
+					BreadcrumbTrail.dropCrumb(Player.playerLocation);
 					Player.playerLocation = Map[Player.playerLocation][3];
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
