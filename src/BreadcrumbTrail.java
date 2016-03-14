@@ -4,38 +4,50 @@ import java.util.ArrayList;
 
 public class BreadcrumbTrail {
 	
-	public void ArrayStack() {
-		Object[] pickupCrumb = new Object[5];
-		int crumb = -1;
-		int maxSize;
+	Object[] pickupCrumb = new Object[5];
+	int currCrumb;
+	int maxSize = 5;
+	
+	public void startTrail() {
+		int currCrumb = -1;
 	}
-
-	public void dropCrumb(int crumb) {
-		if (this.hasMoreCrumbs(crumb) == false) {
-			crumb--;
+	
+	//push
+	public void dropCrumb(int currLoc) {
+		if (this.hasNoMoreCrumbs() == false) {
+			pickupCrumb[currCrumb] = currLoc;
+			currCrumb++;
+		}
+		else {
+			currCrumb = -1;
 		}
 	}
 
-	public void pickupCrumb(int crumb, Object[] pickupCrumb, Object x) {
-		crumb++;
-		pickupCrumb[crumb] = x;
+	//pop
+	public int pickupCrumb() {
+		int temp = (int) pickupCrumb[currCrumb];
+		currCrumb--;
+		return temp;
 	}
 
-	public Object currentCrumb(Object[] pickupCrumb, int crumb) {
-		if (this.hasMoreCrumbs(crumb)) {
+	//top
+	public Object currentCrumb() {
+		if (currCrumb == -1) {
 			return null;
 		}
 		else {
-		return pickupCrumb[crumb];
+		return pickupCrumb[currCrumb];
 		}
 	}
-
-	public boolean hasMoreCrumbs(int crumb) {
-		return (crumb == -1);
+	
+	//isEmpty
+	public boolean hasMoreCrumbs() {
+		return (currCrumb == -1);
 
 	}
 	
-	public boolean hasNoMoreCrumbs(int crumb, int maxSize) {
-			return (crumb == maxSize - 1);
+	//isFull
+	public boolean hasNoMoreCrumbs() {
+			return (currCrumb == maxSize - 1);
 		}
 }
