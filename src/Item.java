@@ -1,4 +1,7 @@
 //Item class for Marist Mayhem
+
+//anywhere it mentions @SupressWarnings, ignore it
+
 import java.util.ArrayList;
 
 public class Item {

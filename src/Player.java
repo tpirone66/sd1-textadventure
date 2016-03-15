@@ -1,4 +1,7 @@
 //Player class for Marist Mayhem
+
+//anywhere it mentions @SupressWarnings, ignore it
+
 import java.util.Scanner;
 import java.util.ArrayList;
 

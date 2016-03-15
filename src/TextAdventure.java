@@ -7,6 +7,8 @@
  * A text adventure based game created by @author Trevor Pirone
  */
 
+//anywhere it mentions @SupressWarnings, ignore it
+
 import java.util.Scanner;//used for reading user input on the keyboard
 import java.util.Stack;
 import java.util.ArrayList;
@@ -54,6 +56,19 @@ public class TextAdventure {
 			new Locale("Lower West Cedar Townhouses",
 					"Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.",
 					BlankList), };
+	
+	// navigation matrix map
+	static int[][] Map = {
+			// N S E W
+			{ 1, 3, 4, 2 }, // Marist
+			{ -1, 0, -1, -1 }, // Champagnat
+			{ -1, -1, 0, 5 }, // Leo
+			{ 0, 7, -1, -1 }, // Marian
+			{ -1, -1, 6, 0 }, // Midrise
+			{ -1, -1, 2, -1 }, // Sheahan
+			{ -1, -1, -1, 4 }, // Lower Townhouses
+			{ 3, -1, -1, -1 },// Lower West Cedar Townhouses
+	};
 
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
@@ -67,18 +82,7 @@ public class TextAdventure {
 		populateArrayList(SheahanItemList, map);
 		populateArrayList(LowerTownhouseItemList, apple);
 		
-		// navigation matrix map
-				int[][] Map = {
-						// N S E W
-						{ 1, 3, 4, 2 }, // Marist
-						{ -1, 0, -1, -1 }, // Champagnat
-						{ -1, -1, 0, 5 }, // Leo
-						{ 0, 7, -1, -1 }, // Marian
-						{ -1, -1, 6, 0 }, // Midrise
-						{ -1, -1, 2, -1 }, // Sheahan
-						{ -1, -1, -1, 4 }, // Lower Townhouses
-						{ 3, -1, -1, -1 },// Lower West Cedar Townhouses
-				};
+		
 
 		// method that will display the name of the game and description
 		titleMessage();
@@ -108,89 +112,25 @@ public class TextAdventure {
 
 			// what happens when the user types in N
 			else if (input.equalsIgnoreCase("N")) {
-				if (Map[Player.playerLocation][0] != -1) {
-					trail.dropCrumb(Player.playerLocation);
-					Player.playerLocation = Map[Player.playerLocation][0];
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList().size() == 0) {
-						System.out.print("\nYou found nothing. There is nothing here." );
-					} 
-					else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
-				} 
-				else if (Map[Player.playerLocation][0] == -1) {
-					System.out.print("\nCannot move that way!");
-				}
+				moveNorth();
 				//Player.moveNorth();
 			}
 
 			// what happens when the user types in S
 			else if (input.equalsIgnoreCase("S")) {
-				if (Map[Player.playerLocation][1] != -1) {
-					trail.dropCrumb(Player.playerLocation);
-					Player.playerLocation = Map[Player.playerLocation][1];
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList().size() == 0) {
-						System.out.print("\nYou found nothing. There is nothing here.");
-					} 
-					else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
-				} 
-				else if (Map[Player.playerLocation][1] == -1) {
-					System.out.print("\nCannot move that way!");
-				}
+				moveSouth();
 				//Player.moveSouth();
 			}
 
 			// what happens when the user types in E
 			else if (input.equalsIgnoreCase("E")) {
-				if (Map[Player.playerLocation][2] != -1) {
-					trail.dropCrumb(Player.playerLocation);
-					Player.playerLocation = Map[Player.playerLocation][2];
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList().size() == 0) {
-						System.out.print("\nYou found nothing. There is nothing here.");
-					} 
-					else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
-				} 
-				else if (Map[Player.playerLocation][2] == -1) {
-					System.out.print("\nCannot move that way!");
-				}
+				moveEast();
 				//Player.moveEast();
 			}
 
 			// what happens when the user types in W
 			else if (input.equalsIgnoreCase("W")) {
-				if (Map[Player.playerLocation][3] != -1) {
-					trail.dropCrumb(Player.playerLocation);
-					Player.playerLocation = Map[Player.playerLocation][3];
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList().size() == 0) {
-						System.out.print("\nYou found nothing. There is nothing here.");
-					} 
-					else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
-				} 
-				else if (Map[Player.playerLocation][3] == -1) {
-					System.out.print("\nCannot move that way!");
-				}
+				moveWest();
 				//Player.moveWest();
 			}
 
@@ -258,6 +198,90 @@ public class TextAdventure {
 			}
 		}
 	}
+	
+	@SuppressWarnings("static-access")
+	public static void moveNorth() {
+		if (Map[Player.playerLocation][0] != -1) {
+			trail.dropCrumb(Player.playerLocation);
+			Player.playerLocation = Map[Player.playerLocation][0];
+			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+					+ locale[Player.playerLocation].getLocationDescription());
+			if (locale[Player.playerLocation].getItemList().size() == 0) {
+				System.out.print("\nYou found nothing. There is nothing here." );
+			} 
+			else {
+				System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
+						+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
+			}
+		}
+		else if (Map[Player.playerLocation][0] == -1) {
+				System.out.print("\nCannot move that way!");
+		} 
+	}
+	
+	@SuppressWarnings("static-access")
+	public static void moveSouth() {
+		if (Map[Player.playerLocation][1] != -1) {
+			trail.dropCrumb(Player.playerLocation);
+			Player.playerLocation = Map[Player.playerLocation][1];
+			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+					+ locale[Player.playerLocation].getLocationDescription());
+			if (locale[Player.playerLocation].getItemList().size() == 0) {
+				System.out.print("\nYou found nothing. There is nothing here.");
+			} 
+			else {
+				System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
+						+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
+			}
+		} 
+		else if (Map[Player.playerLocation][1] == -1) {
+			System.out.print("\nCannot move that way!");
+		}
+	}
+	
+	@SuppressWarnings("static-access")
+	public static void moveEast() {
+		if (Map[Player.playerLocation][2] != -1) {
+			trail.dropCrumb(Player.playerLocation);
+			Player.playerLocation = Map[Player.playerLocation][2];
+			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+					+ locale[Player.playerLocation].getLocationDescription());
+			if (locale[Player.playerLocation].getItemList().size() == 0) {
+				System.out.print("\nYou found nothing. There is nothing here.");
+			} 
+			else {
+				System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
+						+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
+			}
+		} 
+		else if (Map[Player.playerLocation][2] == -1) {
+			System.out.print("\nCannot move that way!");
+		}
+	}
+	
+	@SuppressWarnings("static-access")
+	public static void moveWest() {
+		if (Map[Player.playerLocation][3] != -1) {
+			trail.dropCrumb(Player.playerLocation);
+			Player.playerLocation = Map[Player.playerLocation][3];
+			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+					+ locale[Player.playerLocation].getLocationDescription());
+			if (locale[Player.playerLocation].getItemList().size() == 0) {
+				System.out.print("\nYou found nothing. There is nothing here.");
+			} 
+			else {
+				System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
+						+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
+			}
+		} 
+		else if (Map[Player.playerLocation][3] == -1) {
+			System.out.print("\nCannot move that way!");
+		}
+	}
 
 	private static void titleMessage() {
 		// prints a greeting message when the user runs the program
@@ -278,7 +302,8 @@ public class TextAdventure {
 		// the user will decide to start, get help or exit the game here
 		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
-		System.out.println("As of now, you are only allowed to backtrack a maximum of five times before the rats eat the breadcrumbs!");
+		System.out.println("As of now, you are only allowed to backtrack a maximum of ten times before the rats eat the breadcrumbs!");
+		System.out.println("USe your backtracks wisely! The breadcrumbs go away in a short time!");
 	}
 
 }

@@ -1,13 +1,16 @@
 //BreadcrumbTrail class for Marist Mayhem
+
+//anywhere it mentions @SupressWarnings, ignore it
+
 import java.util.ArrayList;
 import java.util.Stack;
 @SuppressWarnings("unused")
 
 public class BreadcrumbTrail {
 	
-	static Object[] pickupCrumb = new Object[5];
+	static Object[] pickupCrumb = new Object[10];
 	static int currCrumb;
-	static int maxSize = 5;
+	static int maxSize = 10;
 	
 	public static void startTrail() {
 		currCrumb = -1;

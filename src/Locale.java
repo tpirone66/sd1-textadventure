@@ -1,4 +1,7 @@
 //Locale class for Marist Mayhem
+
+//anywhere it mentions @SupressWarnings, ignore it
+
 import java.util.ArrayList;
 import java.util.Collection;
 @SuppressWarnings("unused")
