@@ -4,25 +4,25 @@
 
 import java.util.ArrayList;
 import java.util.Stack;
+
 @SuppressWarnings("unused")
 
 public class BreadcrumbTrail {
-	
+
 	static Object[] pickupCrumb = new Object[10];
 	static int currCrumb;
 	static int maxSize = 10;
-	
+
 	public static void startTrail() {
 		currCrumb = -1;
 	}
-	
-	//push
+
+	// push
 	public static void dropCrumb(int currLoc) {
 		if (hasNoMoreCrumbs() == false) {
 			pickupCrumb[currCrumb + 1] = currLoc;
 			currCrumb++;
-		}
-		else {
+		} else {
 			for (int i = 0; i < pickupCrumb.length - 1; i++) {
 				pickupCrumb[i] = pickupCrumb[i + 1];
 			}
@@ -30,31 +30,30 @@ public class BreadcrumbTrail {
 		}
 	}
 
-	//pop
+	// pop
 	public static int pickupCrumb() {
 		int temp = (int) pickupCrumb[currCrumb];
 		currCrumb--;
 		return temp;
 	}
 
-	//top
+	// top
 	public static Object currentCrumb() {
 		if (currCrumb == -1) {
 			return null;
-		}
-		else {
-		return pickupCrumb[currCrumb];
+		} else {
+			return pickupCrumb[currCrumb];
 		}
 	}
-	
-	//isEmpty
+
+	// isEmpty
 	public boolean hasMoreCrumbs() {
 		return (currCrumb == -1);
 
 	}
-	
-	//isFull
+
+	// isFull
 	public static boolean hasNoMoreCrumbs() {
-			return (currCrumb == maxSize - 1);
-		}
+		return (currCrumb == maxSize - 1);
+	}
 }

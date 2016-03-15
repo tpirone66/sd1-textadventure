@@ -6,15 +6,17 @@ import java.util.ArrayList;
 
 public class Item {
 
+	// item variables
 	public String item;
 	public String itemDescription;
-	
+
+	// constructor for items
 	public Item(String item, String itemDescription) {
 		this.item = item;
 		this.itemDescription = itemDescription;
 	}
-	
-	//this method shows instructions for the game
+
+	// this method shows instructions for the game
 	public static void showHelp() {
 		System.out.println("Press N to go North.");
 		System.out.println("Press S to go South.");
@@ -27,8 +29,8 @@ public class Item {
 		System.out.println("Press B to backtrack to a previous location.");
 		System.out.println("Type 'Score' to display the score.");
 	}
-	
-	//this method shows the inventory
+
+	// this method shows the inventory
 	public static void showInventory() {
 		int size = Player.inventory.size();
 		int finalIndex = size - 1;
@@ -36,33 +38,31 @@ public class Item {
 		for (int x = 0; x < size; x++) {
 			if (x != finalIndex) {
 				System.out.print(Player.inventory.get(x).item + ", ");
-			} 
-			else {
+			} else {
 				System.out.println(Player.inventory.get(x).item);
 			}
 		}
 	}
-	
-	//method for taking an item
+
+	// method for taking an item
 	public static void takeItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		if (currentRoomList == null) {
 			System.out.println("There is nothing to take.");
-		} 
-		else if (currentRoomList != null && currentRoomList.isEmpty()) {
+		} else if (currentRoomList != null && currentRoomList.isEmpty()) {
 			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-		} 
-		else {
-			System.out.print("You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
+		} else {
+			System.out.print(
+					"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
 			Player.inventory.add(currentRoomList.get(0));
 			currentRoomList.remove(0);
 			Player.score += 5;
 			System.out.print(" Score: " + Player.score);
 		}
 	}
-	
-	//method for dropping an item
+
+	// method for dropping an item
 	public static void dropItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
@@ -75,8 +75,8 @@ public class Item {
 			System.out.print(" Score: " + Player.score);
 		}
 	}
-	
-	//this method will show the map if you have it
+
+	// this method will show the map if you have it
 	public static void containsMap() {
 		System.out.println("                           ------------                                         ");
 		System.out.println("                           |Champagnat|                                         ");

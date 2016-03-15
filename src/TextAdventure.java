@@ -1,8 +1,8 @@
 /*Trevor Pirone
  * CMPT 220L
  * Software Development 1
- * Project 1
- * Text Adventure Game v0.3
+ * Project 3
+ * Text Adventure Game v0.5
  * 
  * A text adventure based game created by @author Trevor Pirone
  */
@@ -14,6 +14,7 @@ import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Random;//will be used later on for random generation
 import java.io.*;
+
 @SuppressWarnings("unused")
 
 public class TextAdventure {
@@ -31,7 +32,8 @@ public class TextAdventure {
 	static Item apple = new Item("Apple", " What a tasty treat!");
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.");
 
-	//method for populateArrayList which takes the items and adds them to the location to be picked up
+	// method for populateArrayList which takes the items and adds them to the
+	// location to be picked up
 	static void populateArrayList(ArrayList<Item> list, Item item) {
 		list.add(item);
 	}
@@ -43,8 +45,7 @@ public class TextAdventure {
 			new Locale("Champagnat", "Champagnat is really loud tonight! Why is there a fire drill every weekend?",
 					ChampItemList),
 			new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", BlankList),
-			new Locale("Marian",
-					"Marian is home to the Hobbit and the hermits. Sure seems clicky around here.",
+			new Locale("Marian", "Marian is home to the Hobbit and the hermits. Sure seems clicky around here.",
 					MarianItemList),
 			new Locale("Midrise", "Midrise is Midrise...yeah...", BlankList),
 			new Locale("Sheahan",
@@ -74,8 +75,8 @@ public class TextAdventure {
 
 		// method for allowing the user to customize their character
 		Player.promptName();
-		
-		//method to call a new Breadcrumb trail
+
+		// method to call a new Breadcrumb trail
 		trail.startTrail();
 
 		// method that begins the game
@@ -124,47 +125,47 @@ public class TextAdventure {
 			else if (input.equalsIgnoreCase("M") && Player.hasMap() == true) {
 				Item.containsMap();
 			}
-			
-			// if the user types in M and does not have the map, this will print out instead
+
+			// if the user types in M and does not have the map, this will print
+			// out instead
 			else if (input.equalsIgnoreCase("M") && Player.hasMap() == false) {
 				System.out.println("I wish I knew where I was right now... -____-");
 			}
-				
+
 			// what happens when the user types in score
 			else if (input.equalsIgnoreCase("Score")) {
 				System.out.print(Player.score);
 			}
-			
-			//what happens when the user types in I
+
+			// what happens when the user types in I
 			else if (input.equalsIgnoreCase("I")) {
 				Item.showInventory();
 			}
-			
-			//what happens when the user types in D
+
+			// what happens when the user types in D
 			else if (input.equalsIgnoreCase("D")) {
 				Item.dropItem();
 			}
-			
-			//what happens when the user types in B
+
+			// what happens when the user types in B
 			else if (input.equalsIgnoreCase("B")) {
 				if (BreadcrumbTrail.currCrumb == -1 || BreadcrumbTrail.hasNoMoreCrumbs() == true) {
-					System.out.print("That's funny. There's no going back! You can't escape now! The hungry rats are after you!");
-				}
-				else {
+					System.out.print(
+							"That's funny. There's no going back! You can't escape now! The hungry rats are after you!");
+				} else {
 					Player.backtrackLocale(trail);
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 							+ locale[Player.playerLocation].getLocationDescription());
 					if (locale[Player.playerLocation].getItemList().size() == 0) {
 						System.out.print("\nYou found nothing. There is nothing here.");
-					} 
-					else {
+					} else {
 						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
 								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
 					}
 				}
 			}
-			
+
 			// what happens when the user types in Q
 			else if (input.equalsIgnoreCase("Q")) {
 				// closing message for the game
@@ -180,8 +181,8 @@ public class TextAdventure {
 		}
 	}
 
+	// prints a greeting message when the user runs the program
 	private static void titleMessage() {
-		// prints a greeting message when the user runs the program
 		System.out.println("Welcome to Marist Mayhem!");
 		System.out.println("-----------------------------------");
 		System.out.println(
@@ -195,11 +196,12 @@ public class TextAdventure {
 		System.out.println("Trevor Pirone Copyright 2016");
 	}
 
+	// the user will decide to start, get help or exit the game here
 	private static void startGame() {
-		// the user will decide to start, get help or exit the game here
 		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
-		System.out.println("As of now, you are only allowed to backtrack a maximum of ten times before the rats eat the breadcrumbs!");
+		System.out.println(
+				"As of now, you are only allowed to backtrack a maximum of ten times before the rats eat the breadcrumbs!");
 		System.out.println("USe your backtracks wisely! The breadcrumbs go away in a short time!");
 	}
 
