@@ -1,5 +1,6 @@
 //BreadcrumbTrail class for Marist Mayhem
 import java.util.ArrayList;
+import java.util.Stack;
 @SuppressWarnings("unused")
 
 public class BreadcrumbTrail {
@@ -9,13 +10,15 @@ public class BreadcrumbTrail {
 	static int maxSize = 5;
 	
 	public static void startTrail() {
-		int currCrumb = -1;
+		currCrumb = -1;
+		System.out.println("HEEERE");
+		System.out.println(currCrumb);
 	}
 	
 	//push
 	public static void dropCrumb(int currLoc) {
 		if (hasNoMoreCrumbs() == false) {
-			pickupCrumb[currCrumb] = currLoc;
+			pickupCrumb[currCrumb + 1] = currLoc;
 			currCrumb++;
 		}
 		else {

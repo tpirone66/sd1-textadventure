@@ -8,6 +8,7 @@
  */
 
 import java.util.Scanner;//used for reading user input on the keyboard
+import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Random;//will be used later on for random generation
 import java.io.*;
@@ -20,6 +21,7 @@ public class TextAdventure {
 	static ArrayList<Item> LowerTownhouseItemList = new ArrayList<Item>();
 	static ArrayList<Item> SheahanItemList = new ArrayList<Item>();
 	static ArrayList<Item> BlankList = new ArrayList<Item>();
+	static BreadcrumbTrail trail;
 	// make rest of arrayLists for locales with items
 	// make rest of items
 	static Item handbook = new Item("Handbook", " Everyone should read this!");
@@ -40,7 +42,7 @@ public class TextAdventure {
 					ChampItemList),
 			new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", BlankList),
 			new Locale("Marian",
-					"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!",
+					"Marian is home to the Hobbit and the hermits. Sure seems clicky around here.",
 					MarianItemList),
 			new Locale("Midrise", "Midrise is Midrise...yeah...", BlankList),
 			new Locale("Sheahan",
@@ -84,7 +86,7 @@ public class TextAdventure {
 		Player.promptName();
 		
 		//method to call a new Breadcrumb trail
-		BreadcrumbTrail.startTrail();
+		trail.startTrail();
 
 		// method that begins the game
 		startGame();
@@ -106,7 +108,7 @@ public class TextAdventure {
 			// what happens when the user types in N
 			else if (input.equalsIgnoreCase("N")) {
 				if (Map[Player.playerLocation][0] != -1) {
-					BreadcrumbTrail.dropCrumb(Player.playerLocation);
+					trail.dropCrumb(Player.playerLocation);
 					Player.playerLocation = Map[Player.playerLocation][0];
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -128,7 +130,7 @@ public class TextAdventure {
 			// what happens when the user types in S
 			else if (input.equalsIgnoreCase("S")) {
 				if (Map[Player.playerLocation][1] != -1) {
-					BreadcrumbTrail.dropCrumb(Player.playerLocation);
+					trail.dropCrumb(Player.playerLocation);
 					Player.playerLocation = Map[Player.playerLocation][1];
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -150,7 +152,7 @@ public class TextAdventure {
 			// what happens when the user types in E
 			else if (input.equalsIgnoreCase("E")) {
 				if (Map[Player.playerLocation][2] != -1) {
-					BreadcrumbTrail.dropCrumb(Player.playerLocation);
+					trail.dropCrumb(Player.playerLocation);
 					Player.playerLocation = Map[Player.playerLocation][2];
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -172,7 +174,7 @@ public class TextAdventure {
 			// what happens when the user types in W
 			else if (input.equalsIgnoreCase("W")) {
 				if (Map[Player.playerLocation][3] != -1) {
-					BreadcrumbTrail.dropCrumb(Player.playerLocation);
+					trail.dropCrumb(Player.playerLocation);
 					Player.playerLocation = Map[Player.playerLocation][3];
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -197,7 +199,7 @@ public class TextAdventure {
 			}
 
 			// prints out a map if the user has it by typing M
-			else if (input.equalsIgnoreCase("M")) {
+			else if (input.equalsIgnoreCase("M") ) {
 				Item.hasMap();
 			}
 				
@@ -218,7 +220,17 @@ public class TextAdventure {
 			
 			//what happens when the user types in B
 			else if (input.equalsIgnoreCase("B")) {
-				Player.backtrackLocale();
+				Player.backtrackLocale(trail);
+				System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+				System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+						+ locale[Player.playerLocation].getLocationDescription());
+				if (locale[Player.playerLocation].getItemList().size() == 0) {
+					System.out.print("\nYou found nothing. There is nothing here.");
+				} 
+				else {
+					System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
+							+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
+				}
 			}
 
 			

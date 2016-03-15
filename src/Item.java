@@ -11,6 +11,7 @@ public class Item {
 		this.itemDescription = itemDescription;
 	}
 	
+	//this method shows instructions for the game
 	public static void showHelp() {
 		System.out.println("Press N to go North.");
 		System.out.println("Press S to go South.");
@@ -24,6 +25,7 @@ public class Item {
 		System.out.println("Type 'Score' to display the score.");
 	}
 	
+	//this method shows the inventory
 	public static void showInventory() {
 		int size = Player.inventory.size();
 		int finalIndex = size - 1;
@@ -38,6 +40,7 @@ public class Item {
 		}
 	}
 	
+	//method for taking an item
 	public static void takeItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
@@ -56,12 +59,13 @@ public class Item {
 		}
 	}
 	
+	//method for dropping an item
 	public static void dropItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		if (currentRoomList == null || currentRoomList.isEmpty()) {
 			System.out.print("You dropped " + Player.inventory.get(Player.inventory.size() - 1).item + "!"
-					+ " I would advise youto pick it up.");
+					+ " I would advise you to pick it up.");
 			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
 			TextAdventure.locale[currLoc].addItem(droppedItem);
 			Player.score -= 5;
@@ -69,6 +73,7 @@ public class Item {
 		}
 	}
 	
+	//this method will show the map if you have it
 	public static void hasMap() {
 		System.out.println("                           ------------                                         ");
 		System.out.println("                           |Champagnat|                                         ");

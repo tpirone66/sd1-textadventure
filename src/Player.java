@@ -120,7 +120,7 @@ public class Player {
 		}
 	}*/
 
-	public static void backtrackLocale() {
-		BreadcrumbTrail.pickupCrumb();
+	public static void backtrackLocale(BreadcrumbTrail trail) {
+		playerLocation = trail.pickupCrumb();
 	}
 }
