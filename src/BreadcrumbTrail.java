@@ -11,8 +11,6 @@ public class BreadcrumbTrail {
 	
 	public static void startTrail() {
 		currCrumb = -1;
-		System.out.println("HEEERE");
-		System.out.println(currCrumb);
 	}
 	
 	//push
@@ -37,7 +35,7 @@ public class BreadcrumbTrail {
 	}
 
 	//top
-	public Object currentCrumb() {
+	public static Object currentCrumb() {
 		if (currCrumb == -1) {
 			return null;
 		}

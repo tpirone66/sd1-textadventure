@@ -74,7 +74,7 @@ public class Item {
 	}
 	
 	//this method will show the map if you have it
-	public static void hasMap() {
+	public static void containsMap() {
 		System.out.println("                           ------------                                         ");
 		System.out.println("                           |Champagnat|                                         ");
 		System.out.println("                           ------------                                         ");

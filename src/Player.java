@@ -15,6 +15,17 @@ public class Player {
 	static String playerGetLocItemDesc = null;
 	static ArrayList<Item> inventory = new ArrayList<>();
 	static int score = 0;
+	
+	//will check to see if the player has a map in the inventory
+	public static boolean hasMap() {
+		int size = inventory.size();
+		for (int i = 0; i < size; i++) {
+			if (inventory.get(i).equals(TextAdventure.map)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static void promptName() {
 		// method that will allow character customization
@@ -31,20 +42,7 @@ public class Player {
 		return Player.playerLocation;
 	}
 	
-	// navigation matrix map
-			/*static int[][] map = {
-					// N S E W
-					{ 1, 3, 4, 2 }, // Marist
-					{ -1, 0, -1, -1 }, // Champagnat
-					{ -1, -1, 0, 5 }, // Leo
-					{ 0, 7, -1, -1 }, // Marian
-					{ -1, -1, 6, 0 }, // Midrise
-					{ -1, -1, 2, -1 }, // Sheahan
-					{ -1, -1, -1, 4 }, // Lower Townhouses
-					{ 3, -1, -1, -1 },// Lower West Cedar Townhouses
-			};
-	
-	public static void moveNorth() {
+	/*public static void moveNorth() {
 		if (map[Player.playerLocation][0] != -1) {
 			Player.playerLocation = map[Player.playerLocation][0];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
@@ -120,7 +118,10 @@ public class Player {
 		}
 	}*/
 
+	@SuppressWarnings("static-access")
 	public static void backtrackLocale(BreadcrumbTrail trail) {
-		playerLocation = trail.pickupCrumb();
+		if (BreadcrumbTrail.hasNoMoreCrumbs() == false) {
+			playerLocation = trail.pickupCrumb();
+		}
 	}
 }

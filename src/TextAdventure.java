@@ -55,6 +55,7 @@ public class TextAdventure {
 					"Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.",
 					BlankList), };
 
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
@@ -199,8 +200,13 @@ public class TextAdventure {
 			}
 
 			// prints out a map if the user has it by typing M
-			else if (input.equalsIgnoreCase("M") ) {
-				Item.hasMap();
+			else if (input.equalsIgnoreCase("M") && Player.hasMap() == true) {
+				Item.containsMap();
+			}
+			
+			// if the user types in M and does not have the map, this will print out instead
+			else if (input.equalsIgnoreCase("M") && Player.hasMap() == false) {
+				System.out.println("I wish I knew where I was right now... -____-");
 			}
 				
 			// what happens when the user types in score
@@ -220,19 +226,23 @@ public class TextAdventure {
 			
 			//what happens when the user types in B
 			else if (input.equalsIgnoreCase("B")) {
-				Player.backtrackLocale(trail);
-				System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-				System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-						+ locale[Player.playerLocation].getLocationDescription());
-				if (locale[Player.playerLocation].getItemList().size() == 0) {
-					System.out.print("\nYou found nothing. There is nothing here.");
-				} 
+				if (BreadcrumbTrail.currCrumb == -1 || BreadcrumbTrail.hasNoMoreCrumbs() == true) {
+					System.out.print("That's funny. There's no going back! You can't escape now! The hungry rats are after you!");
+				}
 				else {
-					System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-							+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
+					Player.backtrackLocale(trail);
+					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+							+ locale[Player.playerLocation].getLocationDescription());
+					if (locale[Player.playerLocation].getItemList().size() == 0) {
+						System.out.print("\nYou found nothing. There is nothing here.");
+					} 
+					else {
+						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
+								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
+					}
 				}
 			}
-
 			
 			// what happens when the user types in Q
 			else if (input.equalsIgnoreCase("Q")) {
@@ -268,6 +278,7 @@ public class TextAdventure {
 		// the user will decide to start, get help or exit the game here
 		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
+		System.out.println("As of now, you are only allowed to backtrack a maximum of five times before the rats eat the breadcrumbs!");
 	}
 
 }
