@@ -49,7 +49,6 @@ public class BreadcrumbTrail {
 	// isEmpty
 	public boolean hasMoreCrumbs() {
 		return (currCrumb == -1);
-
 	}
 
 	// isFull

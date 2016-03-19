@@ -2,7 +2,7 @@
  * CMPT 220L
  * Software Development 1
  * Project 3
- * Text Adventure Game v0.5
+ * Text Adventure Game v0.7
  * 
  * A text adventure based game created by @author Trevor Pirone
  */
@@ -27,10 +27,10 @@ public class TextAdventure {
 	static BreadcrumbTrail trail;
 	// make rest of arrayLists for locales with items
 	// make rest of items
-	static Item handbook = new Item("Handbook", " Everyone should read this!");
-	static Item dagger = new Item("Liquid Silicone Dagger", " That's pretty trippy, man!");
-	static Item apple = new Item("Apple", " What a tasty treat!");
-	static Item map = new Item("Map", " Not sure why you did not have one in the first place.");
+	static Item handbook = new Item("Handbook", " Everyone should read this!", false, 5);
+	static Item dagger = new Item("Liquid Silicone Dagger", " That's pretty trippy, man!", false, 5);
+	static Item apple = new Item("Apple", " What a tasty treat!", false, 5);
+	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
 
 	// method for populateArrayList which takes the items and adds them to the
 	// location to be picked up
@@ -119,6 +119,11 @@ public class TextAdventure {
 			// what happens when the user types in T
 			else if (input.equalsIgnoreCase("T")) {
 				Item.takeItem();
+			}
+			
+			// what happens when the user types in U
+			else if (input.equalsIgnoreCase("U")) {
+				Item.useItem();
 			}
 
 			// prints out a map if the user has it by typing M

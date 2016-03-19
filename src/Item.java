@@ -9,11 +9,15 @@ public class Item {
 	// item variables
 	public String item;
 	public String itemDescription;
+	public boolean isDiscovered;
+	public int itemValue;
 
 	// constructor for items
-	public Item(String item, String itemDescription) {
+	public Item(String item, String itemDescription, boolean isDiscovered, int itemValue) {
 		this.item = item;
 		this.itemDescription = itemDescription;
+		this.isDiscovered = isDiscovered;
+		this.itemValue = itemValue;
 	}
 
 	// this method shows instructions for the game
@@ -24,6 +28,7 @@ public class Item {
 		System.out.println("Press W to go West.");
 		System.out.println("Press Q to quit the game.");
 		System.out.println("Press T to take an item.");
+		System.out.println("Press U to use an item.");
 		System.out.println("Press I to view your inventory.");
 		System.out.println("Press D to drop an item from your inventory.");
 		System.out.println("Press B to backtrack to a previous location.");
@@ -74,6 +79,12 @@ public class Item {
 			Player.score -= 5;
 			System.out.print(" Score: " + Player.score);
 		}
+	}
+	
+	// method for using an item
+	
+	public static void useItem() {
+		
 	}
 
 	// this method will show the map if you have it
