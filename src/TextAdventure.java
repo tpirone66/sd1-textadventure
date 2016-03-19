@@ -125,6 +125,12 @@ public class TextAdventure {
 			else if (input.equalsIgnoreCase("U")) {
 				Item.useItem();
 			}
+			
+			// what happens when the user types in X
+			else if (input.equalsIgnoreCase("X")) {
+				Item.examineItem();
+			}
+
 
 			// prints out a map if the user has it by typing M
 			else if (input.equalsIgnoreCase("M") && Player.hasMap() == true) {

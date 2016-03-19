@@ -28,6 +28,7 @@ public class Item {
 		System.out.println("Press W to go West.");
 		System.out.println("Press Q to quit the game.");
 		System.out.println("Press T to take an item.");
+		System.out.println("Press X to examine a location.");
 		System.out.println("Press U to use an item.");
 		System.out.println("Press I to view your inventory.");
 		System.out.println("Press D to drop an item from your inventory.");
@@ -82,9 +83,13 @@ public class Item {
 	}
 	
 	// method for using an item
-	
 	public static void useItem() {
 		
+	}
+	
+	// method for using an item
+	public static void examineItem() {
+
 	}
 
 	// this method will show the map if you have it
@@ -117,5 +122,5 @@ public class Item {
 		System.out.println("              	 |Lower West Cedar Townhouses|                                  ");
 		System.out.println("              	 -----------------------------                                  ");
 	}
-
+	
 }
