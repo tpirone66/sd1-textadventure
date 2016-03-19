@@ -83,11 +83,6 @@ public class Item {
 	}
 	
 	// method for using an item
-	public static void useItem() {
-		
-	}
-	
-	// method for using an item
 	public static void examineItem() {
 
 	}

@@ -123,7 +123,7 @@ public class TextAdventure {
 			
 			// what happens when the user types in U
 			else if (input.equalsIgnoreCase("U")) {
-				Item.useItem();
+				LimitedUseItem.useItem();
 			}
 			
 			// what happens when the user types in X
