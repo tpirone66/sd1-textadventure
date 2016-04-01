@@ -116,7 +116,11 @@ public class Player {
 			System.out.print("\nCannot move that way!");
 		}
 	}
-
+	/*
+	 * promptName() method
+	 * @param input takes what the user types in
+	 * @param name is then set to equal the input.
+	 */
 	public static void promptName() {
 		// method that will allow character customization
 		@SuppressWarnings("resource")

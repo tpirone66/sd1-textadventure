@@ -54,13 +54,14 @@ public class Item {
 	public static void takeItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+		String item = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
 		if (currentRoomList == null) {
 			System.out.println("There is nothing to take.");
 		} else if (currentRoomList != null && currentRoomList.isEmpty()) {
 			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 		} else {
 			System.out.print(
-					"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
+					"You obtained " + item + "!");
 			Player.inventory.add(currentRoomList.get(0));
 			currentRoomList.remove(0);
 			Player.score += 5;
@@ -72,8 +73,9 @@ public class Item {
 	public static void dropItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+		String item = Player.inventory.get(Player.inventory.size() - 1).item;
 		if (currentRoomList == null || currentRoomList.isEmpty()) {
-			System.out.print("You dropped " + Player.inventory.get(Player.inventory.size() - 1).item + "!"
+			System.out.print("You dropped " + item + "!"
 					+ " I would advise you to pick it up.");
 			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
 			TextAdventure.locale[currLoc].addItem(droppedItem);

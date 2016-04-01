@@ -26,14 +26,17 @@ public class TextAdventure {
 	static ArrayList<Item> BlankList = new ArrayList<Item>();
 	static BreadcrumbTrail trail;
 	// make rest of arrayLists for locales with items
-	// make rest of items
+	
 	static Item handbook = new Item("Handbook", " Everyone should read this!", false, 5);
 	static Item dagger = new Item("Liquid Silicone Dagger", " That's pretty trippy, man!", false, 5);
 	static Item apple = new Item("Apple", " What a tasty treat!", false, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
+	// make rest of items
 	
-	// method for populateArrayList which takes the items and adds them to the
-	// location to be picked up
+	/*
+	 *method for populateArrayList which takes the items and adds them to the
+	 *location to be picked up
+	 */
 	static void populateArrayList(ArrayList<Item> list, Item item) {
 		list.add(item);
 	}
