@@ -37,20 +37,23 @@ public class Player {
 			{ -1, -1, -1, 4 }, // Lower Townhouses
 			{ 3, -1, -1, -1 },// Lower West Cedar Townhouses
 	};
-
+	
+	//variables for move commands
+	
+	
 	@SuppressWarnings("static-access")
 	public static void moveNorth() {
 		if (Map[Player.playerLocation][0] != -1) {
 			TextAdventure.trail.dropCrumb(Player.playerLocation);
 			Player.playerLocation = Map[Player.playerLocation][0];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-			if (TextAdventure.locale[Player.playerLocation].getItemList().size() == 0) {
+			System.out.print(" You are now in " + TextAdventure.place + "." + " "
+					+ TextAdventure.location);
+			if (TextAdventure.itemList == 0) {
 				System.out.print("\nYou found nothing. There is nothing here.");
 			} else {
-				System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-						+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
+				System.out.print("\nYou found " + TextAdventure.item
+						+ "." + TextAdventure.description);
 			}
 		} else if (Map[Player.playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
@@ -61,17 +64,17 @@ public class Player {
 	public static void moveSouth() {
 		if (Map[Player.playerLocation][1] != -1) {
 			TextAdventure.trail.dropCrumb(Player.playerLocation);
-			Player.playerLocation = Map[Player.playerLocation][1];
+			Player.playerLocation = Map[Player.playerLocation][0];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-			if (TextAdventure.locale[Player.playerLocation].getItemList().size() == 0) {
+			System.out.print(" You are now in " + TextAdventure.place + "." + " "
+					+ TextAdventure.location);
+			if (TextAdventure.itemList == 0) {
 				System.out.print("\nYou found nothing. There is nothing here.");
 			} else {
-				System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-						+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
+				System.out.print("\nYou found " + TextAdventure.item
+						+ "." + TextAdventure.description);
 			}
-		} else if (Map[Player.playerLocation][1] == -1) {
+		} else if (Map[Player.playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -80,17 +83,17 @@ public class Player {
 	public static void moveEast() {
 		if (Map[Player.playerLocation][2] != -1) {
 			TextAdventure.trail.dropCrumb(Player.playerLocation);
-			Player.playerLocation = Map[Player.playerLocation][2];
+			Player.playerLocation = Map[Player.playerLocation][0];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-			if (TextAdventure.locale[Player.playerLocation].getItemList().size() == 0) {
+			System.out.print(" You are now in " + TextAdventure.place + "." + " "
+					+ TextAdventure.location);
+			if (TextAdventure.itemList == 0) {
 				System.out.print("\nYou found nothing. There is nothing here.");
 			} else {
-				System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-						+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
+				System.out.print("\nYou found " + TextAdventure.item
+						+ "." + TextAdventure.description);
 			}
-		} else if (Map[Player.playerLocation][2] == -1) {
+		} else if (Map[Player.playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -99,17 +102,17 @@ public class Player {
 	public static void moveWest() {
 		if (Map[Player.playerLocation][3] != -1) {
 			TextAdventure.trail.dropCrumb(Player.playerLocation);
-			Player.playerLocation = Map[Player.playerLocation][3];
+			Player.playerLocation = Map[Player.playerLocation][0];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-			if (TextAdventure.locale[Player.playerLocation].getItemList().size() == 0) {
+			System.out.print(" You are now in " + TextAdventure.place + "." + " "
+					+ TextAdventure.location);
+			if (TextAdventure.itemList == 0) {
 				System.out.print("\nYou found nothing. There is nothing here.");
 			} else {
-				System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-						+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
+				System.out.print("\nYou found " + TextAdventure.item
+						+ "." + TextAdventure.description);
 			}
-		} else if (Map[Player.playerLocation][3] == -1) {
+		} else if (Map[Player.playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
