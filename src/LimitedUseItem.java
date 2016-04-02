@@ -1,7 +1,7 @@
 // LimitedUseItem class for Marist Mayhem
 public class LimitedUseItem extends Item{
 
-	public LimitedUseItem(String item, String itemDescription, boolean isDiscovered, int itemValue) {
+	public LimitedUseItem(String item, String itemDescription, boolean isDiscovered, int itemValue, int usesRemaining) {
 		super(item, itemDescription, isDiscovered, itemValue);
 	
 	}

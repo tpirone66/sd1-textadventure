@@ -3,16 +3,18 @@
 //anywhere it mentions @SupressWarnings, ignore it
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Item {
 
 	// item variables
 	public String item;
 	public String itemDescription;
-	public boolean isDiscovered;
+	public static boolean isDiscovered;
 	public int itemValue;
 
 	// constructor for items
+	@SuppressWarnings("static-access")
 	public Item(String item, String itemDescription, boolean isDiscovered, int itemValue) {
 		this.item = item;
 		this.itemDescription = itemDescription;
@@ -51,17 +53,34 @@ public class Item {
 	}
 
 	// method for taking an item
+	@SuppressWarnings("unused")
 	public static void takeItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		String item = TextAdventure.locale[Player.playerLocation].getItemList().get(0).item;
-		if (currentRoomList == null) {
+		System.out.println("What item would you like to take?");
+		@SuppressWarnings("resource")
+		Scanner inputSource = new Scanner(System.in);
+		String input;
+		input = inputSource.nextLine();
+		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger") || 
+				input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map"));
+		if (currentRoomList == TextAdventure.BlankList) {
 			System.out.println("There is nothing to take.");
 		} else if (currentRoomList != null && currentRoomList.isEmpty()) {
 			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
+		} else if (text == true) {
+			System.out.print("No such item exists!");
+		} else if (input.equalsIgnoreCase("Handbook") && !(Player.playerLocation == 1)){
+			System.out.print("That is not the item you have found!");
+		} else if (input.equalsIgnoreCase("Liquid Silicone Dagger") && !(Player.playerLocation == 3)){
+			System.out.print("That is not the item you have found!");
+		} else if (input.equalsIgnoreCase("Map") && !(Player.playerLocation == 5)){
+			System.out.print("That is not the item you have found!");
+		} else if (input.equalsIgnoreCase("Apple") && !(Player.playerLocation == 6)){
+			System.out.print("That is not the item you have found!");
 		} else {
 			System.out.print(
-					"You obtained " + item + "!");
+					"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
 			Player.inventory.add(currentRoomList.get(0));
 			currentRoomList.remove(0);
 			Player.score += 5;
@@ -86,7 +105,7 @@ public class Item {
 	
 	// method for using an item
 	public static void examineItem() {
-
+		
 	}
 
 	// this method will show the map if you have it

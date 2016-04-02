@@ -26,17 +26,14 @@ public class TextAdventure {
 	static ArrayList<Item> BlankList = new ArrayList<Item>();
 	static BreadcrumbTrail trail;
 	// make rest of arrayLists for locales with items
-	
+	// make rest of items
 	static Item handbook = new Item("Handbook", " Everyone should read this!", false, 5);
 	static Item dagger = new Item("Liquid Silicone Dagger", " That's pretty trippy, man!", false, 5);
 	static Item apple = new Item("Apple", " What a tasty treat!", false, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
-	// make rest of items
-	
-	/*
-	 *method for populateArrayList which takes the items and adds them to the
-	 *location to be picked up
-	 */
+
+	// method for populateArrayList which takes the items and adds them to the
+	// location to be picked up
 	static void populateArrayList(ArrayList<Item> list, Item item) {
 		list.add(item);
 	}
@@ -60,14 +57,7 @@ public class TextAdventure {
 			new Locale("Lower West Cedar Townhouses",
 					"Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.",
 					BlankList), };
-	
-	//variables for determining location, place, and item when it prints out to the user
-	static String place = locale[Player.playerLocation].getLocation();
-	static String location = locale[Player.playerLocation].getLocationDescription();
-	static String item = locale[Player.playerLocation].getItemList().get(0).item;
-	static String description = locale[Player.playerLocation].getItemList().get(0).itemDescription;
-	static int itemList = locale[Player.playerLocation].getItemList().size();
-	
+
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
@@ -93,8 +83,8 @@ public class TextAdventure {
 		startGame();
 
 		System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-		System.out.print(" You are now in " + place + "." + " "
-				+ location);
+		System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+				+ locale[Player.playerLocation].getLocationDescription());
 		System.out.print("\nYou found nothing. There is nothing here.");
 
 		while (true) {
@@ -176,13 +166,13 @@ public class TextAdventure {
 				} else {
 					Player.backtrackLocale(trail);
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + place + "." + " "
-							+ location);
-					if (itemList == 0) {
+					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+							+ locale[Player.playerLocation].getLocationDescription());
+					if (locale[Player.playerLocation].getItemList().size() == 0) {
 						System.out.print("\nYou found nothing. There is nothing here.");
 					} else {
-						System.out.print("\nYou found " + item + "."
-								+ description);
+						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
+								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
 					}
 				}
 			}
@@ -207,8 +197,7 @@ public class TextAdventure {
 		System.out.println("Welcome to Marist Mayhem!");
 		System.out.println("-----------------------------------");
 		System.out.println(
-				"Marist Mayhem is a text-adventure game where the user will explore the scary grounds of Marist and try to"
-				+ "\nfind out what is happening on the campus and revert it back to normal.");
+				"Marist Mayhem is a text-adventure game where the user will explore the scary grounds of Marist and try to\nfind out what is happening on the campus and revert it back to normal.");
 		System.out.println("-----------------------------------");
 	}
 
