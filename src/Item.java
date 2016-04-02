@@ -106,7 +106,26 @@ public class Item {
 	
 	// method for using an item
 	public static void examineItem() {
-		
+		int currLoc = Player.getPlayerLocation();
+		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+		boolean hasItem = (currentRoomList == TextAdventure.ChampItemList || currentRoomList == TextAdventure.SheahanItemList ||
+				currentRoomList == TextAdventure.MarianItemList || currentRoomList == TextAdventure.LowerTownhouseItemList);
+		if (currentRoomList == TextAdventure.BlankList && isDiscovered == true) {
+			System.out.print("It seems that you have examined this area found"
+					+ " there were no items for you to take here already.");
+			if (hasItem == true && isDiscovered == true) {
+			System.out.print("This area has been explored already and"
+					+ " an item has been in this location!");
+			}
+		}
+		if (currentRoomList == TextAdventure.BlankList && isDiscovered == false) {
+			System.out.print("It seems that there are no items for you to take here.");
+			isDiscovered = true;
+			if (hasItem == true && isDiscovered == false) {
+				System.out.print("There seems to be an item located over here!");
+				isDiscovered = true;
+			}
+		}
 	}
 
 	// this method will show the map if you have it

@@ -24,6 +24,18 @@ public class Player {
 		}
 		return false;
 	}
+	
+	//will check to see if a specific item is in the inventory
+	public static boolean hasItem() {
+		int size = inventory.size();
+		for (int i = 0; i < size; i++) {
+			if (inventory.get(i).equals(TextAdventure.map) || inventory.get(i).equals(TextAdventure.apple) ||
+					inventory.get(i).equals(TextAdventure.dagger) || inventory.get(i).equals(TextAdventure.handbook)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	// navigation matrix map
 	static int[][] Map = {
