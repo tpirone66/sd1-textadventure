@@ -11,7 +11,7 @@ public class Item {
 	public String item;
 	public String itemDescription;
 	public static boolean isDiscovered;
-	public int itemValue;
+	public static int itemValue;
 
 	// constructor for items
 	@SuppressWarnings("static-access")
@@ -83,12 +83,13 @@ public class Item {
 					"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
 			Player.inventory.add(currentRoomList.get(0));
 			currentRoomList.remove(0);
-			Player.score += 5;
+			Player.score += itemValue;
 			System.out.print(" Score: " + Player.score);
 		}
 	}
 
 	// method for dropping an item
+	@SuppressWarnings("null")
 	public static void dropItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
@@ -98,7 +99,7 @@ public class Item {
 					+ " I would advise you to pick it up.");
 			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
 			TextAdventure.locale[currLoc].addItem(droppedItem);
-			Player.score -= 5;
+			Player.score -= itemValue;
 			System.out.print(" Score: " + Player.score);
 		}
 	}
