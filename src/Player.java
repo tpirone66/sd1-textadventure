@@ -58,12 +58,6 @@ public class Player {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
 					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-			if (TextAdventure.locale[Player.playerLocation].getItemList().size() == 0) {
-				System.out.print("\nYou found nothing. There is nothing here.");
-			} else {
-				System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-						+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
-			}
 		} else if (Map[Player.playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
@@ -77,12 +71,6 @@ public class Player {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
 					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-			if (TextAdventure.locale[Player.playerLocation].getItemList().size() == 0) {
-				System.out.print("\nYou found nothing. There is nothing here.");
-			} else {
-				System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-						+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
-			}
 		} else if (Map[Player.playerLocation][1] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
@@ -96,12 +84,6 @@ public class Player {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
 					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-			if (TextAdventure.locale[Player.playerLocation].getItemList().size() == 0) {
-				System.out.print("\nYou found nothing. There is nothing here.");
-			} else {
-				System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-						+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
-			}
 		} else if (Map[Player.playerLocation][2] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
@@ -115,12 +97,6 @@ public class Player {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
 					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-			if (TextAdventure.locale[Player.playerLocation].getItemList().size() == 0) {
-				System.out.print("\nYou found nothing. There is nothing here.");
-			} else {
-				System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-						+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
-			}
 		} else if (Map[Player.playerLocation][3] == -1) {
 			System.out.print("\nCannot move that way!");
 		}

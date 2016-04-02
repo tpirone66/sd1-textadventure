@@ -85,7 +85,6 @@ public class TextAdventure {
 		System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 		System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 				+ locale[Player.playerLocation].getLocationDescription());
-		System.out.print("\nYou found nothing. There is nothing here.");
 
 		while (true) {
 			System.out.print("\nEnter a command: ");
@@ -168,12 +167,6 @@ public class TextAdventure {
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 							+ locale[Player.playerLocation].getLocationDescription());
-					if (locale[Player.playerLocation].getItemList().size() == 0) {
-						System.out.print("\nYou found nothing. There is nothing here.");
-					} else {
-						System.out.print("\nYou found " + locale[Player.playerLocation].getItemList().get(0).item + "."
-								+ locale[Player.playerLocation].getItemList().get(0).itemDescription);
-					}
 				}
 			}
 
