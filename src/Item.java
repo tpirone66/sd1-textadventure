@@ -111,18 +111,19 @@ public class Item {
 		if (currentRoomList == TextAdventure.BlankList && isDiscovered == true) {
 			System.out.print("It seems that you have examined this area found"
 					+ " there were no items for you to take here already.");
-			if (currentRoomList != TextAdventure.BlankList && isDiscovered == true) {
+		}
+		if (currentRoomList != TextAdventure.BlankList && isDiscovered == true) {
 			System.out.print("This area has been explored already and"
 					+ " an item has been in this location!");
-			}
 		}
 		if (currentRoomList == TextAdventure.BlankList && isDiscovered == false) {
 			System.out.print("It seems that there are no items for you to take here.");
 			isDiscovered = true;
-			if (currentRoomList != TextAdventure.BlankList && isDiscovered == false) {
-				System.out.print("There seems to be an item located over here!");
-				isDiscovered = true;
-			}
+		}
+		if (currentRoomList != TextAdventure.BlankList && isDiscovered == false) {
+			System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
+					+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
+			isDiscovered = true;
 		}
 	}
 
