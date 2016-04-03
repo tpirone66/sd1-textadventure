@@ -53,7 +53,6 @@ public class Item {
 	}
 
 	// method for taking an item
-	@SuppressWarnings("unused")
 	public static void takeItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
@@ -89,18 +88,31 @@ public class Item {
 	}
 
 	// method for dropping an item
-	@SuppressWarnings("null")
 	public static void dropItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		String item = Player.inventory.get(Player.inventory.size() - 1).item;
-		if (currentRoomList == null || currentRoomList.isEmpty()) {
-			System.out.print("You dropped " + item + "!"
+		System.out.println("What item would you like to drop?");
+		@SuppressWarnings("resource")
+		Scanner inputSource = new Scanner(System.in);
+		String input;
+		input = inputSource.nextLine();
+		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger") || 
+				input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map"));
+		//for the dropItem, if the user types in d when they have no items in the inventory, return OOB exception
+		if (text == true) {
+			System.out.println("There is no such thing in the inventory to drop!" );
+		}
+		if (text == false && !currentRoomList.isEmpty()) {
+			System.out.println("This item is not in the inventory and cannot be dropped!");
+		}
+		if (text == false && (currentRoomList == null || currentRoomList.isEmpty())) {
+			System.out.println("You dropped " + item + "!"
 					+ " I would advise you to pick it up.");
 			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
 			TextAdventure.locale[currLoc].addItem(droppedItem);
 			Player.score -= itemValue;
-			System.out.print(" Score: " + Player.score);
+			System.out.print("Score: " + Player.score);
 		}
 	}
 	

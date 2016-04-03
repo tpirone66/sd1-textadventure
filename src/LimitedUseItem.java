@@ -9,7 +9,6 @@ public class LimitedUseItem extends Item{
 	}
 
 	// method for using an item
-		@SuppressWarnings("unused")
 		public static void useItem() {
 			System.out.println("What item would you like to use?");
 			@SuppressWarnings("resource")

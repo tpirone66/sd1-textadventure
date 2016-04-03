@@ -76,7 +76,7 @@ public class TextAdventure {
 		// method for allowing the user to customize their character
 		Player.promptName();
 
-		// method to call a new Breadcrumb trail
+		// method to call a new Breadcrumb Trail
 		trail.startTrail();
 
 		// method that begins the game
