@@ -20,10 +20,10 @@ public class LimitedUseItem extends Item{
 			if (text == true) {
 				System.out.print("No such item seems to exist, " + Player.name + ".");
 			}
-			//having trouble figuring out how to use my items
-			else if (foundItem(input))
-			{
-				System.out.print("You used " + input );
+			else if (foundItem(input)) {
+				if(input.equals("map")) {
+					Item.containsMap();
+				}
 			}
 			else if (text == false) {
 				System.out.print("You do not have such item to use, " + Player.name + ".");
@@ -38,14 +38,6 @@ public class LimitedUseItem extends Item{
 					return true;
 				}
 			}
-			
-
-			//for loop for each item in your inventory
-			//in the loop, compare if the current index item is equal to the input
-			//if it is, then return true;
-			//if it is not, and we hit the end of the list, return false
-			
-			
 			return false;
 		}
 		

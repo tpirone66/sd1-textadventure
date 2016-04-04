@@ -125,16 +125,6 @@ public class TextAdventure {
 				LimitedUseItem.useItem();
 			}
 			
-			// what happens when the user types in U and has a map
-			else if (input.equalsIgnoreCase("U") && Player.hasMap() == true) {
-				Item.containsMap();
-			}
-			
-			// what happens when the user types in U and does not have a map
-			else if (input.equalsIgnoreCase("U") && Player.hasMap() == false) {
-				System.out.println("I wish I knew where I was right now... -____-");
-			}
-			
 			// what happens when the user types in X
 			else if (input.equalsIgnoreCase("X")) {
 				Item.examineItem();
