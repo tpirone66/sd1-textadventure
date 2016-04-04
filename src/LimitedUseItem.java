@@ -20,12 +20,33 @@ public class LimitedUseItem extends Item{
 			if (text == true) {
 				System.out.print("No such item seems to exist, " + Player.name + ".");
 			}
-			else if (text == false && Player.hasItem() == false) {
+			//having trouble figuring out how to use my items
+			else if (foundItem(input))
+			{
+				System.out.print("You used " + input );
+			}
+			else if (text == false) {
 				System.out.print("You do not have such item to use, " + Player.name + ".");
 			}
-			else if (text == false && Player.hasItem() == true){
-				System.out.print("You used " + Player.inventory.get(0).equals(TextAdventure.handbook));
+		}
+		
+		public static boolean foundItem(String input)
+		{
+			int size = Player.inventory.size();
+			for (int i = 0; i < size; i++) {
+				if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
+					return true;
+				}
 			}
+			
+
+			//for loop for each item in your inventory
+			//in the loop, compare if the current index item is equal to the input
+			//if it is, then return true;
+			//if it is not, and we hit the end of the list, return false
+			
+			
+			return false;
 		}
 		
 }
