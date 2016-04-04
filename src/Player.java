@@ -38,6 +38,7 @@ public class Player {
 			{ 3, -1, -1, -1 },// Lower West Cedar Townhouses
 	};
 
+	// the player moves north when the user types "N"
 	@SuppressWarnings("static-access")
 	public static void moveNorth() {
 		if (Map[Player.playerLocation][0] != -1) {
@@ -51,6 +52,7 @@ public class Player {
 		}
 	}
 
+	// the player moves south when the user types "S"
 	@SuppressWarnings("static-access")
 	public static void moveSouth() {
 		if (Map[Player.playerLocation][1] != -1) {
@@ -64,6 +66,7 @@ public class Player {
 		}
 	}
 
+	// the player moves east when the user types "E"
 	@SuppressWarnings("static-access")
 	public static void moveEast() {
 		if (Map[Player.playerLocation][2] != -1) {
@@ -77,6 +80,7 @@ public class Player {
 		}
 	}
 
+	// the player moves west when the user types "W"
 	@SuppressWarnings("static-access")
 	public static void moveWest() {
 		if (Map[Player.playerLocation][3] != -1) {
@@ -101,6 +105,7 @@ public class Player {
 		System.out.println("Hello, " + name + "!");
 	}
 
+	// method that returns the player's location
 	public static int getPlayerLocation() {
 		return Player.playerLocation;
 	}

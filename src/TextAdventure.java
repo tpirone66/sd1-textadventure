@@ -1,7 +1,7 @@
 /*Trevor Pirone
  * CMPT 220L
  * Software Development 1
- * Project 3
+ * Project 4
  * Text Adventure Game v0.7
  * 
  * A text adventure based game created by @author Trevor Pirone
@@ -119,25 +119,26 @@ public class TextAdventure {
 			else if (input.equalsIgnoreCase("T")) {
 				Item.takeItem();
 			}
-			
+
 			// what happens when the user types in U
 			else if (input.equalsIgnoreCase("U")) {
 				LimitedUseItem.useItem();
 			}
-			
+
 			// what happens when the user types in X
 			else if (input.equalsIgnoreCase("X")) {
 				Item.examineItem();
 			}
-
 
 			// prints out a map if the user has it by typing M
 			else if (input.equalsIgnoreCase("M") && Player.hasMap() == true) {
 				Item.containsMap();
 			}
 
-			/* if the user types in M and does not have the map, this will print
-		    out instead*/
+			/*
+			 * if the user types in M and does not have the map, this will print
+			 * out instead
+			 */
 			else if (input.equalsIgnoreCase("M") && Player.hasMap() == false) {
 				System.out.println("I wish I knew where I was right now... -____-");
 			}

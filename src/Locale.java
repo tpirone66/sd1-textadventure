@@ -26,9 +26,14 @@ public class Locale {
 
 	/*
 	 * these get methods look for the corresponding variables and returns them
+	 * 
 	 * @param location returns the player's location
-	 * @param locationDescription returns the description of the player's location
+	 * 
+	 * @param locationDescription returns the description of the player's
+	 * location
+	 * 
 	 * @param itemList returns any item that might be at that location
+	 * 
 	 * @param itemDescription returns the description of an item at a location
 	 */
 	public String getLocation() {
@@ -47,7 +52,7 @@ public class Locale {
 		return itemDescription;
 	}
 
-	//adds item to the location when the game starts
+	// adds item to the location when the game starts
 	public void addItem(Item i) {
 		itemList.add(i);
 	}
