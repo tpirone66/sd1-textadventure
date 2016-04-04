@@ -10,7 +10,6 @@ import java.util.Collection;
 public class Locale {
 
 	// variables for the locale array of objects
-	public String item;
 	public String itemDescription;
 	public String location;
 	public String locationDescription;

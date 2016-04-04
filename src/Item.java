@@ -56,6 +56,8 @@ public class Item {
 	public static void takeItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+		
+		//System.out.println("HASDOOOO " + currentRoomList.get(0).item);
 		System.out.println("What item would you like to take?");
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
@@ -63,21 +65,19 @@ public class Item {
 		input = inputSource.nextLine();
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger") || 
 				input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map"));
-		if (currentRoomList == TextAdventure.BlankList) {
+		if (currentRoomList.size() == 0) {
 			System.out.println("There is nothing to take.");
 		} else if (currentRoomList != null && currentRoomList.isEmpty()) {
 			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
 		} else if (text == true) {
 			System.out.print("No such item exists!");
-		} else if (input.equalsIgnoreCase("Handbook") && !(Player.playerLocation == 1)){
-			System.out.print("That is not the item you have found!");
-		} else if (input.equalsIgnoreCase("Liquid Silicone Dagger") && !(Player.playerLocation == 3)){
-			System.out.print("That is not the item you have found!");
-		} else if (input.equalsIgnoreCase("Map") && !(Player.playerLocation == 5)){
-			System.out.print("That is not the item you have found!");
-		} else if (input.equalsIgnoreCase("Apple") && !(Player.playerLocation == 6)){
-			System.out.print("That is not the item you have found!");
-		} else {
+			return;
+		} 
+		else if(findItemInList(input, currentRoomList) == -1)
+			{
+				System.out.print("That is not the item you have found!");
+			}
+		 else {
 			System.out.print(
 					"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
 			Player.inventory.add(currentRoomList.get(0));
@@ -187,6 +187,18 @@ public class Item {
 			}
 		}
 		return -1;
+	}
+	
+	public static int findItemInList(String input, ArrayList<Item> items)
+	{
+		int size = items.size();
+		for (int i = 0; i < size; i++) {
+			if (items.get(i).item.toLowerCase().equals(input)) {
+				return i;
+			}
+		}
+		return -1;
+	
 	}
 	
 }
