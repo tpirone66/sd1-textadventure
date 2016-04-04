@@ -98,12 +98,10 @@ public class Item {
 		input = inputSource.nextLine();
 		int itemIndex = findItem(input);
 		String item = "";
-		if(itemIndex >= 0)
-		{
+		if (itemIndex >= 0) {
 			item = Player.inventory.get(itemIndex).item;
 		}
-		else
-		{
+		else {
 			item = "n/a";
 		}
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger") || 
