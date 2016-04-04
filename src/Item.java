@@ -91,20 +91,30 @@ public class Item {
 	public static void dropItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		String item = Player.inventory.get(Player.inventory.size() - 1).item;
 		System.out.println("What item would you like to drop?");
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		input = inputSource.nextLine();
+		int itemIndex = findItem(input);
+		String item = "";
+		if(itemIndex >= 0)
+		{
+			item = Player.inventory.get(itemIndex).item;
+		}
+		else
+		{
+			item = "n/a";
+		}
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger") || 
 				input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map"));
-		//for the dropItem, if the user types in d when they have no items in the inventory, return OOB exception
 		if (text == true) {
 			System.out.println("There is no such thing in the inventory to drop!" );
+			return;
 		}
-		if (text == false && !currentRoomList.isEmpty()) {
+		if (item.compareTo("n/a") == 0 || (text == false && !currentRoomList.isEmpty())) {
 			System.out.println("This item is not in the inventory and cannot be dropped!");
+			return;
 		}
 		if (text == false && (currentRoomList == null || currentRoomList.isEmpty())) {
 			System.out.println("You dropped " + item + "!"
@@ -168,6 +178,17 @@ public class Item {
 		System.out.println("             	 -----------------------------                                  ");
 		System.out.println("              	 |Lower West Cedar Townhouses|                                  ");
 		System.out.println("              	 -----------------------------                                  ");
+	}
+	
+	public static int findItem(String input)
+	{
+		int size = Player.inventory.size();
+		for (int i = 0; i < size; i++) {
+			if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 	
 }
