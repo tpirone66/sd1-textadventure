@@ -29,7 +29,7 @@ public class TextAdventure {
 	// make rest of items
 	static Item handbook = new Item("Handbook", " Everyone should read this!", false, 5);
 	static Item dagger = new Item("Liquid Silicone Dagger", " That's pretty trippy, man!", false, 5);
-	static Item apple = new Item("Apple", " What a tasty treat!", false, 5);
+	static Item apple = new LimitedUseItem("Apple", " What a tasty treat!", false, 5, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
 
 	// method for populateArrayList which takes the items and adds them to the

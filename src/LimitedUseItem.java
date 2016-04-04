@@ -2,10 +2,12 @@ import java.util.Scanner;
 
 // LimitedUseItem class for Marist Mayhem
 public class LimitedUseItem extends Item{
+	
+	int usesRemaining;
 
 	public LimitedUseItem(String item, String itemDescription, boolean isDiscovered, int itemValue, int usesRemaining) {
 		super(item, itemDescription, isDiscovered, itemValue);
-	
+		this.usesRemaining = usesRemaining;
 	}
 
 	// method for using an item
