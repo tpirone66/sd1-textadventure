@@ -1,4 +1,4 @@
-//Locale class for Marist Mayhem
+/**Locale class for Marist Mayhem*/
 
 //anywhere it mentions @SupressWarnings, ignore it
 
@@ -24,7 +24,7 @@ public class Locale {
 		this.itemList = listOfItems;
 	}
 
-	/*
+	/**
 	 * these get methods look for the corresponding variables and returns them
 	 * 
 	 * @param location returns the player's location

@@ -1,6 +1,6 @@
+// LimitedUseItem class for Marist Mayhem
 import java.util.Scanner;
 
-// LimitedUseItem class for Marist Mayhem
 public class LimitedUseItem extends Item {
 
 	// variables
@@ -23,7 +23,9 @@ public class LimitedUseItem extends Item {
 		input = inputSource.nextLine();
 		boolean text = !(input.equalsIgnoreCase("handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
 				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map"));
-		// @param input
+		/** @param input
+		 * 
+		 */
 		if (!foundItem(input)) {
 			System.out.println("You don't have the " + input);
 			return;

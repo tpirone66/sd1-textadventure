@@ -1,4 +1,4 @@
-//Item class for Marist Mayhem
+/**Item class for Marist Mayhem*/
 
 //anywhere it mentions @SupressWarnings, ignore it
 
@@ -98,7 +98,7 @@ public class Item {
 		input = inputSource.nextLine();
 		int itemIndex = LimitedUseItem.findItem(input);
 		String item = "";
-		/*
+		/**
 		 * @param item
 		 * 
 		 * @param intemIndex at this point, similar to the take command, the
@@ -128,9 +128,10 @@ public class Item {
 		}
 	}
 
-	// method for examining an item
-	// @param currLoc
-	// @param currentRoomList
+	/** method for examining an item
+	* @param currLoc
+	* @param currentRoomList
+	*/
 	public static void examineItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();

@@ -1,4 +1,4 @@
-/*Trevor Pirone
+/**Trevor Pirone
  * CMPT 220L
  * Software Development 1
  * Project 4
@@ -195,6 +195,7 @@ public class TextAdventure {
 		System.out.println("-----------------------------------");
 	}
 
+	//this method will show the credits at the end of the game or when the user quits
 	private static void showCredits() {
 		System.out.println("Thank you for playing this game!");
 		System.out.println("Please come back soon!\n");

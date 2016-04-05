@@ -1,4 +1,4 @@
-//Player class for Marist Mayhem
+/**Player class for Marist Mayhem*/
 
 //anywhere it mentions @SupressWarnings, ignore it
 

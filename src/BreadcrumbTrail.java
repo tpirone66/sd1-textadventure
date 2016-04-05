@@ -1,4 +1,4 @@
-//BreadcrumbTrail class for Marist Mayhem
+/**BreadcrumbTrail class for Marist Mayhem*/
 
 //anywhere it mentions @SupressWarnings, ignore it
 
