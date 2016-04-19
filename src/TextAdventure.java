@@ -169,18 +169,16 @@ public class TextAdventure {
 
 			// what happens when the user types in B
 			else if (input.equalsIgnoreCase("B")) {
-				if (BreadcrumbTrail.currCrumb == -1 && BreadcrumbTrail.hasMoreCrumbs() == true) {
+				if (BreadcrumbTrail.currCrumb == -1 && BreadcrumbTrail.hasMoreCrumbs() == true && Player.actionCount == 0) {
+					System.out.print("Oh no! The rats got you! You are now left to die!");
+					System.out.println(" \nGAME OVER!");
+					showCredits();
+					break;
+				}
+				else if (BreadcrumbTrail.currCrumb == -1 || BreadcrumbTrail.hasMoreCrumbs() == true) {
 					System.out.print(
 							"Oh no! The rats are after you! Be careful with those breadcrumbs of yours!");
 					Player.actionCount = Player.actionCount - 1;
-					if (Player.actionCount <= 0) {
-						System.out.print(
-								"Oh no! The rats got you! You are now left to die!");
-						System.out.println(
-							" GAME OVER!");
-						showCredits();
-						break;
-					}
 				}
 				else {
 					Player.backtrackLocale(trail);
