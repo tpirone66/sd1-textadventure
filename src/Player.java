@@ -29,13 +29,14 @@ public class Player {
 	static int[][] Map = {
 			// N S E W
 			{ 1, 3, 4, 2 }, // Marist
-			{ -1, 0, -1, -1 }, // Champagnat
+			{ 8, 0, -1, -1 }, // Champagnat
 			{ -1, -1, 0, 5 }, // Leo
 			{ 0, 7, -1, -1 }, // Marian
 			{ -1, -1, 6, 0 }, // Midrise
 			{ -1, -1, 2, -1 }, // Sheahan
 			{ -1, -1, -1, 4 }, // Lower Townhouses
 			{ 3, -1, -1, -1 },// Lower West Cedar Townhouses
+			{ -1, 1, -1, -1 }, // Hudson River
 	};
 
 	// the player moves north when the user types "N"

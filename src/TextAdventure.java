@@ -24,6 +24,7 @@ public class TextAdventure {
 	static ArrayList<Item> LowerTownhouseItemList = new ArrayList<Item>();
 	static ArrayList<Item> SheahanItemList = new ArrayList<Item>();
 	static ArrayList<Item> BlankList = new ArrayList<Item>();
+	static ArrayList<Item> HudsonRiverList = new ArrayList<Item>();
 	static BreadcrumbTrail trail;
 	// make rest of arrayLists for locales with items
 	// make rest of items
@@ -31,6 +32,7 @@ public class TextAdventure {
 	static Item dagger = new Item("Liquid Silicone Dagger", " That's pretty trippy, man!", false, 5);
 	static Item apple = new LimitedUseItem("Apple", " What a tasty treat!", false, 5, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
+	static Item key = new Item("Key", " I wonder what this could be for?", false, 5);
 
 	// method for populateArrayList which takes the items and adds them to the
 	// location to be picked up
@@ -56,7 +58,10 @@ public class TextAdventure {
 					LowerTownhouseItemList),
 			new Locale("Lower West Cedar Townhouses",
 					"Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.",
-					BlankList), };
+					BlankList), 
+			new Locale("Hudson River",
+					"The best looking polluted river on the planet! All of the Marist students should take a trip to here.",
+					HudsonRiverList), };
 
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
@@ -69,6 +74,7 @@ public class TextAdventure {
 		populateArrayList(MarianItemList, dagger);
 		populateArrayList(SheahanItemList, map);
 		populateArrayList(LowerTownhouseItemList, apple);
+		populateArrayList(HudsonRiverList, key);
 
 		// method that will display the name of the game and description
 		titleMessage();

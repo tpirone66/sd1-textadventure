@@ -67,7 +67,7 @@ public class Item {
 		 * when handling a variety of situations with taking items
 		 */
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
-				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map"));
+				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 		if (currentRoomList.size() == 0) {
 			System.out.println("There is nothing to take.");
 		} else if (currentRoomList != null && currentRoomList.isEmpty()) {
@@ -155,6 +155,14 @@ public class Item {
 
 	// this method will show the map if you have it
 	public static void containsMap() {
+		System.out.println("                          --------------                                        ");
+		System.out.println("                          |Hudson River|                                        ");
+		System.out.println("                          --------------                                        ");
+		System.out.println("                            	|                                               ");
+		System.out.println("                            	|                                               ");
+		System.out.println("                            	|                                               ");
+		System.out.println("                            	|                                               ");
+		System.out.println("                            	|                                               ");
 		System.out.println("                           ------------                                         ");
 		System.out.println("                           |Champagnat|                                         ");
 		System.out.println("                           ------------                                         ");
