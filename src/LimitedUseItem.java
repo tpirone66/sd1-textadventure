@@ -22,7 +22,7 @@ public class LimitedUseItem extends Item {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		input = inputSource.nextLine();
-		boolean text = !(input.equalsIgnoreCase("handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
 				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 		/** @param input
 		 * 
@@ -52,7 +52,14 @@ public class LimitedUseItem extends Item {
 		else if (foundItem(input)) {
 			if (input.equals("map")) {
 				Item.containsMap();
-			} else {
+			} 
+		// if the player is at Hancock and uses the key, it will call the canEnter() method
+			else if (foundItem(input)) {
+				if (input.equals("key") && Player.playerLocation == 9) {
+					SecureLocale.canEnter();
+				}
+			}
+			else {
 				System.out.println("You used the " + input);
 			}
 		}
