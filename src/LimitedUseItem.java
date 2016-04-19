@@ -23,7 +23,7 @@ public class LimitedUseItem extends Item {
 		String input;
 		input = inputSource.nextLine();
 		boolean text = !(input.equalsIgnoreCase("handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
-				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map"));
+				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 		/** @param input
 		 * 
 		 */
