@@ -13,6 +13,7 @@ public class Player {
 	static int playerLocation = 0;
 	static ArrayList<Item> inventory = new ArrayList<>();
 	static int score = 0;
+	static int actionCount = 10;
 
 	// will check to see if the player has a map in the inventory
 	public static boolean hasMap() {

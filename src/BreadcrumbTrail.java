@@ -50,7 +50,7 @@ public class BreadcrumbTrail {
 	}
 
 	// isEmpty
-	public boolean hasMoreCrumbs() {
+	public static boolean hasMoreCrumbs() {
 		return (currCrumb == -1);
 	}
 

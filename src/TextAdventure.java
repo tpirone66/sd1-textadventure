@@ -169,10 +169,20 @@ public class TextAdventure {
 
 			// what happens when the user types in B
 			else if (input.equalsIgnoreCase("B")) {
-				if (BreadcrumbTrail.currCrumb == -1 || BreadcrumbTrail.hasNoMoreCrumbs() == true) {
+				if (BreadcrumbTrail.currCrumb == -1 && BreadcrumbTrail.hasMoreCrumbs() == true) {
 					System.out.print(
-							"That's funny. There's no going back! You can't escape now! The hungry rats are after you!");
-				} else {
+							"Oh no! The rats are after you! Be careful with those breadcrumbs of yours!");
+					Player.actionCount = Player.actionCount - 1;
+					if (Player.actionCount <= 0) {
+						System.out.print(
+								"Oh no! The rats got you! You are now left to die!");
+						System.out.println(
+							" GAME OVER!");
+						showCredits();
+						break;
+					}
+				}
+				else {
 					Player.backtrackLocale(trail);
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -195,6 +205,7 @@ public class TextAdventure {
 		}
 	}
 
+
 	// prints a greeting message when the user runs the program
 	private static void titleMessage() {
 		System.out.println("Welcome to Marist Mayhem!");
@@ -216,7 +227,7 @@ public class TextAdventure {
 		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 		System.out.println(
-				"As of now, you are only allowed to backtrack a maximum of ten times before the rats eat the breadcrumbs!");
+				"As of now, you are only allowed to backtrack a maximum of ten times before the rats eat all the breadcrumbs and catch you!");
 		System.out.println("USe your backtracks wisely! The breadcrumbs go away in a short time!");
 	}
 
