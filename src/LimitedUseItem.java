@@ -1,4 +1,5 @@
-// LimitedUseItem class for Marist Mayhem
+/**LimitedUseItem class for Marist Mayhem*/
+
 import java.util.Scanner;
 
 public class LimitedUseItem extends Item {
