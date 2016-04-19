@@ -61,7 +61,10 @@ public class TextAdventure {
 					BlankList), 
 			new Locale("Hudson River",
 					"The best looking polluted river on the planet! All of the Marist students should take a trip to here.",
-					HudsonRiverList), };
+					HudsonRiverList), 
+			new SecureLocale("Hancock Center",
+					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.",
+					BlankList, key), };
 
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
