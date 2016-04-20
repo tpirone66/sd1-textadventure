@@ -12,6 +12,7 @@ public class SecureLocale extends Locale {
 	}
 
 	public static boolean canEnter() {
+		System.out.print("Type in the item again to open the door.");
 		int size = Player.inventory.size();
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
@@ -21,10 +22,11 @@ public class SecureLocale extends Locale {
 			for (int i = 0; i < size; i++) {
 				if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
 					System.out.print("Congratulations! You found the key to the 'Nerd Palace'!");
+					TextAdventure.endGame();
 				}
 			}
 		}
-		if (Player.playerLocation != 9) {
+		else {
 			for (int i = 0; i < size; i++) {
 				if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
 					System.out.print("This item cannot be used here!");;

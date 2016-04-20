@@ -14,6 +14,7 @@ public class Player {
 	static ArrayList<Item> inventory = new ArrayList<>();
 	static int score = 0;
 	static int actionCount = 10;
+	static int passwordCount = 5;
 
 	// will check to see if the player has a map in the inventory
 	public static boolean hasMap() {
@@ -36,16 +37,16 @@ public class Player {
 			{ -1, -1, 6, 0 }, // Midrise
 			{ -1, -1, 2, -1 }, // Sheahan
 			{ -1, 9, -1, 4 }, // Lower Townhouses
-			{ 3, -1, -1, -1 },// Lower West Cedar Townhouses
+			{ 3, -1, -1, -1 }, // Lower West Cedar Townhouses
 			{ -1, 1, -1, -1 }, // Hudson River
 			{ 6, -1, -1, -1 }, // Hancock Center
+			{-1, -1, -1, -1 }, // The Magical Wizard's House
 	};
 
 	// the player moves north when the user types "N"
-	@SuppressWarnings("static-access")
 	public static void moveNorth() {
 		if (Map[Player.playerLocation][0] != -1) {
-			TextAdventure.trail.dropCrumb(Player.playerLocation);
+			BreadcrumbTrail.dropCrumb(Player.playerLocation);
 			Player.playerLocation = Map[Player.playerLocation][0];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
@@ -56,10 +57,9 @@ public class Player {
 	}
 
 	// the player moves south when the user types "S"
-	@SuppressWarnings("static-access")
 	public static void moveSouth() {
 		if (Map[Player.playerLocation][1] != -1) {
-			TextAdventure.trail.dropCrumb(Player.playerLocation);
+			BreadcrumbTrail.dropCrumb(Player.playerLocation);
 			Player.playerLocation = Map[Player.playerLocation][1];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
@@ -70,10 +70,9 @@ public class Player {
 	}
 
 	// the player moves east when the user types "E"
-	@SuppressWarnings("static-access")
 	public static void moveEast() {
 		if (Map[Player.playerLocation][2] != -1) {
-			TextAdventure.trail.dropCrumb(Player.playerLocation);
+			BreadcrumbTrail.dropCrumb(Player.playerLocation);
 			Player.playerLocation = Map[Player.playerLocation][2];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
@@ -84,10 +83,9 @@ public class Player {
 	}
 
 	// the player moves west when the user types "W"
-	@SuppressWarnings("static-access")
 	public static void moveWest() {
 		if (Map[Player.playerLocation][3] != -1) {
-			TextAdventure.trail.dropCrumb(Player.playerLocation);
+			BreadcrumbTrail.dropCrumb(Player.playerLocation);
 			Player.playerLocation = Map[Player.playerLocation][3];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
@@ -114,10 +112,9 @@ public class Player {
 	}
 
 	// method for backtracking breadcrumbs
-	@SuppressWarnings("static-access")
 	public static void backtrackLocale(BreadcrumbTrail trail) {
 		if (BreadcrumbTrail.hasNoMoreCrumbs() == false) {
-			playerLocation = trail.pickupCrumb();
+			playerLocation = BreadcrumbTrail.pickupCrumb();
 		}
 	}
 }

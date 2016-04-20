@@ -64,9 +64,11 @@ public class TextAdventure {
 					HudsonRiverList), 
 			new SecureLocale("Hancock Center",
 					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.",
-					BlankList, key), };
+					BlankList, key), 
+			new SecureLocale("The Magical Wizard's House",
+					"Home to world famous programmer Matthew Johnson!",
+					BlankList, handbook), };
 
-	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
@@ -86,7 +88,7 @@ public class TextAdventure {
 		Player.promptName();
 
 		// method to call a new Breadcrumb Trail
-		trail.startTrail();
+		BreadcrumbTrail.startTrail();
 
 		// method that begins the game
 		startGame();
@@ -195,6 +197,12 @@ public class TextAdventure {
 				break;
 			}
 
+			else if (Player.playerLocation == 10) {
+				endGame();
+				showCredits();
+				break;
+			}
+			
 			// if the user types in any other keys not mentioned above, it will
 			// print this message
 			else {
@@ -227,6 +235,24 @@ public class TextAdventure {
 		System.out.println(
 				"As of now, you are only allowed to backtrack a maximum of ten times before the rats eat all the breadcrumbs and catch you!");
 		System.out.println("USe your backtracks wisely! The breadcrumbs go away in a short time!");
+	}
+	
+	// the method is called after the user opens Hancock with the key and will precede with the closing of the game
+	public static void endGame() {
+		System.out.println(" However, there is a password one must solve to enter the Hancock Center.");
+		@SuppressWarnings("resource")
+		Scanner inputSource = new Scanner(System.in);
+		String input;
+		input = inputSource.nextLine();
+		if (input.equals("Matthew Johnson")) {
+			Player.playerLocation = 10;
+			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
+					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
+		}
+		if (!input.equals("Matthew Johnson")) {
+			System.out.print("That is not the correct password to enter! \nBetter get it right soon or else...");
+		}
 	}
 
 }
