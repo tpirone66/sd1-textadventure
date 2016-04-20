@@ -43,6 +43,7 @@ public class LimitedUseItem extends Item {
 				((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining--;
 				System.out.println("You used the " + input);
 				System.out.println("Uses remaining: " + usesRemaining);
+				Player.actionCount = Player.actionCount + 1;
 			}
 		}
 		if (text == true) {
