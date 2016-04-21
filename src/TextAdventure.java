@@ -64,10 +64,11 @@ public class TextAdventure {
 					HudsonRiverList), 
 			new SecureLocale("Hancock Center",
 					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.",
-					BlankList, key), 
+					BlankList, key),
 			new SecureLocale("The Magical Wizard's House",
 					"Home to world famous programmer Matthew Johnson!",
-					BlankList, handbook), };
+					BlankList, handbook)
+	};
 
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
@@ -196,12 +197,6 @@ public class TextAdventure {
 				showCredits();
 				break;
 			}
-
-			else if (Player.playerLocation == 10) {
-				endGame();
-				showCredits();
-				break;
-			}
 			
 			// if the user types in any other keys not mentioned above, it will
 			// print this message
@@ -223,8 +218,8 @@ public class TextAdventure {
 
 	//this method will show the credits at the end of the game or when the user quits
 	private static void showCredits() {
-		System.out.println("Thank you for playing this game!");
-		System.out.println("Please come back soon!\n");
+		System.out.println("\nThank you for playing this game!");
+		System.out.println("\nPlease come back soon!\n");
 		System.out.println("Trevor Pirone Copyright 2016");
 	}
 
@@ -234,7 +229,7 @@ public class TextAdventure {
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
 		System.out.println(
 				"As of now, you are only allowed to backtrack a maximum of ten times before the rats eat all the breadcrumbs and catch you!");
-		System.out.println("USe your backtracks wisely! The breadcrumbs go away in a short time!");
+		System.out.println("Use your backtracks wisely! The breadcrumbs go away in a short time!");
 	}
 	
 	// the method is called after the user opens Hancock with the key and will precede with the closing of the game
@@ -244,14 +239,27 @@ public class TextAdventure {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		input = inputSource.nextLine();
+		// the user must type in the correct password to enter Hancock into the wizard's house
 		if (input.equals("Matthew Johnson")) {
 			Player.playerLocation = 10;
+			System.out.print("\nCongratulations! You were able to enter into the 'Nerd's Palace'!");
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
+			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+					+ locale[Player.playerLocation].getLocationDescription());
+			System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " +
+					Player.name + ". I would really appreciate it if you could give me the handbook in your inventory!");
 		}
+		// the user has a limited number of passwords to enter before the rats come
 		if (!input.equals("Matthew Johnson")) {
 			System.out.print("That is not the correct password to enter! \nBetter get it right soon or else...");
+			Player.passwordCount = Player.passwordCount - 1;
+		}
+		// if the user does not enter the correct password in 5 tries, the game will come to an end
+		if (!input.equals("Matthew Johnson") && Player.passwordCount == 0) {
+			System.out.print("\nYou took too long to get the correct password. The hungry rats caught up to you!");
+			System.out.print("\nGAME OVER!");
+			showCredits();
+			System.exit(0);
 		}
 	}
 
