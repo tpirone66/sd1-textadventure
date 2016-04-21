@@ -248,21 +248,22 @@ public class TextAdventure {
 					+ locale[Player.playerLocation].getLocationDescription());
 			System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " +
 					Player.name + ". I would really appreciate it if you could give me the handbook in your inventory!");
-			if (input.equalsIgnoreCase("u") && Player.hasHandbook()== true && Player.playerLocation == 10) {
-				System.out.print("Matthew Johnson: Thank you for returning my precious handbook to me!");
-				System.out.print("\nMatthew Johnson: Those rats thought they could just take my book without any punishment!");
-				System.out.print("\nMatthew Johnson: You definitely deserve a good reward for this!");
-				System.out.print("\nMatthew Johnson: Here is your reward!");
-				Player.score = Player.score + 10;
-				System.out.print("\nScore: " + Player.score);
-				showCredits();
-				System.exit(0);
 			}
-		}
 		// prints out a statement if the user does not have the password
 		if (!input.equals("Matthew Johnson")) {
 			System.out.print("That is not the correct password to enter! \nThere has to be some kind of clue somewhere...");
 		}
 	}
+
+	public static void victoryMessage() {
+			System.out.print("Matthew Johnson: Thank you for returning my precious handbook to me!");
+			System.out.print("\nMatthew Johnson: Those rats thought they could just take my book without any punishment!");
+			System.out.print("\nMatthew Johnson: You definitely deserve a good reward for this!");
+			System.out.print("\nMatthew Johnson: Here is your reward!");
+			Player.score = Player.score + 10;
+			System.out.print("\nScore: " + Player.score);
+			showCredits();
+			System.exit(0);
+		}
 
 }

@@ -65,6 +65,9 @@ public class LimitedUseItem extends Item {
 			if (input.equalsIgnoreCase("Handbook")){
 				System.out.println("You used the " + input);
 			}
+			if (input.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == true) {
+				TextAdventure.victoryMessage();
+			}
 			if (input.equalsIgnoreCase("Key") && Player.playerLocation != 9){
 				System.out.println("You cannot use the " + input + "here!");
 			}
