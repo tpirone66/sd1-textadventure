@@ -248,18 +248,20 @@ public class TextAdventure {
 					+ locale[Player.playerLocation].getLocationDescription());
 			System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " +
 					Player.name + ". I would really appreciate it if you could give me the handbook in your inventory!");
+			if (input.equalsIgnoreCase("u") && Player.hasHandbook()== true && Player.playerLocation == 10) {
+				System.out.print("Matthew Johnson: Thank you for returning my precious handbook to me!");
+				System.out.print("\nMatthew Johnson: Those rats thought they could just take my book without any punishment!");
+				System.out.print("\nMatthew Johnson: You definitely deserve a good reward for this!");
+				System.out.print("\nMatthew Johnson: Here is your reward!");
+				Player.score = Player.score + 10;
+				System.out.print("\nScore: " + Player.score);
+				showCredits();
+				System.exit(0);
+			}
 		}
-		// the user has a limited number of passwords to enter before the rats come
+		// prints out a statement if the user does not have the password
 		if (!input.equals("Matthew Johnson")) {
-			System.out.print("That is not the correct password to enter! \nBetter get it right soon or else...");
-			Player.passwordCount = Player.passwordCount - 1;
-		}
-		// if the user does not enter the correct password in 5 tries, the game will come to an end
-		if (!input.equals("Matthew Johnson") && Player.passwordCount == 0) {
-			System.out.print("\nYou took too long to get the correct password. The hungry rats caught up to you!");
-			System.out.print("\nGAME OVER!");
-			showCredits();
-			System.exit(0);
+			System.out.print("That is not the correct password to enter! \nThere has to be some kind of clue somewhere...");
 		}
 	}
 

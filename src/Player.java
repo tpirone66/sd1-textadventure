@@ -26,6 +26,17 @@ public class Player {
 		}
 		return false;
 	}
+	
+	// will check to see if the player has a handbook in the inventory
+	public static boolean hasHandbook() {
+		int size = inventory.size();
+		for (int i = 0; i < size; i++) {
+			if (inventory.get(i).equals(TextAdventure.handbook)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	// navigation matrix map
 	static int[][] Map = {
@@ -117,4 +128,5 @@ public class Player {
 			playerLocation = BreadcrumbTrail.pickupCrumb();
 		}
 	}
+
 }

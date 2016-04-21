@@ -27,51 +27,55 @@ public class LimitedUseItem extends Item {
 		/** @param input
 		 * 
 		 */
-		if (!foundItem(input)) {
+		if (!foundItem(input) && text == false) {
 			System.out.println("You don't have the " + input);
 			return;
+		}
+		if (text == true) {
+			System.out.print("No such item seems to exist, " + Player.name + ".");
 		}
 		/*
 		 * checks for limited use item which as of now is only the apple once an
 		 * item has expended all of its uses, it disappears from the game
 		 */
-		if (input.equals("apple")) {
+		if (input.equalsIgnoreCase("apple")) {
 			if (((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining <= 0) {
 				System.out.print("You cannot use this item anymore!");
 				Player.inventory.remove(findItem(input));
-			} else {
+			} 
+			else {
 				((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining--;
 				System.out.println("You used the " + input);
 				System.out.println("Uses remaining: " + usesRemaining);
 				Player.actionCount = Player.actionCount + 1;
 			}
 		}
-		if (text == true) {
-			System.out.print("No such item seems to exist, " + Player.name + ".");
-		}
 		// alternative way to print to the map instead of using the map command
 		else if (foundItem(input)) {
-			if (input.equals("map")) {
+			if (input.equalsIgnoreCase("map")) {
 				Item.containsMap();
-			} 
-		// if the player is at Hancock and uses the key, it will call the canEnter() method
-			else if (foundItem(input)) {
-				if (input.equals("key") && Player.playerLocation == 9) {
-					SecureLocale.canEnter();
-				}
 			}
-			else {
+		// if the player is at Hancock and uses the key, it will call the canEnter() method
+			if (input.equalsIgnoreCase("key") && Player.playerLocation == 9) {
+				SecureLocale.canEnter();
+			}
+			if (input.equalsIgnoreCase("Liquid Silicone Dagger")){
 				System.out.println("You used the " + input);
+			}
+			if (input.equalsIgnoreCase("Handbook")){
+				System.out.println("You used the " + input);
+			}
+			if (input.equalsIgnoreCase("Key") && Player.playerLocation != 9){
+				System.out.println("You cannot use the " + input + "here!");
 			}
 		}
 	}
 
-	// this method checks to see if what the user typed in appears in the
-	// inventory or game
+	// this method checks to see if what the user typed in appears in the inventory or game
 	public static boolean foundItem(String input) {
 		int size = Player.inventory.size();
 		for (int i = 0; i < size; i++) {
-			if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
+			if (Player.inventory.get(i).item.equalsIgnoreCase(input)) {
 				return true;
 			}
 		}
@@ -85,7 +89,7 @@ public class LimitedUseItem extends Item {
 	public static int findItem(String input) {
 		int size = Player.inventory.size();
 		for (int i = 0; i < size; i++) {
-			if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
+			if (Player.inventory.get(i).item.equalsIgnoreCase(input)) {
 				return i;
 			}
 		}

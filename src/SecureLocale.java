@@ -18,9 +18,9 @@ public class SecureLocale extends Locale {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		input = inputSource.nextLine();
-		if (Player.playerLocation == 9) {
+		if (Player.playerLocation == 9 && input.toLowerCase().equals("key")) {
 			for (int i = 0; i < size; i++) {
-				if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
+				if (Player.inventory.get(i).item.toLowerCase().equals("key")) {
 					System.out.print("Congratulations! You found the key to the 'Nerd Palace'!");
 					TextAdventure.endGame();
 				}

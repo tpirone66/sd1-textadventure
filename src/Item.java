@@ -35,6 +35,7 @@ public class Item {
 		System.out.println("Press I to view your inventory.");
 		System.out.println("Press D to drop an item from your inventory.");
 		System.out.println("Press B to backtrack to a previous location.");
+		System.out.println("Press G to give an item.");
 		System.out.println("Type 'Score' to display the score.");
 	}
 
@@ -192,12 +193,11 @@ public class Item {
 		System.out.println("              	 -----------------------------                                  ");
 	}
 
-	// method checks to see if the item the user found in the location exists
-	// there
+	// method checks to see if the item the user found in the location exists there
 	public static int findItemInList(String input, ArrayList<Item> items) {
 		int size = items.size();
 		for (int i = 0; i < size; i++) {
-			if (items.get(i).item.toLowerCase().equals(input)) {
+			if (items.get(i).item.equalsIgnoreCase(input)) {
 				return i;
 			}
 		}
