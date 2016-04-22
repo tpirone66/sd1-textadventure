@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SecureLocale extends Locale {
-	
+
+	// constructor
 	public SecureLocale(String location, String locationDescription, ArrayList<Item> listOfItems, Item requiredItem) {
 		super(location, locationDescription, listOfItems);
 	}
 
+	// this method is called when the user wants to enter Hancock Center
 	public static boolean canEnter() {
 		System.out.print("Type in the item again to open the door.");
 		int size = Player.inventory.size();
@@ -25,11 +27,11 @@ public class SecureLocale extends Locale {
 					TextAdventure.endGame();
 				}
 			}
-		}
-		else {
+		} else {
 			for (int i = 0; i < size; i++) {
 				if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
-					System.out.print("This item cannot be used here!");;
+					System.out.print("This item cannot be used here!");
+					;
 				}
 			}
 		}

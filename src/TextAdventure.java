@@ -34,7 +34,6 @@ public class TextAdventure {
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
 	static Item key = new Item("Key", " I wonder what this could be for?", false, 5);
 	static int currLoc = Player.getPlayerLocation();
-	
 
 	// method for populateArrayList which takes the items and adds them to the
 	// location to be picked up
@@ -60,17 +59,14 @@ public class TextAdventure {
 					LowerTownhouseItemList),
 			new Locale("Lower West Cedar Townhouses",
 					"Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.",
-					BlankList), 
+					BlankList),
 			new Locale("Hudson River",
 					"The best looking polluted river on the planet! All of the Marist students should take a trip to here.",
-					HudsonRiverList), 
+					HudsonRiverList),
 			new SecureLocale("Hancock Center",
-					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.",
-					BlankList, key),
-			new SecureLocale("The Magical Wizard's House",
-					"Home to world famous programmer Matthew Johnson!",
-					BlankList, handbook)
-	};
+					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.", BlankList, key),
+			new SecureLocale("The Magical Wizard's House", "Home to world famous programmer Matthew Johnson!",
+					BlankList, handbook) };
 
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
@@ -174,18 +170,16 @@ public class TextAdventure {
 
 			// what happens when the user types in B
 			else if (input.equalsIgnoreCase("B")) {
-				if (BreadcrumbTrail.currCrumb == -1 && BreadcrumbTrail.hasMoreCrumbs() == true && Player.actionCount == 0) {
+				if (BreadcrumbTrail.currCrumb == -1 && BreadcrumbTrail.hasMoreCrumbs() == true
+						&& Player.actionCount == 0) {
 					System.out.print("Oh no! The rats got you! You are now left to die!");
 					System.out.println(" \nGAME OVER!");
 					showCredits();
 					break;
-				}
-				else if (BreadcrumbTrail.currCrumb == -1 || BreadcrumbTrail.hasMoreCrumbs() == true) {
-					System.out.print(
-							"Oh no! The rats are after you! Be careful with those breadcrumbs of yours!");
+				} else if (BreadcrumbTrail.currCrumb == -1 || BreadcrumbTrail.hasMoreCrumbs() == true) {
+					System.out.print("Oh no! The rats are after you! Be careful with those breadcrumbs of yours!");
 					Player.actionCount = Player.actionCount - 1;
-				}
-				else {
+				} else {
 					Player.backtrackLocale(trail);
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
@@ -199,7 +193,7 @@ public class TextAdventure {
 				showCredits();
 				break;
 			}
-			
+
 			// if the user types in any other keys not mentioned above, it will
 			// print this message
 			else {
@@ -207,7 +201,6 @@ public class TextAdventure {
 			}
 		}
 	}
-
 
 	// prints a greeting message when the user runs the program
 	private static void titleMessage() {
@@ -218,7 +211,8 @@ public class TextAdventure {
 		System.out.println("-----------------------------------");
 	}
 
-	//this method will show the credits at the end of the game or when the user quits
+	// this method will show the credits at the end of the game or when the user
+	// quits
 	private static void showCredits() {
 		System.out.println("\nThank you for playing this game!");
 		System.out.println("\nPlease come back soon!\n");
@@ -233,54 +227,59 @@ public class TextAdventure {
 				"As of now, you are only allowed to backtrack a maximum of ten times before the rats eat all the breadcrumbs and catch you!");
 		System.out.println("Use your backtracks wisely! The breadcrumbs go away in a short time!");
 	}
-	
-	// the method is called after the user opens Hancock with the key and will precede with the closing of the game
+
+	// the method is called after the user opens Hancock with the key and will
+	// precede with the closing of the game
 	public static void endGame() {
 		System.out.println(" However, there is a password one must solve to enter the Hancock Center.");
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		input = inputSource.nextLine();
-		// the user must type in the correct password to enter Hancock into the wizard's house
+		// the user must type in the correct password to enter Hancock into the
+		// wizard's house
 		if (input.equals("Matthew Johnson")) {
 			Player.playerLocation = 10;
 			System.out.print("\nCongratulations! You were able to enter into the 'Nerd's Palace'!");
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 					+ locale[Player.playerLocation].getLocationDescription());
-			System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " +
-					Player.name + ". I would really appreciate it if you could give me the handbook in your inventory!");
-			}
+			System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " + Player.name
+					+ ". I would really appreciate it if you could give me the handbook in your inventory!");
+		}
 		// prints out a statement if the user does not have the password
 		if (!input.equals("Matthew Johnson")) {
-			System.out.print("That is not the correct password to enter! \nThere has to be some kind of clue somewhere...");
+			System.out.print(
+					"That is not the correct password to enter! \nThere has to be some kind of clue somewhere...");
 		}
 	}
 
-	// the victory message will display if the user gives the handbook to the Wizard
+	// the victory message will display if the user gives the handbook to the
+	// Wizard
 	public static void victoryMessage() {
-			System.out.print("Matthew Johnson: Thank you for returning my precious handbook to me!");
-			System.out.print("\nMatthew Johnson: Those rats thought they could just take my book without any punishment!");
-			System.out.print("\nMatthew Johnson: You definitely deserve a good reward for this!");
-			System.out.print("\nMatthew Johnson: Here is your reward!");
-			Player.score = Player.score + 10;
-			System.out.print("\nScore: " + Player.score);
-			showCredits();
-			System.exit(0);
-		}
-	
-	// the failure message will display if the user does not the handbook to give to the Wizard
+		System.out.print("Matthew Johnson: Thank you for returning my precious handbook to me!");
+		System.out.print("\nMatthew Johnson: Those rats thought they could just take my book without any punishment!");
+		System.out.print("\nMatthew Johnson: You definitely deserve a good reward for this!");
+		System.out.print("\nMatthew Johnson: Here is your reward!");
+		Player.score = Player.score + 10;
+		System.out.print("\nScore: " + Player.score);
+		showCredits();
+		System.exit(0);
+	}
+
+	// the failure message will display if the user does not the handbook to
+	// give to the Wizard
 	public static void failureMessage() {
-			System.out.print("Matthew Johnson: It seems that you do not have what I am looking for!");
-			System.out.print("\nMatthew Johnson: The rats still have my book!");
-			System.out.print("\nMatthew Johnson: You need to go find it right this second!");
-			System.out.print("\nMatthew Johnson: Goodbye! Abracadabra!");
-			Player.score = Player.score + -10;
-			System.out.print("\nScore: " + Player.score);
-			Player.playerLocation = 0;
-			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-					+ locale[Player.playerLocation].getLocationDescription());
-		}
+		System.out.print("Matthew Johnson: It seems that you do not have what I am looking for!");
+		System.out.print("\nMatthew Johnson: The rats still have my book!");
+		System.out.print("\nMatthew Johnson: You need to go find it right this second!");
+		System.out.print("\nMatthew Johnson: Goodbye! Abracadabra!");
+		Player.score = Player.score + -10;
+		System.out.print("\nScore: " + Player.score);
+		Player.playerLocation = 0;
+		System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+		System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+				+ locale[Player.playerLocation].getLocationDescription());
+	}
 
 }

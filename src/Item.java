@@ -79,7 +79,7 @@ public class Item {
 		} else if (findItemInList(input, currentRoomList) == -1) {
 			System.out.print("That is not the item you have found!");
 		} else {
-			
+
 		}
 	}
 
@@ -97,8 +97,10 @@ public class Item {
 		/**
 		 * @param item
 		 * 
-		 * @param intemIndex at this point, similar to the take command, the
-		 * drop command will handle all possible outcomes for dropped items
+		 * @param intemIndex
+		 *            at this point, similar to the take command, the drop
+		 *            command will handle all possible outcomes for dropped
+		 *            items
 		 */
 		if (itemIndex >= 0) {
 			item = Player.inventory.get(itemIndex).item;
@@ -124,10 +126,12 @@ public class Item {
 		}
 	}
 
-	/** method for examining an item
-	* @param currLoc
-	* @param currentRoomList
-	*/
+	/**
+	 * method for examining an item
+	 * 
+	 * @param currLoc
+	 * @param currentRoomList
+	 */
 	public static void examineItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
@@ -187,9 +191,10 @@ public class Item {
 		System.out.println("              	 |Lower West Cedar Townhouses|                                  ");
 		System.out.println("              	 -----------------------------                                  ");
 	}
-	
-	/* method checks to see if the user has the handbook in the inventory 
-	 *and will print this if they do
+
+	/*
+	 * method checks to see if the user has the handbook in the inventory and
+	 * will print this if they do
 	 */
 	public static void containsHandbook() {
 		System.out.print("The rats are coming! The rats are coming! -General Cornwallis\n"
@@ -199,12 +204,11 @@ public class Item {
 				+ "\nI always want to make sure that my code is readable to every human."
 				+ "\nI am fluid in many programming languages, but as a wizard, I am magical."
 				+ "\nIt's always good to be alive! Teaching is the best thing going for me..."
-				+ "\nWell, so is writing this message."
-				+ "\n4/20 signed the Wizard"
-				+ "\nETHMTWA HSJNOON");
+				+ "\nWell, so is writing this message." + "\n4/20 signed the Wizard" + "\nETHMTWA HSJNOON");
 	}
 
-	// method checks to see if the item the user found in the location exists there
+	// method checks to see if the item the user found in the location exists
+	// there
 	public static int findItemInList(String input, ArrayList<Item> items) {
 		int size = items.size();
 		for (int i = 0; i < size; i++) {
@@ -214,10 +218,6 @@ public class Item {
 		}
 		return -1;
 
-	}
-	
-	public boolean getDiscovered() {
-		return isDiscovered;
 	}
 
 }

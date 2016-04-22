@@ -9,12 +9,13 @@ import java.util.Stack;
 
 public class BreadcrumbTrail {
 
-	//variables
+	// variables
 	static int[] pickupCrumb = new int[10];
 	static int currCrumb;
 	static int maxSize = 10;
 
-	//starts a new breadcrumb trail where one cannot backtrack at the start of the game
+	// starts a new breadcrumb trail where one cannot backtrack at the start of
+	// the game
 	public static void startTrail() {
 		currCrumb = -1;
 	}

@@ -26,7 +26,7 @@ public class Player {
 		}
 		return false;
 	}
-	
+
 	// will check to see if the player has a handbook in the inventory
 	public static boolean hasHandbook() {
 		int size = inventory.size();
@@ -51,7 +51,7 @@ public class Player {
 			{ 3, -1, -1, -1 }, // Lower West Cedar Townhouses
 			{ -1, 1, -1, -1 }, // Hudson River
 			{ 6, -1, -1, -1 }, // Hancock Center
-			{-1, -1, -1, -1 }, // The Magical Wizard's House
+			{ -1, -1, -1, -1 }, // The Magical Wizard's House
 	};
 
 	// the player moves north when the user types "N"
@@ -106,8 +106,8 @@ public class Player {
 		}
 	}
 
+	// method that will allow character customization
 	public static void promptName() {
-		// method that will allow character customization
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
 		String input;
