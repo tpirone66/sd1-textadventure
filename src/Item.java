@@ -79,7 +79,12 @@ public class Item {
 		} else if (findItemInList(input, currentRoomList) == -1) {
 			System.out.print("That is not the item you have found!");
 		} else {
-
+			System.out.print(
+				"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
+				Player.inventory.add(currentRoomList.get(0));
+				currentRoomList.remove(0);
+				Player.score += itemValue;
+				System.out.print(" Score: " + Player.score);
 		}
 	}
 
