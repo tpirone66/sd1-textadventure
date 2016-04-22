@@ -79,12 +79,7 @@ public class Item {
 		} else if (findItemInList(input, currentRoomList) == -1) {
 			System.out.print("That is not the item you have found!");
 		} else {
-			System.out.print(
-					"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
-			Player.inventory.add(currentRoomList.get(0));
-			currentRoomList.remove(0);
-			Player.score += itemValue;
-			System.out.print(" Score: " + Player.score);
+			
 		}
 	}
 
@@ -192,6 +187,22 @@ public class Item {
 		System.out.println("              	 |Lower West Cedar Townhouses|                                  ");
 		System.out.println("              	 -----------------------------                                  ");
 	}
+	
+	/* method checks to see if the user has the handbook in the inventory 
+	 *and will print this if they do
+	 */
+	public static void containsHandbook() {
+		System.out.print("The rats are coming! The rats are coming! -General Cornwallis\n"
+				+ "\nI love to code. Coding is fun! Coding is all about problem solving!\n"
+				+ "I love to style my code! Ever since coming to Marist, I have been intrigued by coding."
+				+ "\nThere is a problem solving element to coding. I love to code in good coding style."
+				+ "\nI always want to make sure that my code is readable to every human."
+				+ "\nI am fluid in many programming languages, but as a wizard, I am magical."
+				+ "\nIt's always good to be alive! Teaching is the best thing going for me..."
+				+ "\nWell, so is writing this message."
+				+ "\n4/20 signed the Wizard"
+				+ "\nETHMTWA HSJNOON");
+	}
 
 	// method checks to see if the item the user found in the location exists there
 	public static int findItemInList(String input, ArrayList<Item> items) {
@@ -203,6 +214,10 @@ public class Item {
 		}
 		return -1;
 
+	}
+	
+	public boolean getDiscovered() {
+		return isDiscovered;
 	}
 
 }

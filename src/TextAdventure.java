@@ -33,6 +33,8 @@ public class TextAdventure {
 	static Item apple = new LimitedUseItem("Apple", " What a tasty treat!", false, 5, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
 	static Item key = new Item("Key", " I wonder what this could be for?", false, 5);
+	static int currLoc = Player.getPlayerLocation();
+	
 
 	// method for populateArrayList which takes the items and adds them to the
 	// location to be picked up
@@ -73,7 +75,7 @@ public class TextAdventure {
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
-		String input;
+		String input = "";
 
 		// call populateArrayList method
 		populateArrayList(ChampItemList, handbook);
@@ -255,6 +257,7 @@ public class TextAdventure {
 		}
 	}
 
+	// the victory message will display if the user gives the handbook to the Wizard
 	public static void victoryMessage() {
 			System.out.print("Matthew Johnson: Thank you for returning my precious handbook to me!");
 			System.out.print("\nMatthew Johnson: Those rats thought they could just take my book without any punishment!");
@@ -264,6 +267,20 @@ public class TextAdventure {
 			System.out.print("\nScore: " + Player.score);
 			showCredits();
 			System.exit(0);
+		}
+	
+	// the failure message will display if the user does not the handbook to give to the Wizard
+	public static void failureMessage() {
+			System.out.print("Matthew Johnson: It seems that you do not have what I am looking for!");
+			System.out.print("\nMatthew Johnson: The rats still have my book!");
+			System.out.print("\nMatthew Johnson: You need to go find it right this second!");
+			System.out.print("\nMatthew Johnson: Goodbye! Abracadabra!");
+			Player.score = Player.score + -10;
+			System.out.print("\nScore: " + Player.score);
+			Player.playerLocation = 0;
+			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
+					+ locale[Player.playerLocation].getLocationDescription());
 		}
 
 }

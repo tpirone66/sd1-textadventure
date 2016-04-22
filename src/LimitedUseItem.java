@@ -24,16 +24,6 @@ public class LimitedUseItem extends Item {
 		input = inputSource.nextLine();
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
 				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
-		/** @param input
-		 * 
-		 */
-		if (!foundItem(input) && text == false) {
-			System.out.println("You don't have the " + input);
-			return;
-		}
-		if (text == true) {
-			System.out.print("No such item seems to exist, " + Player.name + ".");
-		}
 		/*
 		 * checks for limited use item which as of now is only the apple once an
 		 * item has expended all of its uses, it disappears from the game
@@ -62,15 +52,32 @@ public class LimitedUseItem extends Item {
 			if (input.equalsIgnoreCase("Liquid Silicone Dagger")){
 				System.out.println("You used the " + input);
 			}
-			if (input.equalsIgnoreCase("Handbook")){
-				System.out.println("You used the " + input);
+			if (!foundItem(input) && input.equalsIgnoreCase("Handbook") && 
+					Player.playerLocation == 10 && Player.hasHandbook() == false) {
+				TextAdventure.failureMessage();
 			}
-			if (input.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == true) {
+			if (input.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 
+					&& Player.hasHandbook() == true) {
 				TextAdventure.victoryMessage();
 			}
-			if (input.equalsIgnoreCase("Key") && Player.playerLocation != 9){
-				System.out.println("You cannot use the " + input + "here!");
+			if (input.equalsIgnoreCase("Handbook")){
+				System.out.println("You used the " + input);
+				Item.containsHandbook();
 			}
+			if (input.equalsIgnoreCase("Key") && !(Player.playerLocation == 9 || 
+					Player.playerLocation == 10)){
+				System.out.println("You cannot use the " + input + " here!");
+			}
+		}
+		/** @param input
+		 * 
+		 */
+		if (!foundItem(input) && text == false) {
+			System.out.println("You don't have the " + input);
+			return;
+		}
+		if (text == true) {
+			System.out.print("No such item seems to exist, " + Player.name + ".");
 		}
 	}
 
