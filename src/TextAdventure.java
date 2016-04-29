@@ -18,6 +18,9 @@ import java.io.*;
 @SuppressWarnings("unused")
 
 public class TextAdventure {
+	
+	//git is not focusing right now
+	//I do not understand why
 
 	static ArrayList<Item> ChampItemList = new ArrayList<Item>();
 	static ArrayList<Item> MarianItemList = new ArrayList<Item>();
@@ -29,7 +32,7 @@ public class TextAdventure {
 	// make rest of arrayLists for locales with items
 	// make rest of items
 	static Item handbook = new Item("Handbook", " Everyone should read this!", false, 5);
-	static Item dagger = new Item("Liquid Silicone Dagger", " That's pretty trippy, man!", false, 5);
+	static Item dagger = new LimitedUseItem("Liquid Silicone Dagger", " That's pretty trippy, man!", false, 5, 5);
 	static Item apple = new LimitedUseItem("Apple", " What a tasty treat!", false, 5, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
 	static Item key = new Item("Key", " I wonder what this could be for?", false, 5);
@@ -69,6 +72,7 @@ public class TextAdventure {
 					BlankList, handbook) };
 
 	public static void main(String[] args) {
+		
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
 		String input = "";
@@ -186,7 +190,7 @@ public class TextAdventure {
 							+ locale[Player.playerLocation].getLocationDescription());
 				}
 			}
-
+			
 			// what happens when the user types in Q
 			else if (input.equalsIgnoreCase("Q")) {
 				// closing message for the game
@@ -213,7 +217,7 @@ public class TextAdventure {
 
 	// this method will show the credits at the end of the game or when the user
 	// quits
-	private static void showCredits() {
+	static void showCredits() {
 		System.out.println("\nThank you for playing this game!");
 		System.out.println("\nPlease come back soon!\n");
 		System.out.println("Trevor Pirone Copyright 2016");

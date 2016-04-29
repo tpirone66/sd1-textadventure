@@ -33,11 +33,27 @@ public class LimitedUseItem extends Item {
 			if (((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining <= 0) {
 				System.out.print("You cannot use this item anymore!");
 				Player.inventory.remove(findItem(input));
-			} else {
+			} 
+			else {
 				((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining--;
 				System.out.println("You used the " + input);
 				System.out.println("Uses remaining: " + usesRemaining);
 				Player.actionCount = Player.actionCount + 1;
+			}
+		}
+		if (input.equalsIgnoreCase("Liquid Silicone Dagger")) {
+			if (((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining <= 0) {
+				System.out.print("Oh no, " + Player.name + "! You just died! That was a wild trip!");
+				System.out.print("\nI bet you regret using that item now!");
+				Player.inventory.remove(findItem(input));
+				System.out.print("\nGAME OVER!");
+				TextAdventure.showCredits();
+				System.exit(0);
+			}
+			else {
+				((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining--;
+				System.out.println("You used the " + input);
+				System.out.println("Uses remaining: " + usesRemaining);
 			}
 		}
 		// alternative way to print to the map instead of using the map command
@@ -49,9 +65,6 @@ public class LimitedUseItem extends Item {
 			// canEnter() method
 			if (input.equalsIgnoreCase("key") && Player.playerLocation == 9) {
 				SecureLocale.canEnter();
-			}
-			if (input.equalsIgnoreCase("Liquid Silicone Dagger")) {
-				System.out.println("You used the " + input);
 			}
 			if (!foundItem(input) && input.equalsIgnoreCase("Handbook") && Player.playerLocation == 10
 					&& Player.hasHandbook() == false) {

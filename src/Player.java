@@ -37,6 +37,17 @@ public class Player {
 		}
 		return false;
 	}
+	
+	//will check to see if the player has a key in their inventory
+	public static boolean hasKey() {
+		int size = inventory.size();
+		for (int i = 0; i < size; i++) {
+			if (inventory.get(i).equals(TextAdventure.key)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	// navigation matrix map
 	static int[][] Map = {

@@ -12,7 +12,9 @@ public class SecureLocale extends Locale {
 		super(location, locationDescription, listOfItems);
 	}
 
-	// this method is called when the user wants to enter Hancock Center
+	/* this method is called when the user wants to enter Hancock Center 
+	 * and go into the Wizard's house
+	 */ 
 	public static boolean canEnter() {
 		System.out.print("Type in the item again to open the door.");
 		int size = Player.inventory.size();
