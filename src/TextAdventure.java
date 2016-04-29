@@ -18,9 +18,6 @@ import java.io.*;
 @SuppressWarnings("unused")
 
 public class TextAdventure {
-	
-	//git is not focusing right now
-	//I do not understand why
 
 	static ArrayList<Item> ChampItemList = new ArrayList<Item>();
 	static ArrayList<Item> MarianItemList = new ArrayList<Item>();
