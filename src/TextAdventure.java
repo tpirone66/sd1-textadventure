@@ -194,6 +194,16 @@ public class TextAdventure {
 				showCredits();
 				break;
 			}
+			
+			else if (input.equalsIgnoreCase("Talk")) {
+				if (Player.playerLocation == 10) {
+					System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " + Player.name
+							+ ". I would really appreciate it if you could give me the handbook in your inventory!");
+				}
+				else {
+					System.out.print("\nRats: We're on to you, " + Player.name + "!");
+				}
+			}
 
 			// if the user types in any other keys not mentioned above, it will
 			// print this message
@@ -245,8 +255,6 @@ public class TextAdventure {
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
 					+ locale[Player.playerLocation].getLocationDescription());
-			System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " + Player.name
-					+ ". I would really appreciate it if you could give me the handbook in your inventory!");
 		}
 		// prints out a statement if the user does not have the password
 		if (!input.equals("Matthew Johnson")) {

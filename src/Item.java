@@ -37,6 +37,7 @@ public class Item {
 		System.out.println("Press B to backtrack to a previous location.");
 		System.out.println("Press G to give an item.");
 		System.out.println("Type 'Score' to display the score.");
+		System.out.println("Type 'Talk' to interact with the characters in the game.");
 	}
 
 	// this method shows the inventory
