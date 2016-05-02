@@ -59,4 +59,9 @@ public class Locale {
 	public void addItem(Item i) {
 		itemList.add(i);
 	}
+
+	public boolean isDiscovered() {
+		return false;
+	}
+
 }

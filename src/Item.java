@@ -10,7 +10,7 @@ public class Item {
 	// item variables
 	public String item;
 	public String itemDescription;
-	public static boolean isDiscovered;
+	public boolean isDiscovered;
 	public static int itemValue;
 
 	// constructor for items
@@ -141,22 +141,25 @@ public class Item {
 	public static void examineItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		if (currentRoomList == TextAdventure.BlankList && isDiscovered == true) {
-			System.out.print("It seems that you have examined this area found"
-					+ " there were no items for you to take here already.");
+		boolean isExplored = TextAdventure.locale[Player.playerLocation].isDiscovered();
+		if (currentRoomList == TextAdventure.BlankList && isExplored == true) {
+			System.out.print("It seems that you have examined this area already and realized"
+					+ " that there were no items for you to take here.");
 		}
-		if (currentRoomList != TextAdventure.BlankList && isDiscovered == true) {
+		if (currentRoomList == TextAdventure.BlankList && isExplored == false) {
+			System.out.print("It seems that there are no items for you to take here.");
+			isExplored = true;
+		}
+		if (currentRoomList != TextAdventure.BlankList && isExplored == true) {
 			System.out.print("This area has been explored already and" + " an item has been in this location!");
 		}
-		if (currentRoomList == TextAdventure.BlankList && isDiscovered == false) {
-			System.out.print("It seems that there are no items for you to take here.");
-			isDiscovered = true;
-		}
-		if (currentRoomList != TextAdventure.BlankList && isDiscovered == false) {
+		if (currentRoomList != TextAdventure.BlankList && isExplored == false) {
 			System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
 					+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
-			isDiscovered = true;
+			currentRoomList = TextAdventure.BlankList;
+			isExplored = true;
 		}
+		
 	}
 
 	// this method will show the map if you have it
@@ -224,6 +227,10 @@ public class Item {
 		}
 		return -1;
 
+	}
+	
+	public boolean isDiscovered() {
+		return isDiscovered;
 	}
 
 }

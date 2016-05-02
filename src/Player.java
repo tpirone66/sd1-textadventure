@@ -67,52 +67,52 @@ public class Player {
 
 	// the player moves north when the user types "N"
 	public static void moveNorth() {
-		if (Map[Player.playerLocation][0] != -1) {
-			BreadcrumbTrail.dropCrumb(Player.playerLocation);
-			Player.playerLocation = Map[Player.playerLocation][0];
-			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-		} else if (Map[Player.playerLocation][0] == -1) {
+		if (Map[playerLocation][0] != -1) {
+			BreadcrumbTrail.dropCrumb(playerLocation);
+			playerLocation = Map[playerLocation][0];
+			System.out.print("\nCurrent location: " + playerLocation + ".");
+			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
+					+ TextAdventure.locale[playerLocation].getLocationDescription());
+		} else if (Map[playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
 
 	// the player moves south when the user types "S"
 	public static void moveSouth() {
-		if (Map[Player.playerLocation][1] != -1) {
-			BreadcrumbTrail.dropCrumb(Player.playerLocation);
-			Player.playerLocation = Map[Player.playerLocation][1];
-			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-		} else if (Map[Player.playerLocation][1] == -1) {
+		if (Map[playerLocation][1] != -1) {
+			BreadcrumbTrail.dropCrumb(playerLocation);
+			playerLocation = Map[playerLocation][1];
+			System.out.print("\nCurrent location: " + playerLocation + ".");
+			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
+					+ TextAdventure.locale[playerLocation].getLocationDescription());
+		} else if (Map[playerLocation][1] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
 
 	// the player moves east when the user types "E"
 	public static void moveEast() {
-		if (Map[Player.playerLocation][2] != -1) {
-			BreadcrumbTrail.dropCrumb(Player.playerLocation);
-			Player.playerLocation = Map[Player.playerLocation][2];
-			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-		} else if (Map[Player.playerLocation][2] == -1) {
+		if (Map[playerLocation][2] != -1) {
+			BreadcrumbTrail.dropCrumb(playerLocation);
+			playerLocation = Map[playerLocation][2];
+			System.out.print("\nCurrent location: " + playerLocation + ".");
+			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
+					+ TextAdventure.locale[playerLocation].getLocationDescription());
+		} else if (Map[playerLocation][2] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
 
 	// the player moves west when the user types "W"
 	public static void moveWest() {
-		if (Map[Player.playerLocation][3] != -1) {
-			BreadcrumbTrail.dropCrumb(Player.playerLocation);
-			Player.playerLocation = Map[Player.playerLocation][3];
-			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
-		} else if (Map[Player.playerLocation][3] == -1) {
+		if (Map[playerLocation][3] != -1) {
+			BreadcrumbTrail.dropCrumb(playerLocation);
+			playerLocation = Map[playerLocation][3];
+			System.out.print("\nCurrent location: " + playerLocation + ".");
+			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
+					+ TextAdventure.locale[playerLocation].getLocationDescription());
+		} else if (Map[playerLocation][3] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -130,7 +130,7 @@ public class Player {
 
 	// method that returns the player's location
 	public static int getPlayerLocation() {
-		return Player.playerLocation;
+		return playerLocation;
 	}
 
 	// method for backtracking breadcrumbs
