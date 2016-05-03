@@ -33,7 +33,6 @@ public class SecureLocale extends Locale {
 			for (int i = 0; i < size; i++) {
 				if (Player.inventory.get(i).item.toLowerCase().equals(input)) {
 					System.out.print("This item cannot be used here!");
-					;
 				}
 			}
 		}

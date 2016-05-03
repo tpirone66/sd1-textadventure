@@ -60,7 +60,7 @@ public class Locale {
 		itemList.add(i);
 	}
 
-	public boolean isDiscovered() {
+	public boolean isDiscovered(ArrayList<Item> Item) {
 		return false;
 	}
 

@@ -11,10 +11,9 @@ public class Item {
 	public String item;
 	public String itemDescription;
 	public boolean isDiscovered;
-	public static int itemValue;
+	public int itemValue;
 
 	// constructor for items
-	@SuppressWarnings("static-access")
 	public Item(String item, String itemDescription, boolean isDiscovered, int itemValue) {
 		this.item = item;
 		this.itemDescription = itemDescription;
@@ -58,6 +57,7 @@ public class Item {
 	public static void takeItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+		int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
 		System.out.println("What item would you like to take?");
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
@@ -82,9 +82,10 @@ public class Item {
 		} else {
 			System.out.print(
 				"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
+				Player.score += itemValue;
 				Player.inventory.add(currentRoomList.get(0));
 				currentRoomList.remove(0);
-				Player.score += itemValue;
+				currentRoomList = TextAdventure.BlankList;
 				System.out.print(" Score: " + Player.score);
 		}
 	}
@@ -127,7 +128,7 @@ public class Item {
 			System.out.println("You dropped " + item + "!" + " I would advise you to pick it up.");
 			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
 			TextAdventure.locale[currLoc].addItem(droppedItem);
-			Player.score -= itemValue;
+			Player.score -= TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
 			System.out.print("Score: " + Player.score);
 		}
 	}
@@ -141,14 +142,11 @@ public class Item {
 	public static void examineItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		boolean isExplored = TextAdventure.locale[Player.playerLocation].isDiscovered();
-		if (currentRoomList == TextAdventure.BlankList && isExplored == true) {
-			System.out.print("It seems that you have examined this area already and realized"
-					+ " that there were no items for you to take here.");
-		}
-		if (currentRoomList == TextAdventure.BlankList && isExplored == false) {
-			System.out.print("It seems that there are no items for you to take here.");
-			isExplored = true;
+		boolean isExplored = TextAdventure.locale[Player.playerLocation].isDiscovered(currentRoomList);
+		isExplored = false;
+		if (isExplored == true) {
+		System.out.print("It seems that you have examined this area already and realized"
+				+ " that there were no items for you to take here.");
 		}
 		if (currentRoomList != TextAdventure.BlankList && isExplored == true) {
 			System.out.print("This area has been explored already and" + " an item has been in this location!");
@@ -159,7 +157,10 @@ public class Item {
 			currentRoomList = TextAdventure.BlankList;
 			isExplored = true;
 		}
-		
+		if (currentRoomList == TextAdventure.BlankList) {
+			System.out.print("It seems that there are no items for you to take here.");
+			isExplored = true;
+		}
 	}
 
 	// this method will show the map if you have it
@@ -231,6 +232,10 @@ public class Item {
 	
 	public boolean isDiscovered() {
 		return isDiscovered;
+	}
+	
+	public int itemValue() {
+		return itemValue;
 	}
 
 }
