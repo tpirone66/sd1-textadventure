@@ -51,54 +51,66 @@ public class Item {
 			}
 		}
 	}
+	
+	//method for taking an item
+	public static void takeItem() {
+		int currLoc = Player.getPlayerLocation();
+		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+		String input = "";
+		String tempString = input.split(" ", 2)[0];
+		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
+		if (currentRoomList.isEmpty()) {
+			System.out.println("There is nothing to take.");
+		}
+		else if (!(currentRoomList.isEmpty()) && !(input.equals(!tempString.equals(!text)))) {
+			System.out.print("No such item exists, " + Player.name + "!");
+		}
+		else if (!(currentRoomList.isEmpty())){
+			int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
+			System.out.print("You obtained " + currentRoomList.get(0).item + "!");
+			Player.score += itemValue;
+			Player.inventory.add(currentRoomList.get(0));
+			currentRoomList.remove(0);
+			System.out.print(" Score: " + Player.score);
+		}
+		
+	}
 
-	// method for taking an item
-	public static void takeItem(String itemName) { // add a parameter to hold the item name
+
+	// method for prompt taking an item
+	public static void promptTakeItem() { // add a parameter to hold the item name
 			// in here, check if item name is null, if so then do your prompt magic
 			//          if not, then use that item name instead of prompting
 			int currLoc = Player.getPlayerLocation();
 			ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-			int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
-			if (itemName == null) {
-				System.out.println("What item would you like to take?");
-				@SuppressWarnings("resource")
-				Scanner inputSource = new Scanner(System.in);
-				String input;
-				input = inputSource.nextLine();
-				/*
-				 * after the user decides which item they take, this part of the code
-				 * deciphers based off of the user's input what the game decides to do
-				 * when handling a variety of situations with taking items
-				 */
-				boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
-						|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
-				if (currentRoomList.size() == 0) {
-					System.out.println("There is nothing to take.");
-				} else if (currentRoomList != null && currentRoomList.isEmpty()) {
-					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-				} else if (text == true) {
-					System.out.print("No such item exists!");
-					return;
-				} else if (findItemInList(input, currentRoomList) == -1) {
-					System.out.print("That is not the item you have found!");
-				} else {
-					System.out.print(
-						"You obtained " + currentRoomList.get(0).item + "!");
-						Player.score += itemValue;
-						Player.inventory.add(currentRoomList.get(0));
-						currentRoomList.remove(0);
-						//currentRoomList = null;
-						System.out.print(" Score: " + Player.score);
-				}
-			}
-			else {
+			System.out.println("What item would you like to take?");
+			@SuppressWarnings("resource")
+			Scanner inputSource = new Scanner(System.in);
+			String input = "";
+			input = inputSource.nextLine();
+			/*
+			 * after the user decides which item they take, this part of the code
+			 * deciphers based off of the user's input what the game decides to do
+			 * when handling a variety of situations with taking items
+			 */
+			boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+					|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
+			if (currentRoomList.size() == 0) {
+				System.out.println("There is nothing to take.");
+			} else if (text == true) {
+				System.out.print("No such item exists, " + Player.name + "!");
+				return;
+			} else if (findItemInList(input, currentRoomList) == -1) {
+				System.out.print("That is not the item you have found!");
+			} else {
+				int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
 				System.out.print(
-						"You obtained " + currentRoomList.get(0).item + "!");
-						Player.score += itemValue;
-						Player.inventory.add(currentRoomList.get(0));
-						currentRoomList.remove(0);
-						//currentRoomList = null;
-						System.out.print(" Score: " + Player.score);
+					"You obtained " + currentRoomList.get(0).item + "!");
+					Player.score += itemValue;
+					Player.inventory.add(currentRoomList.get(0));
+					currentRoomList.remove(0);
+					System.out.print(" Score: " + Player.score);
 			}
 	}
 
@@ -219,7 +231,7 @@ public class Item {
 				+ "\nI always want to make sure that my code is readable to every human."
 				+ "\nI am fluid in many programming languages, but as a wizard, I am magical."
 				+ "\nIt's always good to be alive! Teaching is the best thing going for me..."
-				+ "\nWell, so is writing this message." + "\n4/20 signed the Wizard" + "\nETHMTWA HSJNOON");
+				+ "\nWell, so is writing this message." + "\n4/20 signed the Wizard" + "\nethMtwa hsJnoon");
 	}
 
 	// method checks to see if the item the user found in the location exists
@@ -242,5 +254,5 @@ public class Item {
 	public int itemValue() {
 		return itemValue;
 	}
-
+	
 }

@@ -100,14 +100,15 @@ public class TextAdventure {
 		while (true) {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
-			String parts[] = input.split(" ", 2);
-			String string1 = parts[0];
-			String string2 = parts[1];
+			boolean take = input.startsWith("T") || input.startsWith("t"); 
+			/*String[] inputParts = input.split(" ", 2);
+			String part1 = inputParts[0];
+			String part2 = inputParts[1];*/
 			
 			// you have the user input string, now split it into two parts
 
 			// what happens when the user types in H
-			if (string1.equalsIgnoreCase("H") && string2 == null) {
+			if (input.equalsIgnoreCase("H")) {
 				Item.showHelp();
 			}
 
@@ -132,19 +133,16 @@ public class TextAdventure {
 			}
 
 			// what happens when the user types in T
-			else if (parts[0] == "T") {
-				if (parts.length > 1) {
-					parts[1] = input;
-					Item.takeItem(TextAdventure.locale[Player.playerLocation].getItemList().get(0).item);
-				}
-				else {
-					parts[1] = null;
-					Item.takeItem(TextAdventure.locale[Player.playerLocation].getItemList().get(0).item);
-				}
-				// next, check if the input parts array has another element (check the length)
-				// if it does, then get that second element and pass it into your takeItem method
-				// if not, the just pass null into the takeItem method
+			else if (input.equalsIgnoreCase("T")) {
+				Item.promptTakeItem();
 			}
+			
+			//what happens when the users types in T and some item name afterwards
+			else if (take && input.split(" ", 2).length >= 1) {
+				String tempString = input.split(" ", 2)[0];
+				Item.takeItem();
+			}
+				
 			// what happens when the user types in U
 			else if (input.equalsIgnoreCase("U")) {
 				LimitedUseItem.useItem();
