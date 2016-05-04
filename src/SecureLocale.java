@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class SecureLocale extends Locale {
 
 	// constructor
-	public SecureLocale(String location, String locationDescription, ArrayList<Item> listOfItems, Item requiredItem) {
-		super(location, locationDescription, listOfItems);
+	public SecureLocale(String location, String locationDescription, ArrayList<Item> listOfItems, Item requiredItem, boolean hasVisited) {
+		super(location, locationDescription, listOfItems, hasVisited);
 	}
 
 	/* this method is called when the user wants to enter Hancock Center 

@@ -14,14 +14,16 @@ public class Locale {
 	public String location;
 	public String locationDescription;
 	ArrayList<Item> itemList = new ArrayList<Item>();
+	public boolean hasVisited;
 
 	/*
-	 * Locale constructor with four parameters
+	 * Locale constructor with five parameters
 	 */
-	public Locale(String location, String locationDescription, ArrayList<Item> listOfItems) {
+	public Locale(String location, String locationDescription, ArrayList<Item> listOfItems, boolean hasVisited) {
 		this.location = location;
 		this.locationDescription = locationDescription;
 		this.itemList = listOfItems;
+		this.hasVisited = hasVisited;
 	}
 
 	/**
@@ -58,6 +60,10 @@ public class Locale {
 	// adds item to the location when the game starts
 	public void addItem(Item i) {
 		itemList.add(i);
+	}
+	
+	public boolean getHasVisited() {
+		return hasVisited;
 	}
 
 	public boolean isDiscovered(ArrayList<Item> Item) {

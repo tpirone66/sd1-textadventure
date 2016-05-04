@@ -34,7 +34,6 @@ public class Item {
 		System.out.println("Press I to view your inventory.");
 		System.out.println("Press D to drop an item from your inventory.");
 		System.out.println("Press B to backtrack to a previous location.");
-		System.out.println("Press G to give an item.");
 		System.out.println("Type 'Score' to display the score.");
 		System.out.println("Type 'Talk' to interact with the characters in the game.");
 	}
@@ -54,40 +53,53 @@ public class Item {
 	}
 
 	// method for taking an item
-	public static void takeItem() {
-		int currLoc = Player.getPlayerLocation();
-		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
-		System.out.println("What item would you like to take?");
-		@SuppressWarnings("resource")
-		Scanner inputSource = new Scanner(System.in);
-		String input;
-		input = inputSource.nextLine();
-		/*
-		 * after the user decides which item they take, this part of the code
-		 * deciphers based off of the user's input what the game decides to do
-		 * when handling a variety of situations with taking items
-		 */
-		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
-				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
-		if (currentRoomList.size() == 0) {
-			System.out.println("There is nothing to take.");
-		} else if (currentRoomList != null && currentRoomList.isEmpty()) {
-			System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
-		} else if (text == true) {
-			System.out.print("No such item exists!");
-			return;
-		} else if (findItemInList(input, currentRoomList) == -1) {
-			System.out.print("That is not the item you have found!");
-		} else {
-			System.out.print(
-				"You obtained " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item + "!");
-				Player.score += itemValue;
-				Player.inventory.add(currentRoomList.get(0));
-				currentRoomList.remove(0);
-				currentRoomList = TextAdventure.BlankList;
-				System.out.print(" Score: " + Player.score);
-		}
+	public static void takeItem(String itemName) { // add a parameter to hold the item name
+			// in here, check if item name is null, if so then do your prompt magic
+			//          if not, then use that item name instead of prompting
+			int currLoc = Player.getPlayerLocation();
+			ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+			int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
+			if (itemName == null) {
+				System.out.println("What item would you like to take?");
+				@SuppressWarnings("resource")
+				Scanner inputSource = new Scanner(System.in);
+				String input;
+				input = inputSource.nextLine();
+				/*
+				 * after the user decides which item they take, this part of the code
+				 * deciphers based off of the user's input what the game decides to do
+				 * when handling a variety of situations with taking items
+				 */
+				boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+						|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
+				if (currentRoomList.size() == 0) {
+					System.out.println("There is nothing to take.");
+				} else if (currentRoomList != null && currentRoomList.isEmpty()) {
+					System.out.print("The item is already in the inventory! I guess you're just seeing things now...");
+				} else if (text == true) {
+					System.out.print("No such item exists!");
+					return;
+				} else if (findItemInList(input, currentRoomList) == -1) {
+					System.out.print("That is not the item you have found!");
+				} else {
+					System.out.print(
+						"You obtained " + currentRoomList.get(0).item + "!");
+						Player.score += itemValue;
+						Player.inventory.add(currentRoomList.get(0));
+						currentRoomList.remove(0);
+						//currentRoomList = null;
+						System.out.print(" Score: " + Player.score);
+				}
+			}
+			else {
+				System.out.print(
+						"You obtained " + currentRoomList.get(0).item + "!");
+						Player.score += itemValue;
+						Player.inventory.add(currentRoomList.get(0));
+						currentRoomList.remove(0);
+						//currentRoomList = null;
+						System.out.print(" Score: " + Player.score);
+			}
 	}
 
 	// method for dropping an item
@@ -128,7 +140,7 @@ public class Item {
 			System.out.println("You dropped " + item + "!" + " I would advise you to pick it up.");
 			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
 			TextAdventure.locale[currLoc].addItem(droppedItem);
-			Player.score -= TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
+			Player.score -= currentRoomList.get(0).itemValue();
 			System.out.print("Score: " + Player.score);
 		}
 	}
@@ -142,24 +154,17 @@ public class Item {
 	public static void examineItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		boolean isExplored = TextAdventure.locale[Player.playerLocation].isDiscovered(currentRoomList);
-		isExplored = false;
-		if (isExplored == true) {
-		System.out.print("It seems that you have examined this area already and realized"
-				+ " that there were no items for you to take here.");
+		boolean isExplored = TextAdventure.locale[Player.playerLocation].getHasVisited();
+		if (currentRoomList.isEmpty()) {
+			if (isExplored == false) {
+				System.out.print("It seems that there are no items for you to take here.");
+			} 
 		}
-		if (currentRoomList != TextAdventure.BlankList && isExplored == true) {
-			System.out.print("This area has been explored already and" + " an item has been in this location!");
-		}
-		if (currentRoomList != TextAdventure.BlankList && isExplored == false) {
-			System.out.print("\nYou found " + TextAdventure.locale[Player.playerLocation].getItemList().get(0).item
-					+ "." + TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemDescription);
-			currentRoomList = TextAdventure.BlankList;
-			isExplored = true;
-		}
-		if (currentRoomList == TextAdventure.BlankList) {
-			System.out.print("It seems that there are no items for you to take here.");
-			isExplored = true;
+		if (!currentRoomList.isEmpty()) {
+			if (isExplored == false) {
+				System.out.print("\nYou found " + currentRoomList.get(0).item
+						+ "." + currentRoomList.get(0).itemDescription);
+			}
 		}
 	}
 

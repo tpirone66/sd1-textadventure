@@ -33,7 +33,7 @@ public class TextAdventure {
 	static Item apple = new LimitedUseItem("Apple", " What a tasty treat!", false, 5, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
 	static Item key = new Item("Key", " I wonder what this could be for?", false, 5);
-	static int currLoc = Player.getPlayerLocation();
+	int currLoc = Player.getPlayerLocation();
 
 	// method for populateArrayList which takes the items and adds them to the
 	// location to be picked up
@@ -44,29 +44,29 @@ public class TextAdventure {
 	// array of locale objects
 	static Locale[] locale = new Locale[] {
 			new Locale("Marist",
-					"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", BlankList),
+					"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", BlankList, false),
 			new Locale("Champagnat", "Champagnat is really loud tonight! Why is there a fire drill every weekend?",
-					ChampItemList),
-			new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", BlankList),
+					ChampItemList, false),
+			new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", BlankList, false),
 			new Locale("Marian", "Marian is home to the Hobbit and the hermits. Sure seems clicky around here.",
-					MarianItemList),
-			new Locale("Midrise", "Midrise is Midrise...yeah...", BlankList),
+					MarianItemList, false),
+			new Locale("Midrise", "Midrise is Midrise...yeah...", BlankList, false),
 			new Locale("Sheahan",
 					"Sheahan is a mysterious place no one knows about because it's so far out there. What is that stench people?",
-					SheahanItemList),
+					SheahanItemList, false),
 			new Locale("Lower Townhouses",
 					"Lower Townhouses are not too shabby to live in. Right behind the world famous 'Nerd Palace'.",
-					LowerTownhouseItemList),
+					LowerTownhouseItemList, false),
 			new Locale("Lower West Cedar Townhouses",
 					"Lower West Cedar Townhouses are for those crazy upperclassmen. They never seem to be in the loop.",
-					BlankList),
+					BlankList, false),
 			new Locale("Hudson River",
 					"The best looking polluted river on the planet! All of the Marist students should take a trip to here.",
-					HudsonRiverList),
+					HudsonRiverList, false),
 			new SecureLocale("Hancock Center",
-					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.", BlankList, key),
+					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.", BlankList, key, false),
 			new SecureLocale("The Magical Wizard's House", "Home to world famous programmer Matthew Johnson!",
-					BlankList, handbook) };
+					BlankList, handbook, false) };
 
 	public static void main(String[] args) {
 		
@@ -100,9 +100,14 @@ public class TextAdventure {
 		while (true) {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
+			String parts[] = input.split(" ", 2);
+			String string1 = parts[0];
+			String string2 = parts[1];
+			
+			// you have the user input string, now split it into two parts
 
 			// what happens when the user types in H
-			if (input.equalsIgnoreCase("H")) {
+			if (string1.equalsIgnoreCase("H") && string2 == null) {
 				Item.showHelp();
 			}
 
@@ -127,10 +132,19 @@ public class TextAdventure {
 			}
 
 			// what happens when the user types in T
-			else if (input.equalsIgnoreCase("T")) {
-				Item.takeItem();
+			else if (parts[0] == "T") {
+				if (parts.length > 1) {
+					parts[1] = input;
+					Item.takeItem(TextAdventure.locale[Player.playerLocation].getItemList().get(0).item);
+				}
+				else {
+					parts[1] = null;
+					Item.takeItem(TextAdventure.locale[Player.playerLocation].getItemList().get(0).item);
+				}
+				// next, check if the input parts array has another element (check the length)
+				// if it does, then get that second element and pass it into your takeItem method
+				// if not, the just pass null into the takeItem method
 			}
-
 			// what happens when the user types in U
 			else if (input.equalsIgnoreCase("U")) {
 				LimitedUseItem.useItem();
