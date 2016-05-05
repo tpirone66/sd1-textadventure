@@ -35,7 +35,7 @@ public class Item {
 		System.out.println("Press D to drop an item from your inventory.");
 		System.out.println("Press B to backtrack to a previous location.");
 		System.out.println("Type 'Score' to display the score.");
-		System.out.println("Type 'Talk' to interact with the characters in the game.");
+		System.out.println("Type 'Speak' to interact with the characters in the game.");
 	}
 
 	// this method shows the inventory
@@ -113,9 +113,38 @@ public class Item {
 					System.out.print(" Score: " + Player.score);
 			}
 	}
-
-	// method for dropping an item
+	
+	//method for dropping an item
 	public static void dropItem() {
+		int currLoc = Player.getPlayerLocation();
+		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
+		String input = "";
+		String tempString = input.split(" ", 2)[0];
+		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
+		int itemIndex = LimitedUseItem.findItem(input);
+		String item = "";
+		if (itemIndex >= 0) {
+			item = Player.inventory.get(itemIndex).item;
+		} else {
+			item = "nothing";
+		}
+		if (text == true) {
+			System.out.println("There is no such thing in the inventory to drop!");
+			return;
+		}
+		if (text == false && !(input.equals(!tempString.equals(!text)))) {
+			System.out.println("You dropped " + item + "!" + " I would advise you to pick it up.");
+			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
+			TextAdventure.locale[currLoc].addItem(droppedItem);
+			Player.score -= currentRoomList.get(0).itemValue();
+			System.out.print("Score: " + Player.score);
+		}
+	}
+	
+
+	// method for prompt dropping an item
+	public static void promptDropItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		System.out.println("What item would you like to drop?");
@@ -254,5 +283,5 @@ public class Item {
 	public int itemValue() {
 		return itemValue;
 	}
-	
+
 }

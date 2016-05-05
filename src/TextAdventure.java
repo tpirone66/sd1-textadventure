@@ -101,6 +101,8 @@ public class TextAdventure {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
 			boolean take = input.startsWith("T") || input.startsWith("t"); 
+			boolean use = input.startsWith("U") || input.startsWith("u");
+			boolean drop = input.startsWith("D") || input.startsWith("d");
 			/*String[] inputParts = input.split(" ", 2);
 			String part1 = inputParts[0];
 			String part2 = inputParts[1];*/
@@ -145,9 +147,15 @@ public class TextAdventure {
 				
 			// what happens when the user types in U
 			else if (input.equalsIgnoreCase("U")) {
-				LimitedUseItem.useItem();
+				LimitedUseItem.promptUseItem();
 			}
 
+			//what happens when the users types in U and some item name afterwards
+			else if (use && input.split(" ", 2).length > 1) {
+				String tempString = input.split(" ", 2)[0];
+				LimitedUseItem.useItem();
+			}
+			
 			// what happens when the user types in X
 			else if (input.equalsIgnoreCase("X")) {
 				Item.examineItem();
@@ -178,9 +186,15 @@ public class TextAdventure {
 
 			// what happens when the user types in D
 			else if (input.equalsIgnoreCase("D")) {
-				Item.dropItem();
+				Item.promptDropItem();
 			}
 
+			//what happens when the users types in D and some item name afterwards
+			else if (drop && input.split(" ", 2).length >= 1) {
+				String tempString = input.split(" ", 2)[0];
+				Item.dropItem();
+			}
+			
 			// what happens when the user types in B
 			else if (input.equalsIgnoreCase("B")) {
 				if (BreadcrumbTrail.currCrumb == -1 && BreadcrumbTrail.hasMoreCrumbs() == true
@@ -207,7 +221,7 @@ public class TextAdventure {
 				break;
 			}
 			
-			else if (input.equalsIgnoreCase("Talk")) {
+			else if (input.equalsIgnoreCase("Speak")) {
 				if (Player.playerLocation == 10) {
 					System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " + Player.name
 							+ ". I would really appreciate it if you could give me the handbook in your inventory!");

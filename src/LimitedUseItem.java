@@ -14,10 +14,85 @@ public class LimitedUseItem extends Item {
 		super(item, itemDescription, isDiscovered, itemValue);
 		this.usesRemaining = usesRemaining;
 	}
-
-	// method for using an item
+	
+	//method for using an item
 	@SuppressWarnings("static-access")
 	public static void useItem() {
+		String input = "";
+		String tempString = input.split(" ", 2)[0];
+		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
+		if (tempString.equals(input.equalsIgnoreCase("apple"))) {
+			if (((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining <= 0) {
+				System.out.print("You cannot use this item anymore!");
+				Player.inventory.remove(findItem(input));
+			} 
+			else {
+				((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining--;
+				System.out.println("You used the " + input);
+				System.out.println("Uses remaining: " + usesRemaining);
+				Player.actionCount = Player.actionCount + 1;
+			}
+		}
+		if (input.equals(tempString.equalsIgnoreCase("liquid silicone dagger"))) {
+			if (((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining <= 0) {
+				System.out.print("Oh no, " + Player.name + "! You just died! That was a wild trip!");
+				System.out.print("\nI bet you regret using that item now!");
+				Player.inventory.remove(findItem(input));
+				System.out.print("\nGAME OVER!");
+				TextAdventure.showCredits();
+				System.exit(0);
+			}
+			else {
+				((LimitedUseItem) Player.inventory.get(findItem(input))).usesRemaining--;
+				System.out.println("You used the " + input);
+				System.out.println("Uses remaining: " + usesRemaining);
+			}
+		}
+		// alternative way to print to the map instead of using the map command
+		else if (foundItem(input)) {
+			if (input.equals(tempString.equalsIgnoreCase("map"))) {
+				Item.containsMap();
+			}
+			// if the player is at Hancock and uses the key, it will call the
+			// canEnter() method
+			if (input.equals(tempString.equalsIgnoreCase("key")) && Player.playerLocation == 9) {
+				SecureLocale.canEnter();
+			}
+			if (!foundItem(input) && input.equals(tempString.equalsIgnoreCase("apple")) && Player.playerLocation == 10
+					&& Player.hasHandbook() == false) {
+				TextAdventure.failureMessage();
+			}
+			if (input.equals(tempString.equalsIgnoreCase("handbook")) && Player.playerLocation == 10 && 
+					Player.hasHandbook() == true) {
+				TextAdventure.victoryMessage();
+			}
+			if (input.equals(tempString.equalsIgnoreCase("handbook"))) {
+				System.out.println("You used the " + input);
+				Item.containsHandbook();
+			}
+			if (input.equals(tempString.equalsIgnoreCase("key")) && !(Player.playerLocation == 9 || 
+					Player.playerLocation == 10)) {
+				System.out.println("You cannot use the " + input + " here!");
+			}
+		}
+		/**
+		 * @param input
+		 * 
+		 */
+		if (!foundItem(input) && text == false) {
+			System.out.println("You don't have the " + input);
+			return;
+		}
+		if (text == true) {
+			System.out.print("No such item seems to exist, " + Player.name + ".");
+		}
+		
+	}
+
+	// method for prompt using an item
+	@SuppressWarnings("static-access")
+	public static void promptUseItem() {
 		System.out.println("What item would you like to use?");
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
