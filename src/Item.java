@@ -56,7 +56,7 @@ public class Item {
 	public static void takeItem(String part2) {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		boolean input = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Liquid Silcone Dagger") ||
+		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger") ||
 				part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
 		if (currentRoomList.isEmpty()) {
 			System.out.println("There is nothing to take.");
@@ -64,10 +64,10 @@ public class Item {
 		else if (findItemList(part2, currentRoomList) == -1) {
 			System.out.print("That is not the item you have found!");
 		}
-		else if (!(currentRoomList.isEmpty()) && input == false) {
+		else if (!(currentRoomList.isEmpty()) && text == false) {
 			System.out.print("No such item exists, " + Player.name + "!");
 		}
-		else if (!(currentRoomList.isEmpty()) && input == true) {
+		else if (!(currentRoomList.isEmpty()) && text == true) {
 			int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
 			System.out.print("You obtained " + currentRoomList.get(0).item + "!");
 			Player.score += itemValue;
@@ -94,7 +94,7 @@ public class Item {
 			 * deciphers based off of the user's input what the game decides to do
 			 * when handling a variety of situations with taking items
 			 */
-			boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+			boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Dagger")
 					|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 			if (currentRoomList.size() == 0) {
 				System.out.println("There is nothing to take.");
@@ -122,7 +122,7 @@ public class Item {
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		String input = "";
 		String tempString = input.split(" ", 2)[0];
-		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Dagger")
 				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 		int itemIndex = LimitedUseItem.findItem(input);
 		String item = "";
@@ -169,7 +169,7 @@ public class Item {
 		} else {
 			item = "nothing";
 		}
-		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
+		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Dagger")
 				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map"));
 		if (text == true) {
 			System.out.println("There is no such thing in the inventory to drop!");

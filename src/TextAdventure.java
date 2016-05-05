@@ -29,7 +29,7 @@ public class TextAdventure {
 	// make rest of arrayLists for locales with items
 	// make rest of items
 	static Item handbook = new Item("Handbook", " Everyone should read this!", false, 5);
-	static Item dagger = new LimitedUseItem("Liquid Silicone Dagger", " That's pretty trippy, man!", false, 5, 5);
+	static Item dagger = new LimitedUseItem("Dagger", " A liquid silicone dagger to be exact! That's pretty trippy, man!", false, 5, 5);
 	static Item apple = new LimitedUseItem("Apple", " What a tasty treat!", false, 5, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
 	static Item key = new Item("Key", " I wonder what this could be for?", false, 5);
@@ -100,9 +100,6 @@ public class TextAdventure {
 		while (true) {
 			System.out.print("\nEnter a command: ");
 			input = inputSource.nextLine();
-			boolean take = input.startsWith("T") || input.startsWith("t"); 
-			boolean use = input.startsWith("U") || input.startsWith("u");
-			boolean drop = input.startsWith("D") || input.startsWith("d");
 			String[] inputParts = input.split(" ", 2);
 			String part1 = inputParts[0];
 			
@@ -147,14 +144,15 @@ public class TextAdventure {
 			}
 				
 			// what happens when the user types in U
-			else if (input.equalsIgnoreCase("U")) {
-				LimitedUseItem.promptUseItem();
-			}
-
-			//what happens when the users types in U and some item name afterwards
-			else if (use && input.split(" ", 2).length > 1) {
-				String tempString = input.split(" ", 2)[0];
-				LimitedUseItem.useItem();
+			else if (part1.equalsIgnoreCase("U")) {
+				if (inputParts.length > 1) {
+					String part2 = inputParts[1];
+					LimitedUseItem.useItem(part2);
+				}
+				else {
+					String part2 = null;
+					LimitedUseItem.promptUseItem();
+				}
 			}
 			
 			// what happens when the user types in X
@@ -191,10 +189,10 @@ public class TextAdventure {
 			}
 
 			//what happens when the users types in D and some item name afterwards
-			else if (drop && input.split(" ", 2).length >= 1) {
+			/*else if (drop && input.split(" ", 2).length >= 1) {
 				String tempString = input.split(" ", 2)[0];
 				Item.dropItem();
-			}
+			}*/
 			
 			// what happens when the user types in B
 			else if (part1.equalsIgnoreCase("B")) {
