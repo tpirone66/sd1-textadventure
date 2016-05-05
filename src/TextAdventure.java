@@ -184,15 +184,16 @@ public class TextAdventure {
 			}
 
 			// what happens when the user types in D
-			else if (input.equalsIgnoreCase("D")) {
-				Item.promptDropItem();
+			else if (part1.equalsIgnoreCase("D")) {
+				if (inputParts.length > 1) {
+					String part2 = inputParts[1];
+					Item.dropItem(part2);
+				}
+				else {
+					String part2 = null;
+					Item.promptDropItem();;
+				}
 			}
-
-			//what happens when the users types in D and some item name afterwards
-			/*else if (drop && input.split(" ", 2).length >= 1) {
-				String tempString = input.split(" ", 2)[0];
-				Item.dropItem();
-			}*/
 			
 			// what happens when the user types in B
 			else if (part1.equalsIgnoreCase("B")) {

@@ -117,25 +117,32 @@ public class Item {
 	}
 	
 	//method for dropping an item
-	public static void dropItem() {
+	public static void dropItem(String part2) {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		String input = "";
-		String tempString = input.split(" ", 2)[0];
-		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Dagger")
-				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
-		int itemIndex = LimitedUseItem.findItem(input);
+		int itemIndex = LimitedUseItem.findItem(part2);
 		String item = "";
+		/**
+		 * @param item
+		 * 
+		 * @param intemIndex
+		 *            at this point, similar to the take command, the drop
+		 *            command will handle all possible outcomes for dropped
+		 *            items
+		 */
 		if (itemIndex >= 0) {
 			item = Player.inventory.get(itemIndex).item;
-		} else {
+		} 
+		else {
 			item = "nothing";
 		}
-		if (text == true) {
+		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger") ||
+				part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
+		if (text == false) {
 			System.out.println("There is no such thing in the inventory to drop!");
 			return;
 		}
-		if (text == false && !(input.equals(!tempString.equals(!text)))) {
+		if (text == true && (currentRoomList == null || currentRoomList.isEmpty())) {
 			System.out.println("You dropped " + item + "!" + " I would advise you to pick it up.");
 			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
 			TextAdventure.locale[currLoc].addItem(droppedItem);
@@ -166,7 +173,8 @@ public class Item {
 		 */
 		if (itemIndex >= 0) {
 			item = Player.inventory.get(itemIndex).item;
-		} else {
+		} 
+		else {
 			item = "nothing";
 		}
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Dagger")
