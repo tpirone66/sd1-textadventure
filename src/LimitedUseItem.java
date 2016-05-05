@@ -58,10 +58,6 @@ public class LimitedUseItem extends Item {
 			if (part2.equalsIgnoreCase("key") && Player.playerLocation == 9) {
 				SecureLocale.canEnter();
 			}
-			if (!foundItem(part2) && part2.equalsIgnoreCase("Handbook") && Player.playerLocation == 10
-					&& Player.hasHandbook() == false) {
-				TextAdventure.failureMessage();
-			}
 			if (part2.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == true) {
 				TextAdventure.victoryMessage();
 			}
@@ -77,9 +73,11 @@ public class LimitedUseItem extends Item {
 		 * @param input
 		 * 
 		 */
-		if (!promptFoundItem(part2) && text == true) {
+		if (!foundItem(part2) && text == true) {
 			System.out.println("You don't have the " + part2 + ", " + Player.name + "!");
-			return;
+			if (part2.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == false) {
+				TextAdventure.failureMessage(); 
+			}
 		}
 		if (text == false) {
 			System.out.print("No such item seems to exist, " + Player.name + ".");
@@ -159,7 +157,9 @@ public class LimitedUseItem extends Item {
 		 */
 		if (!promptFoundItem(input) && text == false) {
 			System.out.println("You don't have the " + input + ", " + Player.name + "!");
-			return;
+			if (input.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == false) {
+				TextAdventure.failureMessage(); 
+			}
 		}
 		if (text == true) {
 			System.out.print("No such item seems to exist, " + Player.name + ".");

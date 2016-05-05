@@ -14,7 +14,6 @@ public class Player {
 	static ArrayList<Item> inventory = new ArrayList<>();
 	static int score = 0;
 	static int actionCount = 10;
-	static int passwordCount = 5;
 
 	// will check to see if the player has a map in the inventory
 	public static boolean hasMap() {

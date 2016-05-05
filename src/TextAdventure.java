@@ -289,8 +289,7 @@ public class TextAdventure {
 		}
 	}
 
-	// the victory message will display if the user gives the handbook to the
-	// Wizard
+	// the victory message will display if the user gives the handbook to the Wizard
 	public static void victoryMessage() {
 		System.out.print("Matthew Johnson: Thank you for returning my precious handbook to me!");
 		System.out.print("\nMatthew Johnson: Those rats thought they could just take my book without any punishment!");
@@ -302,14 +301,13 @@ public class TextAdventure {
 		System.exit(0);
 	}
 
-	// the failure message will display if the user does not the handbook to
-	// give to the Wizard
+	// the failure message will display if the user does not have the handbook to give to the Wizard
 	public static void failureMessage() {
 		System.out.print("Matthew Johnson: It seems that you do not have what I am looking for!");
 		System.out.print("\nMatthew Johnson: The rats still have my book!");
 		System.out.print("\nMatthew Johnson: You need to go find it right this second!");
 		System.out.print("\nMatthew Johnson: Goodbye! Abracadabra!");
-		Player.score = Player.score + -10;
+		Player.score = Player.score - 10;
 		System.out.print("\nScore: " + Player.score);
 		Player.playerLocation = 0;
 		System.out.print("\nCurrent location: " + Player.playerLocation + ".");

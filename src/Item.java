@@ -68,9 +68,8 @@ public class Item {
 			System.out.print("No such item exists, " + Player.name + "!");
 		}
 		else if (!(currentRoomList.isEmpty()) && text == true) {
-			int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
 			System.out.print("You obtained " + currentRoomList.get(0).item + "!");
-			Player.score += itemValue;
+			Player.score += currentRoomList.get(0).itemValue();
 			Player.inventory.add(currentRoomList.get(0));
 			currentRoomList.remove(0);
 			System.out.print(" Score: " + Player.score);
@@ -107,9 +106,8 @@ public class Item {
 				System.out.print("That is not the item you have found!");
 			} 
 			else {
-				int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
 				System.out.print("You obtained " + currentRoomList.get(0).item + "!");
-				Player.score += itemValue;
+				Player.score += currentRoomList.get(0).itemValue();
 				Player.inventory.add(currentRoomList.get(0));
 				currentRoomList.remove(0);
 				System.out.print(" Score: " + Player.score);

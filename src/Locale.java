@@ -58,8 +58,9 @@ public class Locale {
 	}
 
 	// adds item to the location when the game starts
-	public void addItem(Item i) {
+	public Item addItem(Item i) {
 		itemList.add(i);
+		return i;
 	}
 	
 	public boolean getHasVisited() {
