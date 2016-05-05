@@ -53,20 +53,21 @@ public class Item {
 	}
 	
 	//method for taking an item
-	public static void takeItem() {
+	public static void takeItem(String part2) {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		String input = "";
-		String tempString = input.split(" ", 2)[0];
-		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Liquid Silicone Dagger")
-				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
+		boolean input = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Liquid Silcone Dagger") ||
+				part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
 		if (currentRoomList.isEmpty()) {
 			System.out.println("There is nothing to take.");
 		}
-		else if (!(currentRoomList.isEmpty()) && !(input.equals(!tempString.equals(!text)))) {
+		else if (findItemList(part2, currentRoomList) == -1) {
+			System.out.print("That is not the item you have found!");
+		}
+		else if (!(currentRoomList.isEmpty()) && input == false) {
 			System.out.print("No such item exists, " + Player.name + "!");
 		}
-		else if (!(currentRoomList.isEmpty())){
+		else if (!(currentRoomList.isEmpty()) && input == true) {
 			int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
 			System.out.print("You obtained " + currentRoomList.get(0).item + "!");
 			Player.score += itemValue;
@@ -74,7 +75,6 @@ public class Item {
 			currentRoomList.remove(0);
 			System.out.print(" Score: " + Player.score);
 		}
-		
 	}
 
 
@@ -98,19 +98,21 @@ public class Item {
 					|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 			if (currentRoomList.size() == 0) {
 				System.out.println("There is nothing to take.");
-			} else if (text == true) {
+			} 
+			else if (text == true) {
 				System.out.print("No such item exists, " + Player.name + "!");
 				return;
-			} else if (findItemInList(input, currentRoomList) == -1) {
+			} 
+			else if (findItemInList(input, currentRoomList) == -1) {
 				System.out.print("That is not the item you have found!");
-			} else {
+			} 
+			else {
 				int itemValue = TextAdventure.locale[Player.playerLocation].getItemList().get(0).itemValue();
-				System.out.print(
-					"You obtained " + currentRoomList.get(0).item + "!");
-					Player.score += itemValue;
-					Player.inventory.add(currentRoomList.get(0));
-					currentRoomList.remove(0);
-					System.out.print(" Score: " + Player.score);
+				System.out.print("You obtained " + currentRoomList.get(0).item + "!");
+				Player.score += itemValue;
+				Player.inventory.add(currentRoomList.get(0));
+				currentRoomList.remove(0);
+				System.out.print(" Score: " + Player.score);
 			}
 	}
 	
@@ -263,8 +265,8 @@ public class Item {
 				+ "\nWell, so is writing this message." + "\n4/20 signed the Wizard" + "\nethMtwa hsJnoon");
 	}
 
-	// method checks to see if the item the user found in the location exists
-	// there
+	// method checks to see if the item the user found in the location exists there
+	// this method is called in promptTakeItem()
 	public static int findItemInList(String input, ArrayList<Item> items) {
 		int size = items.size();
 		for (int i = 0; i < size; i++) {
@@ -273,7 +275,18 @@ public class Item {
 			}
 		}
 		return -1;
-
+	}
+	
+	// method checks to see if the item the user found in the location exists there
+	// this method is called in takeItem()
+	public static int findItemList(String part2, ArrayList<Item> items) {
+		int size = items.size();
+		for (int i = 0; i < size; i++) {
+			if (items.get(i).item.equalsIgnoreCase(part2)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 	
 	public boolean isDiscovered() {

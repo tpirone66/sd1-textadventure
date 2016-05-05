@@ -103,46 +103,47 @@ public class TextAdventure {
 			boolean take = input.startsWith("T") || input.startsWith("t"); 
 			boolean use = input.startsWith("U") || input.startsWith("u");
 			boolean drop = input.startsWith("D") || input.startsWith("d");
-			/*String[] inputParts = input.split(" ", 2);
+			String[] inputParts = input.split(" ", 2);
 			String part1 = inputParts[0];
-			String part2 = inputParts[1];*/
 			
 			// you have the user input string, now split it into two parts
 
 			// what happens when the user types in H
-			if (input.equalsIgnoreCase("H")) {
+			if (part1.equalsIgnoreCase("H")) {
 				Item.showHelp();
 			}
 
 			// what happens when the user types in N
-			else if (input.equalsIgnoreCase("N")) {
+			else if (part1.equalsIgnoreCase("N")) {
 				Player.moveNorth();
 			}
 
 			// what happens when the user types in S
-			else if (input.equalsIgnoreCase("S")) {
+			else if (part1.equalsIgnoreCase("S")) {
 				Player.moveSouth();
 			}
 
 			// what happens when the user types in E
-			else if (input.equalsIgnoreCase("E")) {
+			else if (part1.equalsIgnoreCase("E")) {
 				Player.moveEast();
 			}
 
 			// what happens when the user types in W
-			else if (input.equalsIgnoreCase("W")) {
+			else if (part1.equalsIgnoreCase("W")) {
 				Player.moveWest();
 			}
 
 			// what happens when the user types in T
-			else if (input.equalsIgnoreCase("T")) {
-				Item.promptTakeItem();
-			}
-			
-			//what happens when the users types in T and some item name afterwards
-			else if (take && input.split(" ", 2).length >= 1) {
-				String tempString = input.split(" ", 2)[0];
-				Item.takeItem();
+			else if (part1.equalsIgnoreCase("T")) {
+				// check if the input parts array has another element (check the length)
+				if (inputParts.length > 1) {
+					String part2 = inputParts[1];
+					Item.takeItem(part2);
+				}
+				else {
+					String part2 = null;
+					Item.promptTakeItem();
+				}
 			}
 				
 			// what happens when the user types in U
@@ -157,12 +158,12 @@ public class TextAdventure {
 			}
 			
 			// what happens when the user types in X
-			else if (input.equalsIgnoreCase("X")) {
+			else if (part1.equalsIgnoreCase("X")) {
 				Item.examineItem();
 			}
 
 			// prints out a map if the user has it by typing M
-			else if (input.equalsIgnoreCase("M") && Player.hasMap() == true) {
+			else if (part1.equalsIgnoreCase("M") && Player.hasMap() == true) {
 				Item.containsMap();
 			}
 
@@ -170,17 +171,17 @@ public class TextAdventure {
 			 * if the user types in M and does not have the map, this will print
 			 * out instead
 			 */
-			else if (input.equalsIgnoreCase("M") && Player.hasMap() == false) {
+			else if (part1.equalsIgnoreCase("M") && Player.hasMap() == false) {
 				System.out.println("I wish I knew where I was right now... -____-");
 			}
 
 			// what happens when the user types in score
-			else if (input.equalsIgnoreCase("Score")) {
+			else if (part1.equalsIgnoreCase("Score")) {
 				System.out.print(Player.score);
 			}
 
 			// what happens when the user types in I
-			else if (input.equalsIgnoreCase("I")) {
+			else if (part1.equalsIgnoreCase("I")) {
 				Item.showInventory();
 			}
 
@@ -196,7 +197,7 @@ public class TextAdventure {
 			}
 			
 			// what happens when the user types in B
-			else if (input.equalsIgnoreCase("B")) {
+			else if (part1.equalsIgnoreCase("B")) {
 				if (BreadcrumbTrail.currCrumb == -1 && BreadcrumbTrail.hasMoreCrumbs() == true
 						&& Player.actionCount == 0) {
 					System.out.print("Oh no! The rats got you! You are now left to die!");
@@ -215,13 +216,13 @@ public class TextAdventure {
 			}
 			
 			// what happens when the user types in Q
-			else if (input.equalsIgnoreCase("Q")) {
+			else if (part1.equalsIgnoreCase("Q")) {
 				// closing message for the game
 				showCredits();
 				break;
 			}
 			
-			else if (input.equalsIgnoreCase("Speak")) {
+			else if (part1.equalsIgnoreCase("Speak")) {
 				if (Player.playerLocation == 10) {
 					System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " + Player.name
 							+ ". I would really appreciate it if you could give me the handbook in your inventory!");
