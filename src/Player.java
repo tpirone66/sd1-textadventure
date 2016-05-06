@@ -41,7 +41,7 @@ public class Player {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @return will return the key if it is in the inventory
 	 */
@@ -73,80 +73,80 @@ public class Player {
 
 	// the player moves north when the user types "N"
 	/**
-	 * @param trail will drop a crumb at the previous locale if the player
-	 * 				wants to backtrack
-	 * if they are able to move north, this method will allow them to do so
-	 * or they will be told that they cannot move that way
+	 * @param trail
+	 *            will drop a crumb at the previous locale if the player wants
+	 *            to backtrack if they are able to move north, this method will
+	 *            allow them to do so or they will be told that they cannot move
+	 *            that way
 	 */
 	public static void moveNorth(BreadcrumbTrail trail) {
 		if (Map[playerLocation][0] != -1) {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][0];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
-			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
-					+ currRoom.getLocationDescription());
-		} 
-		else if (Map[playerLocation][0] == -1) {
+			System.out
+					.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
+		} else if (Map[playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
 
 	// the player moves south when the user types "S"
 	/**
-	 * @param trail will drop a crumb at the previous locale if the player
-	 * 				wants to backtrack
-	 * if they are able to move north, this method will allow them to do so
-	 * or they will be told that they cannot move that way
+	 * @param trail
+	 *            will drop a crumb at the previous locale if the player wants
+	 *            to backtrack if they are able to move north, this method will
+	 *            allow them to do so or they will be told that they cannot move
+	 *            that way
 	 */
 	public static void moveSouth(BreadcrumbTrail trail) {
 		if (Map[playerLocation][1] != -1) {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][1];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
-			System.out.print(" You are now in " + currRoom.getLocation() + "." + " " 
-					+ currRoom.getLocationDescription());
-		} 
-		else if (Map[playerLocation][1] == -1) {
+			System.out
+					.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
+		} else if (Map[playerLocation][1] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
 
 	// the player moves east when the user types "E"
 	/**
-	 * @param trail will drop a crumb at the previous locale if the player
-	 * 				wants to backtrack
-	 * if they are able to move north, this method will allow them to do so
-	 * or they will be told that they cannot move that way
+	 * @param trail
+	 *            will drop a crumb at the previous locale if the player wants
+	 *            to backtrack if they are able to move north, this method will
+	 *            allow them to do so or they will be told that they cannot move
+	 *            that way
 	 */
 	public static void moveEast(BreadcrumbTrail trail) {
 		if (Map[playerLocation][2] != -1) {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][2];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
-			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
-					+ currRoom.getLocationDescription());
-		} 
-		else if (Map[playerLocation][2] == -1) {
+			System.out
+					.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
+		} else if (Map[playerLocation][2] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
 
 	// the player moves west when the user types "W"
 	/**
-	 * @param trail will drop a crumb at the previous locale if the player
-	 * 				wants to backtrack
-	 * if they are able to move north, this method will allow them to do so
-	 * or they will be told that they cannot move that way
+	 * @param trail
+	 *            will drop a crumb at the previous locale if the player wants
+	 *            to backtrack if they are able to move north, this method will
+	 *            allow them to do so or they will be told that they cannot move
+	 *            that way
 	 */
 	public static void moveWest(BreadcrumbTrail trail) {
 		if (Map[playerLocation][3] != -1) {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][3];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
-			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
-					+ currRoom.getLocationDescription());
-		} 
-		else if (Map[playerLocation][3] == -1) {
+			System.out
+					.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
+		} else if (Map[playerLocation][3] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -161,61 +161,61 @@ public class Player {
 		name = input;
 		if (name.equals("Matthew Johnson")) {
 			System.out.print("You're a god! You automatically win the game!");
-			Player.score =  2147483647;
+			Player.score = 2147483647;
 			System.out.print("\nScore: " + Player.score);
 			TextAdventure.showCredits();
 			System.exit(0);
-		}
-		else if (name.equals("Nick Barranco")) {
+		} else if (name.equals("Nick Barranco")) {
 			System.out.print("You're a schmuck! You automatically lose the game!");
 			System.out.print("\nGAME OVER!");
-			Player.score =  -2147483648;
+			Player.score = -2147483648;
 			System.out.print("\nScore: " + Player.score);
 			TextAdventure.showCredits();
 			System.exit(0);
-		}
-		else {
+		} else {
 			System.out.println("Hello, " + name + "!");
 		}
 	}
-	
+
 	// the method is used when the player wants to backtrack
 	/**
-	 * @param trail once a crumb has been dropped, a player has the ability to 
-	 * 				backtrack, but if they run out of crumbs, they will not
-	 * 				be able to backtrack and too many backtracks will cause the player
+	 * @param trail
+	 *            once a crumb has been dropped, a player has the ability to
+	 *            backtrack, but if they run out of crumbs, they will not be
+	 *            able to backtrack and too many backtracks will cause the
+	 *            player
 	 * 
 	 */
 	public static void callBacktrack(BreadcrumbTrail trail) {
 		// the player loses when they backtrack too much
-		if (trail.currCrumb == -1 && trail.hasNoMoreCrumbs() == true
-				&& Player.actionCount == 0) {
+		if (trail.currCrumb == -1 && trail.hasNoMoreCrumbs() == true && Player.actionCount == 0) {
 			System.out.print("Oh no! The rats got you! You are now left to die!");
 			System.out.println(" \nGAME OVER!");
 			TextAdventure.showCredits();
 			System.exit(0);
-		} 
-		// the player cannot backtrack anymore and if they do, this message will print out
+		}
+		// the player cannot backtrack anymore and if they do, this message will
+		// print out
 		else if (trail.currCrumb == -1 || trail.hasMoreCrumbs() == true) {
 			System.out.print("Oh no! The rats are after you! Be careful with those breadcrumbs of yours!");
 			Player.actionCount = Player.actionCount - 1;
-		} 
+		}
 		// the player backtracks as normal
-		else if (trail.currCrumb != -1 && trail.hasNoMoreCrumbs() == false){
+		else if (trail.currCrumb != -1 && trail.hasNoMoreCrumbs() == false) {
 			Player.backtrackLocale(trail);
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
-					+ currRoom.getLocationDescription());
+			System.out.print(" You are now in " + currRoom.getLocation() + "." 
+					+ " " + currRoom.getLocationDescription());
 		}
 	}
-	
+
 	// method for backtracking breadcrumbs
 	public static void backtrackLocale(BreadcrumbTrail trail) {
 		if (trail.hasNoMoreCrumbs() == false) {
 			playerLocation = trail.pickupCrumb();
 		}
 	}
-	
+
 	// method that returns the player's location
 	public static int getPlayerLocation() {
 		return playerLocation;

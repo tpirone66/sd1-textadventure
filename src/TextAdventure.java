@@ -28,7 +28,8 @@ public class TextAdventure {
 	static ArrayList<Item> HudsonRiverList = new ArrayList<Item>();
 	static BreadcrumbTrail trail;
 	static Item handbook = new Item("Handbook", " Everyone should read this!", false, 5);
-	static Item dagger = new LimitedUseItem("Dagger", " A liquid silicone dagger to be exact! That's pretty trippy, man!", false, 5, 5);
+	static Item dagger = new LimitedUseItem("Dagger",
+			" A liquid silicone dagger to be exact! That's pretty trippy, man!", false, 5, 5);
 	static Item apple = new LimitedUseItem("Apple", " What a tasty treat!", false, 5, 5);
 	static Item map = new Item("Map", " Not sure why you did not have one in the first place.", false, 5);
 	static Item key = new Item("Key", " I wonder what this could be for?", false, 5);
@@ -41,9 +42,8 @@ public class TextAdventure {
 	}
 
 	// array of locale objects
-	static Locale[] locale = new Locale[] {
-			new Locale("Marist",
-					"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", BlankList, false),
+	static Locale[] locale = new Locale[] { new Locale("Marist",
+			"Marist is an interesting place. Green grass, lots of partygoers, and walking zombies!", BlankList, false),
 			new Locale("Champagnat", "Champagnat is really loud tonight! Why is there a fire drill every weekend?",
 					ChampItemList, false),
 			new Locale("Leo", "Leo seems like the place where all the rich children live. $$$", BlankList, false),
@@ -63,13 +63,14 @@ public class TextAdventure {
 					"The best looking polluted river on the planet! All of the Marist students should take a trip to here.",
 					HudsonRiverList, false),
 			new SecureLocale("Hancock Center",
-					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.", BlankList, key, false),
+					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.", BlankList, key,
+					false),
 			new SecureLocale("The Magical Wizard's House", "Home to world famous programmer Matthew Johnson!",
 					BlankList, handbook, false) };
 	static Locale currRoom = locale[Player.playerLocation];
 
 	public static void main(String[] args) {
-		
+
 		@SuppressWarnings("resource")
 		Scanner inputSource = new Scanner(System.in);
 		String input = "";
@@ -132,41 +133,40 @@ public class TextAdventure {
 			else if (part1.equalsIgnoreCase("X")) {
 				Item.examineItem();
 			}
-			
+
 			// what happens when the user types in T
 			else if (part1.equalsIgnoreCase("T")) {
-				// check if the input parts array has another element (check the length)
+				// check if the input parts array has another element (check the
+				// length)
 				if (inputParts.length > 1) {
 					String part2 = inputParts[1];
 					Item.takeItem(part2);
-				}
-				else {
+				} else {
 					String part2 = null;
 					Item.promptTakeItem();
 				}
 			}
-				
+
 			// what happens when the user types in U
 			else if (part1.equalsIgnoreCase("U")) {
 				if (inputParts.length > 1) {
 					String part2 = inputParts[1];
 					LimitedUseItem.useItem(part2);
-				}
-				else {
+				} else {
 					String part2 = null;
 					LimitedUseItem.promptUseItem();
 				}
 			}
-			
+
 			// what happens when the user types in D
 			else if (part1.equalsIgnoreCase("D")) {
 				if (inputParts.length > 1) {
 					String part2 = inputParts[1];
 					Item.dropItem(part2);
-				}
-				else {
+				} else {
 					String part2 = null;
-					Item.promptDropItem();;
+					Item.promptDropItem();
+					;
 				}
 			}
 
@@ -175,28 +175,30 @@ public class TextAdventure {
 				if (Player.hasMap() == true) {
 					Item.containsMap();
 				}
-				// this statement will print out if the user does not have the map
+				// this statement will print out if the user does not have the
+				// map
 				else {
 					System.out.println("I wish I knew where I was right now... -____-");
 				}
 			}
-			
+
 			// prints out the handbook if the user has it by typing R
 			else if (part1.equalsIgnoreCase("R")) {
 				if (Player.hasHandbook() == true) {
 					Item.containsHandbook();
 				}
-				// this statement will print out if the user does not have the handbook
+				// this statement will print out if the user does not have the
+				// handbook
 				else {
 					System.out.print("It does not look like there is anything for you to read, " + Player.name + "!");
 				}
 			}
-			
+
 			// what happens when the user types in B
 			else if (part1.equalsIgnoreCase("B")) {
 				Player.callBacktrack(trail);
 			}
-			
+
 			// what happens when the user types in score
 			else if (part1.equalsIgnoreCase("Score")) {
 				System.out.print(Player.score);
@@ -206,20 +208,19 @@ public class TextAdventure {
 			else if (part1.equalsIgnoreCase("I")) {
 				Item.showInventory();
 			}
-			
-			//what happens when the user types in speak
+
+			// what happens when the user types in speak
 			else if (part1.equalsIgnoreCase("Speak")) {
 				// the player speaks to the wizard
 				if (Player.playerLocation == 10) {
 					System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " + Player.name
 							+ ". I would really appreciate it if you could give me the handbook in your inventory!");
-				}
-				else {
+				} else {
 					// the player will speak to the rats
 					System.out.print("\nRats: We're on to you, " + Player.name + "!");
 				}
 			}
-			
+
 			// what happens when the user types in Q
 			else if (part1.equalsIgnoreCase("Q")) {
 				// closing message for the game
@@ -227,7 +228,8 @@ public class TextAdventure {
 				break;
 			}
 
-			// if the user types in any other keys not mentioned above, it will print this message
+			// if the user types in any other keys not mentioned above, it will
+			// print this message
 			else {
 				System.out.print("\nInvalid command!");
 			}
@@ -243,7 +245,8 @@ public class TextAdventure {
 		System.out.println("-----------------------------------");
 	}
 
-	// this method will show the credits at the end of the game or when the user quits
+	// this method will show the credits at the end of the game or when the user
+	// quits
 	static void showCredits() {
 		System.out.println("\nThank you for playing this game!");
 		System.out.println("\nPlease come back soon!\n");
@@ -259,7 +262,8 @@ public class TextAdventure {
 		System.out.println("Use your backtracks wisely! The breadcrumbs go away in a short time!");
 	}
 
-	// the method is called after the user opens Hancock with the key and will precede with the closing of the game
+	// the method is called after the user opens Hancock with the key and will
+	// precede with the closing of the game
 	public static void endGame() {
 		System.out.println(" However, there is a password one must solve to enter the Hancock Center.");
 		@SuppressWarnings("resource")
@@ -277,12 +281,13 @@ public class TextAdventure {
 		}
 		// prints out a statement if the user does not have the password
 		if (!input.equals("Matthew Johnson")) {
-			System.out.print("That is not the correct password to enter! "
-					+ "\nThere has to be some kind of clue somewhere...");
+			System.out.print(
+					"That is not the correct password to enter! " + "\nThere has to be some kind of clue somewhere...");
 		}
 	}
 
-	// the victory message will display if the user gives the handbook to the Wizard
+	// the victory message will display if the user gives the handbook to the
+	// Wizard
 	public static void victoryMessage() {
 		System.out.print("Matthew Johnson: Thank you for returning my precious handbook to me!");
 		System.out.print("\nMatthew Johnson: Those rats thought they could just take my book without any punishment!");
@@ -294,8 +299,10 @@ public class TextAdventure {
 		System.exit(0);
 	}
 
-	/* the failure message will display if the user does not have the handbook to give to the Wizard
-	 * they will also be sent back to the beginning of the game and lose 10 points
+	/*
+	 * the failure message will display if the user does not have the handbook
+	 * to give to the Wizard they will also be sent back to the beginning of the
+	 * game and lose 10 points
 	 */
 	public static void failureMessage() {
 		System.out.print("Matthew Johnson: It seems that you do not have what I am looking for!");
@@ -306,8 +313,7 @@ public class TextAdventure {
 		System.out.print("\nScore: " + Player.score);
 		Player.playerLocation = 0;
 		System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-		System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
-				+ currRoom.getLocationDescription());
+		System.out.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
 	}
 
 }

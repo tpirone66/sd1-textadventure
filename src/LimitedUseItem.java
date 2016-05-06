@@ -14,22 +14,21 @@ public class LimitedUseItem extends Item {
 		super(item, itemDescription, isDiscovered, itemValue);
 		this.usesRemaining = usesRemaining;
 	}
-	
-	//method for using an item
+
+	// method for using an item
 	@SuppressWarnings("static-access")
 	public static void useItem(String part2) {
-		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger") ||
-				part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
+		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger")
+				|| part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
 		/*
-		 * checks for limited use item and once an item
-		 * has expended all of its uses, it disappears from the game
+		 * checks for limited use item and once an item has expended all of its
+		 * uses, it disappears from the game
 		 */
 		if (part2.equalsIgnoreCase("apple")) {
 			if (((LimitedUseItem) Player.inventory.get(findItem(part2))).usesRemaining <= 0) {
 				System.out.print("You cannot use this item anymore!");
 				Player.inventory.remove(findItem(part2));
-			} 
-			else {
+			} else {
 				((LimitedUseItem) Player.inventory.get(findItem(part2))).usesRemaining--;
 				System.out.println("You consumed the " + part2 + " " + Player.name + "! It must taste really good!");
 				System.out.println("Uses remaining: " + usesRemaining);
@@ -44,11 +43,11 @@ public class LimitedUseItem extends Item {
 				System.out.print("\nGAME OVER!");
 				TextAdventure.showCredits();
 				System.exit(0);
-			}
-			else {
+			} else {
 				((LimitedUseItem) Player.inventory.get(promptFindItem(part2))).usesRemaining--;
-				System.out.println("You used the " + part2 + " " + Player.name + "! I would advise that you refrain from"
-						+ " using this item because it has dangerous side effects!");
+				System.out
+						.println("You used the " + part2 + " " + Player.name + "! I would advise that you refrain from"
+								+ " using this item because it has dangerous side effects!");
 				System.out.println("Uses remaining: " + usesRemaining);
 			}
 		}
@@ -57,11 +56,13 @@ public class LimitedUseItem extends Item {
 			if (part2.equalsIgnoreCase("map")) {
 				Item.containsMap();
 			}
-			// if the player is at Hancock and uses the key, it will call the canEnter() method
+			// if the player is at Hancock and uses the key, it will call the
+			// canEnter() method
 			if (part2.equalsIgnoreCase("key") && Player.playerLocation == 9) {
 				SecureLocale.canEnter();
 			}
-			// one of the victory situations is having the handbook and using it in the wizard's house
+			// one of the victory situations is having the handbook and using it
+			// in the wizard's house
 			if (part2.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == true) {
 				TextAdventure.victoryMessage();
 			}
@@ -75,16 +76,16 @@ public class LimitedUseItem extends Item {
 		}
 		if (!foundItem(part2) && text == true) {
 			System.out.println("You don't have the " + part2 + ", " + Player.name + "!");
-			// not exactly a failure, but the wizard will subtract 10 points and put you back at location 0
+			// not exactly a failure, but the wizard will subtract 10 points and
+			// put you back at location 0
 			if (part2.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == false) {
-				TextAdventure.failureMessage(); 
+				TextAdventure.failureMessage();
 			}
 		}
 		if (text == false) {
 			System.out.print("No such item seems to exist, " + Player.name + ".");
 		}
 	}
-		
 
 	// method for prompt using an item
 	@SuppressWarnings("static-access")
@@ -97,15 +98,14 @@ public class LimitedUseItem extends Item {
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Dagger")
 				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 		/*
-		 * checks for limited use item and once an item
-		 * has expended all of its uses, it disappears from the game
+		 * checks for limited use item and once an item has expended all of its
+		 * uses, it disappears from the game
 		 */
 		if (input.equalsIgnoreCase("apple")) {
 			if (((LimitedUseItem) Player.inventory.get(promptFindItem(input))).usesRemaining <= 0) {
 				System.out.print("You cannot use this item anymore!");
 				Player.inventory.remove(promptFindItem(input));
-			} 
-			else {
+			} else {
 				((LimitedUseItem) Player.inventory.get(promptFindItem(input))).usesRemaining--;
 				System.out.println("You consumed the " + input + Player.name + "! It must taste really good!");
 				System.out.println("Uses remaining: " + usesRemaining);
@@ -120,8 +120,7 @@ public class LimitedUseItem extends Item {
 				System.out.print("\nGAME OVER!");
 				TextAdventure.showCredits();
 				System.exit(0);
-			}
-			else {
+			} else {
 				((LimitedUseItem) Player.inventory.get(promptFindItem(input))).usesRemaining--;
 				System.out.println("You used the " + input + "!");
 				System.out.println("Uses remaining: " + usesRemaining);
@@ -132,7 +131,8 @@ public class LimitedUseItem extends Item {
 			if (input.equalsIgnoreCase("map")) {
 				Item.containsMap();
 			}
-			// if the player is at Hancock and uses the key, it will call the canEnter() method
+			// if the player is at Hancock and uses the key, it will call the
+			// canEnter() method
 			if (input.equalsIgnoreCase("key") && Player.playerLocation == 9) {
 				SecureLocale.canEnter();
 			}
@@ -153,9 +153,10 @@ public class LimitedUseItem extends Item {
 		}
 		if (!promptFoundItem(input) && text == false) {
 			System.out.println("You don't have the " + input + ", " + Player.name + "!");
-			// not exactly a failure, but the wizard will subtract 10 points and put you back at location 0
+			// not exactly a failure, but the wizard will subtract 10 points and
+			// put you back at location 0
 			if (input.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == false) {
-				TextAdventure.failureMessage(); 
+				TextAdventure.failureMessage();
 			}
 		}
 		if (text == true) {
@@ -165,12 +166,12 @@ public class LimitedUseItem extends Item {
 
 	/**
 	 * @param input
-	 * 					checks to see if what the user typed in appears in the inventory or game
-	 * @return
-	 * 					if it exists, it will return true
-	 * 					if it does not exist, it will return false
+	 *            checks to see if what the user typed in appears in the
+	 *            inventory or game
+	 * @return if it exists, it will return true if it does not exist, it will
+	 *         return false
 	 * 
-	 * this method is called in promptUseItem()
+	 *         this method is called in promptUseItem()
 	 */
 	public static boolean promptFoundItem(String input) {
 		int size = Player.inventory.size();
@@ -181,16 +182,15 @@ public class LimitedUseItem extends Item {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @param input
-	 * 					will search through the inventory and find an item based off
-	 * 					of the user's input and in turn will allow them to use it
-	 * @return
-	 * 					if it is in the inventory, they can use it
-	 * 					if it is not in the inventory, they cannot use it
+	 *            will search through the inventory and find an item based off
+	 *            of the user's input and in turn will allow them to use it
+	 * @return if it is in the inventory, they can use it if it is not in the
+	 *         inventory, they cannot use it
 	 * 
-	 * this method is called in promptUseItem()
+	 *         this method is called in promptUseItem()
 	 */
 	public static int promptFindItem(String input) {
 		int size = Player.inventory.size();
@@ -201,15 +201,15 @@ public class LimitedUseItem extends Item {
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * @param part2
-	 * 					checks to see if what the user typed in appears in the inventory or game
-	 * @return
-	 * 					if it exists, it will return true
-	 * 					if it does not exist, it will return false
+	 *            checks to see if what the user typed in appears in the
+	 *            inventory or game
+	 * @return if it exists, it will return true if it does not exist, it will
+	 *         return false
 	 * 
-	 * this method is called in useItem()
+	 *         this method is called in useItem()
 	 */
 	public static boolean foundItem(String part2) {
 		int size = Player.inventory.size();
@@ -223,13 +223,12 @@ public class LimitedUseItem extends Item {
 
 	/**
 	 * @param part2
-	 * 					will search through the inventory and find an item based off
-	 * 					of the user's input and in turn will allow them to use it
-	 * @return
-	 * 					if it is in the inventory, they can use it
-	 * 					if it is not in the inventory, they cannot use it
+	 *            will search through the inventory and find an item based off
+	 *            of the user's input and in turn will allow them to use it
+	 * @return if it is in the inventory, they can use it if it is not in the
+	 *         inventory, they cannot use it
 	 * 
-	 * this method is called in useItem()
+	 *         this method is called in useItem()
 	 */
 	public static int findItem(String part2) {
 		int size = Player.inventory.size();

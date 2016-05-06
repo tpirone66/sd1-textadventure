@@ -8,13 +8,15 @@ import java.util.Scanner;
 public class SecureLocale extends Locale {
 
 	// constructor
-	public SecureLocale(String location, String locationDescription, ArrayList<Item> listOfItems, Item requiredItem, boolean hasVisited) {
+	public SecureLocale(String location, String locationDescription, ArrayList<Item> listOfItems, Item requiredItem,
+			boolean hasVisited) {
 		super(location, locationDescription, listOfItems, hasVisited);
 	}
 
-	/* this method is called when the user wants to enter Hancock Center 
-	 * and go into the Wizard's house
-	 */ 
+	/*
+	 * this method is called when the user wants to enter Hancock Center and go
+	 * into the Wizard's house
+	 */
 	public static boolean canEnter() {
 		System.out.print("Type in the item again to open the door.");
 		int size = Player.inventory.size();
@@ -30,8 +32,9 @@ public class SecureLocale extends Locale {
 					TextAdventure.endGame();
 				}
 			}
-		} 
-		// they can be at the location, but they CANNOT ENTER Hancock if they do not have the key
+		}
+		// they can be at the location, but they CANNOT ENTER Hancock if they do
+		// not have the key
 		else {
 			for (int i = 0; i < size; i++) {
 				if (Player.inventory.get(i).item.toLowerCase().equals(input)) {

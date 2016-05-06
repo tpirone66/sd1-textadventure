@@ -14,7 +14,8 @@ public class BreadcrumbTrail {
 	int currCrumb;
 	int maxSize = 10;
 
-	// starts a new breadcrumb trail where one cannot backtrack at the start of the game
+	// starts a new breadcrumb trail where one cannot backtrack at the start of
+	// the game
 	public void startTrail() {
 		currCrumb = -1;
 	}
@@ -22,14 +23,13 @@ public class BreadcrumbTrail {
 	// push
 	/**
 	 * @param currLoc
-	 * 					gets the Player's current location
+	 *            gets the Player's current location
 	 */
 	public void dropCrumb(int currLoc) {
 		if (hasNoMoreCrumbs() == false) {
 			pickupCrumb[currCrumb + 1] = currLoc;
 			currCrumb++;
-		} 
-		else {
+		} else {
 			for (int i = 0; i < pickupCrumb.length - 1; i++) {
 				pickupCrumb[i] = pickupCrumb[i + 1];
 			}
@@ -49,8 +49,7 @@ public class BreadcrumbTrail {
 	public int currentCrumb() {
 		if (currCrumb == -1) {
 			return (Integer) null;
-		} 
-		else {
+		} else {
 			return pickupCrumb[currCrumb];
 		}
 	}

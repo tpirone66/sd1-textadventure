@@ -39,23 +39,20 @@ public class Item {
 		System.out.println("Type 'Speak' to interact with the characters in the game.");
 		System.out.println("Press Q to quit the game.");
 	}
-	
-	//method for taking an item
+
+	// method for taking an item
 	public static void takeItem(String part2) {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
-		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger") ||
-				part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
+		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger")
+				|| part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
 		if (currentRoomList.isEmpty()) {
 			System.out.println("There is nothing to take.");
-		}
-		else if (findItemInList(part2, currentRoomList) == -1) {
+		} else if (findItemInList(part2, currentRoomList) == -1) {
 			System.out.print("That is not the item you have found!");
-		}
-		else if (!(currentRoomList.isEmpty()) && text == false) {
+		} else if (!(currentRoomList.isEmpty()) && text == false) {
 			System.out.print("No such item exists, " + Player.name + "!");
-		}
-		else if (!(currentRoomList.isEmpty()) && text == true) {
+		} else if (!(currentRoomList.isEmpty()) && text == true) {
 			System.out.print("You obtained " + currentRoomList.get(0).item + "!");
 			Player.score += currentRoomList.get(0).itemValue();
 			Player.inventory.add(currentRoomList.get(0));
@@ -64,9 +61,8 @@ public class Item {
 		}
 	}
 
-
 	// method for prompt taking an item
-	public static void promptTakeItem() { 
+	public static void promptTakeItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		System.out.println("What item would you like to take?");
@@ -83,15 +79,12 @@ public class Item {
 				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 		if (currentRoomList.size() == 0) {
 			System.out.println("There is nothing to take.");
-		} 
-		else if (text == true) {
+		} else if (text == true) {
 			System.out.print("No such item exists, " + Player.name + "!");
 			return;
-		} 
-		else if (promptFindItemInList(input, currentRoomList) == -1) {
+		} else if (promptFindItemInList(input, currentRoomList) == -1) {
 			System.out.print("That is not the item you have found!");
-		} 
-		else {
+		} else {
 			System.out.print("You obtained " + currentRoomList.get(0).item + "!");
 			Player.score += currentRoomList.get(0).itemValue();
 			Player.inventory.add(currentRoomList.get(0));
@@ -99,8 +92,8 @@ public class Item {
 			System.out.print(" Score: " + Player.score);
 		}
 	}
-	
-	//method for dropping an item
+
+	// method for dropping an item
 	@SuppressWarnings("null")
 	public static void dropItem(String part2) {
 		int currLoc = Player.getPlayerLocation();
@@ -109,12 +102,11 @@ public class Item {
 		String item = "";
 		if (itemIndex >= 0) {
 			item = Player.inventory.get(itemIndex).item;
-		} 
-		else {
+		} else {
 			item = "nothing";
 		}
-		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger") ||
-				part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
+		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger")
+				|| part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
 		if (text == false) {
 			System.out.println("There is no such thing in the inventory to drop!");
 			return;
@@ -134,7 +126,6 @@ public class Item {
 			System.out.print("Score: " + Player.score);
 		}
 	}
-	
 
 	// method for prompt dropping an item
 	@SuppressWarnings("null")
@@ -150,8 +141,7 @@ public class Item {
 		String item = "";
 		if (itemIndex >= 0) {
 			item = Player.inventory.get(itemIndex).item;
-		} 
-		else {
+		} else {
 			item = "nothing";
 		}
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Dagger")
@@ -192,12 +182,12 @@ public class Item {
 		}
 		if (!currentRoomList.isEmpty()) {
 			if (isExplored == false) {
-				System.out.print("\nYou found " + currentRoomList.get(0).item
-						+ "." + currentRoomList.get(0).itemDescription);
+				System.out.print(
+						"\nYou found " + currentRoomList.get(0).item + "." + currentRoomList.get(0).itemDescription);
 			}
 		}
 	}
-	
+
 	// this method will show the map if you have it
 	public static void containsMap() {
 		System.out.println("                          --------------                                        ");
@@ -251,7 +241,7 @@ public class Item {
 				+ "\nIt's always good to be alive! Teaching is the best thing going for me..."
 				+ "\nWell, so is writing this message." + "\n4/20 signed the Wizard" + "\nethMtwa hsJnoon");
 	}
-	
+
 	// this method shows the inventory
 	public static void showInventory() {
 		int size = Player.inventory.size();
@@ -268,14 +258,13 @@ public class Item {
 
 	/**
 	 * @param input
-	 * 					takes the user input
+	 *            takes the user input
 	 * @param items
-	 * 					looks for all of the items
-	 * @return
-	 * 					if true, it will return the input
-	 * 					if false, it will say that it is not the item one found in this location
+	 *            looks for all of the items
+	 * @return if true, it will return the input if false, it will say that it
+	 *         is not the item one found in this location
 	 * 
-	 * this method is called in promptTakeItem()
+	 *         this method is called in promptTakeItem()
 	 */
 	public static int promptFindItemInList(String input, ArrayList<Item> items) {
 		int size = items.size();
@@ -286,17 +275,16 @@ public class Item {
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * @param part2
-	 * 					takes the user input
+	 *            takes the user input
 	 * @param items
-	 * 					looks for all of the items
-	 * @return
-	 * 					if true, it will return the input
-	 * 					if false, it will say that it is not the item one found in this location
+	 *            looks for all of the items
+	 * @return if true, it will return the input if false, it will say that it
+	 *         is not the item one found in this location
 	 * 
-	 * this method is called in takeItem()
+	 *         this method is called in takeItem()
 	 */
 	public static int findItemInList(String part2, ArrayList<Item> items) {
 		int size = items.size();
@@ -307,12 +295,12 @@ public class Item {
 		}
 		return -1;
 	}
-	
+
 	// method that gets if an item has been discovered and returns it
 	public boolean isDiscovered() {
 		return isDiscovered;
 	}
-	
+
 	// method gets an item's value and returns it
 	public int itemValue() {
 		return itemValue;
