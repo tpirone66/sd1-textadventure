@@ -20,6 +20,10 @@ public class LimitedUseItem extends Item {
 	public static void useItem(String part2) {
 		boolean text = part2.equalsIgnoreCase("Handbook") || part2.equalsIgnoreCase("Dagger") ||
 				part2.equalsIgnoreCase("Apple") || part2.equalsIgnoreCase("Map") || part2.equalsIgnoreCase("key");
+		/*
+		 * checks for limited use item and once an item
+		 * has expended all of its uses, it disappears from the game
+		 */
 		if (part2.equalsIgnoreCase("apple")) {
 			if (((LimitedUseItem) Player.inventory.get(findItem(part2))).usesRemaining <= 0) {
 				System.out.print("You cannot use this item anymore!");
@@ -53,11 +57,11 @@ public class LimitedUseItem extends Item {
 			if (part2.equalsIgnoreCase("map")) {
 				Item.containsMap();
 			}
-			// if the player is at Hancock and uses the key, it will call the
-			// canEnter() method
+			// if the player is at Hancock and uses the key, it will call the canEnter() method
 			if (part2.equalsIgnoreCase("key") && Player.playerLocation == 9) {
 				SecureLocale.canEnter();
 			}
+			// one of the victory situations is having the handbook and using it in the wizard's house
 			if (part2.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == true) {
 				TextAdventure.victoryMessage();
 			}
@@ -70,11 +74,13 @@ public class LimitedUseItem extends Item {
 			}
 		}
 		/**
-		 * @param input
+		 * @param part2
+		 * @param text
 		 * 
 		 */
 		if (!foundItem(part2) && text == true) {
 			System.out.println("You don't have the " + part2 + ", " + Player.name + "!");
+			// not exactly a failure, but the wizard will subtract 10 points and put you back at location 0
 			if (part2.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == false) {
 				TextAdventure.failureMessage(); 
 			}
@@ -96,8 +102,8 @@ public class LimitedUseItem extends Item {
 		boolean text = !(input.equalsIgnoreCase("Handbook") || input.equalsIgnoreCase("Dagger")
 				|| input.equalsIgnoreCase("Apple") || input.equalsIgnoreCase("Map") || input.equalsIgnoreCase("Key"));
 		/*
-		 * checks for limited use item which as of now is only the apple once an
-		 * item has expended all of its uses, it disappears from the game
+		 * checks for limited use item and once an item
+		 * has expended all of its uses, it disappears from the game
 		 */
 		if (input.equalsIgnoreCase("apple")) {
 			if (((LimitedUseItem) Player.inventory.get(promptFindItem(input))).usesRemaining <= 0) {
@@ -131,8 +137,7 @@ public class LimitedUseItem extends Item {
 			if (input.equalsIgnoreCase("map")) {
 				Item.containsMap();
 			}
-			// if the player is at Hancock and uses the key, it will call the
-			// canEnter() method
+			// if the player is at Hancock and uses the key, it will call the canEnter() method
 			if (input.equalsIgnoreCase("key") && Player.playerLocation == 9) {
 				SecureLocale.canEnter();
 			}
@@ -153,10 +158,12 @@ public class LimitedUseItem extends Item {
 		}
 		/**
 		 * @param input
+		 * @param text
 		 * 
 		 */
 		if (!promptFoundItem(input) && text == false) {
 			System.out.println("You don't have the " + input + ", " + Player.name + "!");
+			// not exactly a failure, but the wizard will subtract 10 points and put you back at location 0
 			if (input.equalsIgnoreCase("Handbook") && Player.playerLocation == 10 && Player.hasHandbook() == false) {
 				TextAdventure.failureMessage(); 
 			}
@@ -178,18 +185,6 @@ public class LimitedUseItem extends Item {
 		return false;
 	}
 	
-	// this method checks to see if what the user typed in appears in the inventory or game
-	// this method is called in useItem()
-	public static boolean foundItem(String part2) {
-		int size = Player.inventory.size();
-		for (int i = 0; i < size; i++) {
-			if (Player.inventory.get(i).item.equalsIgnoreCase(part2)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	/*
 	 * this method will search through the inventory and find an item based off
 	 * of the user's input and in turn will allow them to use it
@@ -203,6 +198,18 @@ public class LimitedUseItem extends Item {
 			}
 		}
 		return -1;
+	}
+	
+	// this method checks to see if what the user typed in appears in the inventory or game
+	// this method is called in useItem()
+	public static boolean foundItem(String part2) {
+		int size = Player.inventory.size();
+		for (int i = 0; i < size; i++) {
+			if (Player.inventory.get(i).item.equalsIgnoreCase(part2)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/*

@@ -22,6 +22,7 @@ public class SecureLocale extends Locale {
 		Scanner inputSource = new Scanner(System.in);
 		String input;
 		input = inputSource.nextLine();
+		// they CAN ENTER Hancock if they have the key
 		if (Player.playerLocation == 9 && input.toLowerCase().equals("key")) {
 			for (int i = 0; i < size; i++) {
 				if (Player.inventory.get(i).item.toLowerCase().equals("key")) {
@@ -30,6 +31,7 @@ public class SecureLocale extends Locale {
 				}
 			}
 		} 
+		// they can be at the location, but they CANNOT ENTER Hancock if they do not have the key
 		else {
 			for (int i = 0; i < size; i++) {
 				if (Player.inventory.get(i).item.toLowerCase().equals(input)) {

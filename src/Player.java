@@ -14,6 +14,7 @@ public class Player {
 	static ArrayList<Item> inventory = new ArrayList<>();
 	static int score = 0;
 	static int actionCount = 10;
+	static Locale currRoom = TextAdventure.locale[Player.playerLocation];
 
 	// will check to see if the player has a map in the inventory
 	public static boolean hasMap() {
@@ -70,8 +71,8 @@ public class Player {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][0];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[playerLocation].getLocationDescription());
+			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
+					+ currRoom.getLocationDescription());
 		} 
 		else if (Map[playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
@@ -84,8 +85,8 @@ public class Player {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][1];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[playerLocation].getLocationDescription());
+			System.out.print(" You are now in " + currRoom.getLocation() + "." + " " 
+					+ currRoom.getLocationDescription());
 		} 
 		else if (Map[playerLocation][1] == -1) {
 			System.out.print("\nCannot move that way!");
@@ -98,8 +99,8 @@ public class Player {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][2];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[playerLocation].getLocationDescription());
+			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
+					+ currRoom.getLocationDescription());
 		} 
 		else if (Map[playerLocation][2] == -1) {
 			System.out.print("\nCannot move that way!");
@@ -112,8 +113,8 @@ public class Player {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][3];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[playerLocation].getLocationDescription());
+			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
+					+ currRoom.getLocationDescription());
 		} 
 		else if (Map[playerLocation][3] == -1) {
 			System.out.print("\nCannot move that way!");
@@ -179,8 +180,8 @@ public class Player {
 		else if (trail.currCrumb != -1 && trail.hasNoMoreCrumbs() == false){
 			Player.backtrackLocale(trail);
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
-					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
+			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
+					+ currRoom.getLocationDescription());
 		}
 	}
 

@@ -66,6 +66,7 @@ public class TextAdventure {
 					"The world's famous Nerd Palace! What a wonderful site! Let's explore it now.", BlankList, key, false),
 			new SecureLocale("The Magical Wizard's House", "Home to world famous programmer Matthew Johnson!",
 					BlankList, handbook, false) };
+	static Locale currRoom = locale[Player.playerLocation];
 
 	public static void main(String[] args) {
 		
@@ -180,6 +181,17 @@ public class TextAdventure {
 				}
 			}
 			
+			// prints out the handbook if the user has it by typing R
+			else if (part1.equalsIgnoreCase("R")) {
+				if (Player.hasHandbook() == true) {
+					Item.containsHandbook();
+				}
+				// this statement will print out if the user does not have the handbook
+				else {
+					System.out.print("It does not look like there is anything for you to read, " + Player.name + "!");
+				}
+			}
+			
 			// what happens when the user types in B
 			else if (part1.equalsIgnoreCase("B")) {
 				Player.callBacktrack(trail);
@@ -242,8 +254,8 @@ public class TextAdventure {
 	private static void startGame() {
 		System.out.println("\nPress the H key on the keyboard before playing the game to read the instructions.");
 		System.out.println("If by mistake you opened this application, press Q on the keyboard to quit the game.");
-		System.out.println(
-				"As of now, you are only allowed to backtrack a maximum of ten times before the rats eat all the breadcrumbs and catch you!");
+		System.out.println("As of now, you are only allowed to backtrack a maximum of ten times before "
+				+ "the rats eat all the breadcrumbs and catch you!");
 		System.out.println("Use your backtracks wisely! The breadcrumbs go away in a short time!");
 	}
 
@@ -265,8 +277,8 @@ public class TextAdventure {
 		}
 		// prints out a statement if the user does not have the password
 		if (!input.equals("Matthew Johnson")) {
-			System.out.print(
-					"That is not the correct password to enter! \nThere has to be some kind of clue somewhere...");
+			System.out.print("That is not the correct password to enter! "
+					+ "\nThere has to be some kind of clue somewhere...");
 		}
 	}
 
@@ -294,8 +306,8 @@ public class TextAdventure {
 		System.out.print("\nScore: " + Player.score);
 		Player.playerLocation = 0;
 		System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-		System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-				+ locale[Player.playerLocation].getLocationDescription());
+		System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
+				+ currRoom.getLocationDescription());
 	}
 
 }
