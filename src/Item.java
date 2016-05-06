@@ -115,6 +115,7 @@ public class Item {
 	}
 	
 	//method for dropping an item
+	@SuppressWarnings("null")
 	public static void dropItem(String part2) {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
@@ -147,10 +148,18 @@ public class Item {
 			Player.score -= currentRoomList.get(0).itemValue();
 			System.out.print("Score: " + Player.score);
 		}
+		if (text == true && (currentRoomList != null || !(currentRoomList.isEmpty()))) {
+			System.out.println("You dropped " + item + "!" + " I would advise you to pick it up.");
+			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
+			TextAdventure.locale[currLoc].addItem(droppedItem);
+			Player.score -= currentRoomList.get(0).itemValue();
+			System.out.print("Score: " + Player.score);
+		}
 	}
 	
 
 	// method for prompt dropping an item
+	@SuppressWarnings("null")
 	public static void promptDropItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
@@ -186,6 +195,13 @@ public class Item {
 			return;
 		}
 		if (text == false && (currentRoomList == null || currentRoomList.isEmpty())) {
+			System.out.println("You dropped " + item + "!" + " I would advise you to pick it up.");
+			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
+			TextAdventure.locale[currLoc].addItem(droppedItem);
+			Player.score -= currentRoomList.get(0).itemValue();
+			System.out.print("Score: " + Player.score);
+		}
+		if (text == true && (currentRoomList != null || !(currentRoomList.isEmpty()))) {
 			System.out.println("You dropped " + item + "!" + " I would advise you to pick it up.");
 			Item droppedItem = Player.inventory.remove(Player.inventory.size() - 1);
 			TextAdventure.locale[currLoc].addItem(droppedItem);
