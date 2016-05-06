@@ -311,10 +311,12 @@ public class Item {
 		return -1;
 	}
 	
+	// method that gets if an item has been discovered and returns it
 	public boolean isDiscovered() {
 		return isDiscovered;
 	}
 	
+	// method gets an item's value and returns it
 	public int itemValue() {
 		return itemValue;
 	}

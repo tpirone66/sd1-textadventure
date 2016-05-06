@@ -88,7 +88,7 @@ public class TextAdventure {
 		Player.promptName();
 
 		// method to call a new Breadcrumb Trail
-		BreadcrumbTrail.startTrail();
+		BreadcrumbTrail trail = new BreadcrumbTrail();
 
 		// method that begins the game
 		startGame();
@@ -112,22 +112,22 @@ public class TextAdventure {
 
 			// what happens when the user types in N
 			else if (part1.equalsIgnoreCase("N")) {
-				Player.moveNorth();
+				Player.moveNorth(trail);
 			}
 
 			// what happens when the user types in S
 			else if (part1.equalsIgnoreCase("S")) {
-				Player.moveSouth();
+				Player.moveSouth(trail);
 			}
 
 			// what happens when the user types in E
 			else if (part1.equalsIgnoreCase("E")) {
-				Player.moveEast();
+				Player.moveEast(trail);
 			}
 
 			// what happens when the user types in W
 			else if (part1.equalsIgnoreCase("W")) {
-				Player.moveWest();
+				Player.moveWest(trail);
 			}
 
 			// what happens when the user types in T
@@ -197,16 +197,16 @@ public class TextAdventure {
 			
 			// what happens when the user types in B
 			else if (part1.equalsIgnoreCase("B")) {
-				if (BreadcrumbTrail.currCrumb == -1 && BreadcrumbTrail.hasMoreCrumbs() == true
+				if (trail.currCrumb == -1 && trail.hasNoMoreCrumbs() == true
 						&& Player.actionCount == 0) {
 					System.out.print("Oh no! The rats got you! You are now left to die!");
 					System.out.println(" \nGAME OVER!");
 					showCredits();
 					break;
-				} else if (BreadcrumbTrail.currCrumb == -1 || BreadcrumbTrail.hasMoreCrumbs() == true) {
+				} else if (trail.currCrumb == -1 || trail.hasMoreCrumbs() == true) {
 					System.out.print("Oh no! The rats are after you! Be careful with those breadcrumbs of yours!");
 					Player.actionCount = Player.actionCount - 1;
-				} else {
+				} else if (trail.currCrumb != -1 && trail.hasNoMoreCrumbs() == false){
 					Player.backtrackLocale(trail);
 					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "

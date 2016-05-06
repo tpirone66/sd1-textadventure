@@ -10,22 +10,22 @@ import java.util.Stack;
 public class BreadcrumbTrail {
 
 	// variables
-	static int[] pickupCrumb = new int[10];
-	static int currCrumb;
-	static int maxSize = 10;
+	int[] pickupCrumb = new int[256];
+	int currCrumb;
+	int maxSize = 10;
 
-	// starts a new breadcrumb trail where one cannot backtrack at the start of
-	// the game
-	public static void startTrail() {
+	// starts a new breadcrumb trail where one cannot backtrack at the start of the game
+	public void startTrail() {
 		currCrumb = -1;
 	}
 
 	// push
-	public static void dropCrumb(int currLoc) {
+	public void dropCrumb(int currLoc) {
 		if (hasNoMoreCrumbs() == false) {
 			pickupCrumb[currCrumb + 1] = currLoc;
 			currCrumb++;
-		} else {
+		} 
+		else {
 			for (int i = 0; i < pickupCrumb.length - 1; i++) {
 				pickupCrumb[i] = pickupCrumb[i + 1];
 			}
@@ -34,7 +34,7 @@ public class BreadcrumbTrail {
 	}
 
 	// pop
-	public static int pickupCrumb() {
+	public int pickupCrumb() {
 		int temp = (int) pickupCrumb[currCrumb];
 		currCrumb--;
 		return temp;
@@ -42,21 +42,22 @@ public class BreadcrumbTrail {
 
 	// top
 	@SuppressWarnings("null")
-	public static int currentCrumb() {
+	public int currentCrumb() {
 		if (currCrumb == -1) {
 			return (Integer) null;
-		} else {
+		} 
+		else {
 			return pickupCrumb[currCrumb];
 		}
 	}
 
 	// isEmpty
-	public static boolean hasMoreCrumbs() {
-		return (currCrumb == -1);
+	public boolean hasMoreCrumbs() {
+		return (currCrumb == maxSize - 1);
 	}
 
 	// isFull
-	public static boolean hasNoMoreCrumbs() {
-		return (currCrumb == maxSize - 1);
+	public boolean hasNoMoreCrumbs() {
+		return (currCrumb == -1);
 	}
 }

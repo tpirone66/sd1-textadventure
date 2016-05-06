@@ -65,9 +65,9 @@ public class Player {
 	};
 
 	// the player moves north when the user types "N"
-	public static void moveNorth() {
+	public static void moveNorth(BreadcrumbTrail trail) {
 		if (Map[playerLocation][0] != -1) {
-			BreadcrumbTrail.dropCrumb(playerLocation);
+			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][0];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
@@ -78,9 +78,9 @@ public class Player {
 	}
 
 	// the player moves south when the user types "S"
-	public static void moveSouth() {
+	public static void moveSouth(BreadcrumbTrail trail) {
 		if (Map[playerLocation][1] != -1) {
-			BreadcrumbTrail.dropCrumb(playerLocation);
+			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][1];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
@@ -91,9 +91,9 @@ public class Player {
 	}
 
 	// the player moves east when the user types "E"
-	public static void moveEast() {
+	public static void moveEast(BreadcrumbTrail trail) {
 		if (Map[playerLocation][2] != -1) {
-			BreadcrumbTrail.dropCrumb(playerLocation);
+			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][2];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
@@ -104,9 +104,9 @@ public class Player {
 	}
 
 	// the player moves west when the user types "W"
-	public static void moveWest() {
+	public static void moveWest(BreadcrumbTrail trail) {
 		if (Map[playerLocation][3] != -1) {
-			BreadcrumbTrail.dropCrumb(playerLocation);
+			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][3];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
@@ -124,7 +124,16 @@ public class Player {
 		System.out.print("What is your name? ");
 		input = inputSource.nextLine();
 		name = input;
-		System.out.println("Hello, " + name + "!");
+		if (name.equals("Matthew Johnson")) {
+			System.out.print("You're a god! You automatically win the game!");
+			Player.score =  2147483647;
+			System.out.print("\nScore: " + Player.score);
+			TextAdventure.showCredits();
+			System.exit(0);
+		}
+		else {
+			System.out.println("Hello, " + name + "!");
+		}
 	}
 
 	// method that returns the player's location
@@ -134,8 +143,8 @@ public class Player {
 
 	// method for backtracking breadcrumbs
 	public static void backtrackLocale(BreadcrumbTrail trail) {
-		if (BreadcrumbTrail.hasNoMoreCrumbs() == false) {
-			playerLocation = BreadcrumbTrail.pickupCrumb();
+		if (trail.hasNoMoreCrumbs() == false) {
+			playerLocation = trail.pickupCrumb();
 		}
 	}
 
