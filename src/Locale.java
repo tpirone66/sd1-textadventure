@@ -63,10 +63,12 @@ public class Locale {
 		return i;
 	}
 	
+	// checks to see if a locale has been discovered
 	public boolean getHasVisited() {
 		return hasVisited;
 	}
 
+	// checks to see if an item has been discovered
 	public boolean isDiscovered(ArrayList<Item> Item) {
 		return false;
 	}

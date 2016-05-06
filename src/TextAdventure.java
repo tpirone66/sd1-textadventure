@@ -84,7 +84,7 @@ public class TextAdventure {
 		// method that will display the name of the game and description
 		titleMessage();
 
-		// method for allowing the user to customize their character
+		// method for allowing the user to name their character
 		Player.promptName();
 
 		// method to call a new Breadcrumb Trail
@@ -197,21 +197,7 @@ public class TextAdventure {
 			
 			// what happens when the user types in B
 			else if (part1.equalsIgnoreCase("B")) {
-				if (trail.currCrumb == -1 && trail.hasNoMoreCrumbs() == true
-						&& Player.actionCount == 0) {
-					System.out.print("Oh no! The rats got you! You are now left to die!");
-					System.out.println(" \nGAME OVER!");
-					showCredits();
-					break;
-				} else if (trail.currCrumb == -1 || trail.hasMoreCrumbs() == true) {
-					System.out.print("Oh no! The rats are after you! Be careful with those breadcrumbs of yours!");
-					Player.actionCount = Player.actionCount - 1;
-				} else if (trail.currCrumb != -1 && trail.hasNoMoreCrumbs() == false){
-					Player.backtrackLocale(trail);
-					System.out.print("\nCurrent location: " + Player.playerLocation + ".");
-					System.out.print(" You are now in " + locale[Player.playerLocation].getLocation() + "." + " "
-							+ locale[Player.playerLocation].getLocationDescription());
-				}
+				Player.callBacktrack(trail);
 			}
 			
 			// what happens when the user types in Q

@@ -131,11 +131,19 @@ public class Player {
 			TextAdventure.showCredits();
 			System.exit(0);
 		}
+		else if (name.equals("Nick Barranco")) {
+			System.out.print("You're a schmuck! You automatically lose the game!");
+			System.out.print("\nGAME OVER!");
+			Player.score =  -2147483648;
+			System.out.print("\nScore: " + Player.score);
+			TextAdventure.showCredits();
+			System.exit(0);
+		}
 		else {
 			System.out.println("Hello, " + name + "!");
 		}
 	}
-
+	
 	// method that returns the player's location
 	public static int getPlayerLocation() {
 		return playerLocation;
@@ -145,6 +153,30 @@ public class Player {
 	public static void backtrackLocale(BreadcrumbTrail trail) {
 		if (trail.hasNoMoreCrumbs() == false) {
 			playerLocation = trail.pickupCrumb();
+		}
+	}
+
+	// the method is used when the player wants to backtrack
+	public static void callBacktrack(BreadcrumbTrail trail) {
+		// the player loses when they backtrack too much
+		if (trail.currCrumb == -1 && trail.hasNoMoreCrumbs() == true
+				&& Player.actionCount == 0) {
+			System.out.print("Oh no! The rats got you! You are now left to die!");
+			System.out.println(" \nGAME OVER!");
+			TextAdventure.showCredits();
+			System.exit(0);
+		} 
+		// the player cannot backtrack anymore and if they do, this message will print out
+		else if (trail.currCrumb == -1 || trail.hasMoreCrumbs() == true) {
+			System.out.print("Oh no! The rats are after you! Be careful with those breadcrumbs of yours!");
+			Player.actionCount = Player.actionCount - 1;
+		} 
+		// the player backtracks as normal
+		else if (trail.currCrumb != -1 && trail.hasNoMoreCrumbs() == false){
+			Player.backtrackLocale(trail);
+			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
+			System.out.print(" You are now in " + TextAdventure.locale[Player.playerLocation].getLocation() + "." + " "
+					+ TextAdventure.locale[Player.playerLocation].getLocationDescription());
 		}
 	}
 
