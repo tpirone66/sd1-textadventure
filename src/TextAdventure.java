@@ -19,6 +19,7 @@ import java.io.*;
 
 public class TextAdventure {
 
+	// items
 	static ArrayList<Item> ChampItemList = new ArrayList<Item>();
 	static ArrayList<Item> MarianItemList = new ArrayList<Item>();
 	static ArrayList<Item> LowerTownhouseItemList = new ArrayList<Item>();
@@ -26,8 +27,6 @@ public class TextAdventure {
 	static ArrayList<Item> BlankList = new ArrayList<Item>();
 	static ArrayList<Item> HudsonRiverList = new ArrayList<Item>();
 	static BreadcrumbTrail trail;
-	// make rest of arrayLists for locales with items
-	// make rest of items
 	static Item handbook = new Item("Handbook", " Everyone should read this!", false, 5);
 	static Item dagger = new LimitedUseItem("Dagger", " A liquid silicone dagger to be exact! That's pretty trippy, man!", false, 5, 5);
 	static Item apple = new LimitedUseItem("Apple", " What a tasty treat!", false, 5, 5);
@@ -102,8 +101,6 @@ public class TextAdventure {
 			input = inputSource.nextLine();
 			String[] inputParts = input.split(" ", 2);
 			String part1 = inputParts[0];
-			
-			// you have the user input string, now split it into two parts
 
 			// what happens when the user types in H
 			if (part1.equalsIgnoreCase("H")) {
@@ -130,6 +127,11 @@ public class TextAdventure {
 				Player.moveWest(trail);
 			}
 
+			// what happens when the user types in X
+			else if (part1.equalsIgnoreCase("X")) {
+				Item.examineItem();
+			}
+			
 			// what happens when the user types in T
 			else if (part1.equalsIgnoreCase("T")) {
 				// check if the input parts array has another element (check the length)
@@ -155,34 +157,6 @@ public class TextAdventure {
 				}
 			}
 			
-			// what happens when the user types in X
-			else if (part1.equalsIgnoreCase("X")) {
-				Item.examineItem();
-			}
-
-			// prints out a map if the user has it by typing M
-			else if (part1.equalsIgnoreCase("M") && Player.hasMap() == true) {
-				Item.containsMap();
-			}
-
-			/*
-			 * if the user types in M and does not have the map, this will print
-			 * out instead
-			 */
-			else if (part1.equalsIgnoreCase("M") && Player.hasMap() == false) {
-				System.out.println("I wish I knew where I was right now... -____-");
-			}
-
-			// what happens when the user types in score
-			else if (part1.equalsIgnoreCase("Score")) {
-				System.out.print(Player.score);
-			}
-
-			// what happens when the user types in I
-			else if (part1.equalsIgnoreCase("I")) {
-				Item.showInventory();
-			}
-
 			// what happens when the user types in D
 			else if (part1.equalsIgnoreCase("D")) {
 				if (inputParts.length > 1) {
@@ -194,10 +168,44 @@ public class TextAdventure {
 					Item.promptDropItem();;
 				}
 			}
+
+			// prints out a map if the user has it by typing M
+			else if (part1.equalsIgnoreCase("M")) {
+				if (Player.hasMap() == true) {
+					Item.containsMap();
+				}
+				// this statement will print out if the user does not have the map
+				else {
+					System.out.println("I wish I knew where I was right now... -____-");
+				}
+			}
 			
 			// what happens when the user types in B
 			else if (part1.equalsIgnoreCase("B")) {
 				Player.callBacktrack(trail);
+			}
+			
+			// what happens when the user types in score
+			else if (part1.equalsIgnoreCase("Score")) {
+				System.out.print(Player.score);
+			}
+
+			// what happens when the user types in I
+			else if (part1.equalsIgnoreCase("I")) {
+				Item.showInventory();
+			}
+			
+			//what happens when the user types in speak
+			else if (part1.equalsIgnoreCase("Speak")) {
+				// the player speaks to the wizard
+				if (Player.playerLocation == 10) {
+					System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " + Player.name
+							+ ". I would really appreciate it if you could give me the handbook in your inventory!");
+				}
+				else {
+					// the player will speak to the rats
+					System.out.print("\nRats: We're on to you, " + Player.name + "!");
+				}
 			}
 			
 			// what happens when the user types in Q
@@ -206,19 +214,8 @@ public class TextAdventure {
 				showCredits();
 				break;
 			}
-			
-			else if (part1.equalsIgnoreCase("Speak")) {
-				if (Player.playerLocation == 10) {
-					System.out.print("\nMatthew Johnson the Wizard: It is a pleasure to see you here, " + Player.name
-							+ ". I would really appreciate it if you could give me the handbook in your inventory!");
-				}
-				else {
-					System.out.print("\nRats: We're on to you, " + Player.name + "!");
-				}
-			}
 
-			// if the user types in any other keys not mentioned above, it will
-			// print this message
+			// if the user types in any other keys not mentioned above, it will print this message
 			else {
 				System.out.print("\nInvalid command!");
 			}
@@ -234,8 +231,7 @@ public class TextAdventure {
 		System.out.println("-----------------------------------");
 	}
 
-	// this method will show the credits at the end of the game or when the user
-	// quits
+	// this method will show the credits at the end of the game or when the user quits
 	static void showCredits() {
 		System.out.println("\nThank you for playing this game!");
 		System.out.println("\nPlease come back soon!\n");
@@ -251,8 +247,7 @@ public class TextAdventure {
 		System.out.println("Use your backtracks wisely! The breadcrumbs go away in a short time!");
 	}
 
-	// the method is called after the user opens Hancock with the key and will
-	// precede with the closing of the game
+	// the method is called after the user opens Hancock with the key and will precede with the closing of the game
 	public static void endGame() {
 		System.out.println(" However, there is a password one must solve to enter the Hancock Center.");
 		@SuppressWarnings("resource")
@@ -287,7 +282,9 @@ public class TextAdventure {
 		System.exit(0);
 	}
 
-	// the failure message will display if the user does not have the handbook to give to the Wizard
+	/* the failure message will display if the user does not have the handbook to give to the Wizard
+	 * they will also be sent back to the beginning of the game and lose 10 points
+	 */
 	public static void failureMessage() {
 		System.out.print("Matthew Johnson: It seems that you do not have what I am looking for!");
 		System.out.print("\nMatthew Johnson: The rats still have my book!");

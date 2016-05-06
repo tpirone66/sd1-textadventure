@@ -72,7 +72,8 @@ public class Player {
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
 					+ TextAdventure.locale[playerLocation].getLocationDescription());
-		} else if (Map[playerLocation][0] == -1) {
+		} 
+		else if (Map[playerLocation][0] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -85,7 +86,8 @@ public class Player {
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
 					+ TextAdventure.locale[playerLocation].getLocationDescription());
-		} else if (Map[playerLocation][1] == -1) {
+		} 
+		else if (Map[playerLocation][1] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -98,7 +100,8 @@ public class Player {
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
 					+ TextAdventure.locale[playerLocation].getLocationDescription());
-		} else if (Map[playerLocation][2] == -1) {
+		} 
+		else if (Map[playerLocation][2] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
@@ -111,7 +114,8 @@ public class Player {
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out.print(" You are now in " + TextAdventure.locale[playerLocation].getLocation() + "." + " "
 					+ TextAdventure.locale[playerLocation].getLocationDescription());
-		} else if (Map[playerLocation][3] == -1) {
+		} 
+		else if (Map[playerLocation][3] == -1) {
 			System.out.print("\nCannot move that way!");
 		}
 	}
