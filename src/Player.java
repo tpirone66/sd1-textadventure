@@ -16,7 +16,9 @@ public class Player {
 	static int actionCount = 10;
 	static Locale currRoom = TextAdventure.locale[Player.playerLocation];
 
-	// will check to see if the player has a map in the inventory
+	/**
+	 * @return will return the handbook if it is in the inventory
+	 */
 	public static boolean hasMap() {
 		int size = inventory.size();
 		for (int i = 0; i < size; i++) {
@@ -27,7 +29,9 @@ public class Player {
 		return false;
 	}
 
-	// will check to see if the player has a handbook in the inventory
+	/**
+	 * @return will return the handbook if it is in the inventory
+	 */
 	public static boolean hasHandbook() {
 		int size = inventory.size();
 		for (int i = 0; i < size; i++) {
@@ -38,7 +42,9 @@ public class Player {
 		return false;
 	}
 	
-	//will check to see if the player has a key in their inventory
+	/**
+	 * @return will return the key if it is in the inventory
+	 */
 	public static boolean hasKey() {
 		int size = inventory.size();
 		for (int i = 0; i < size; i++) {
@@ -66,6 +72,12 @@ public class Player {
 	};
 
 	// the player moves north when the user types "N"
+	/**
+	 * @param trail will drop a crumb at the previous locale if the player
+	 * 				wants to backtrack
+	 * if they are able to move north, this method will allow them to do so
+	 * or they will be told that they cannot move that way
+	 */
 	public static void moveNorth(BreadcrumbTrail trail) {
 		if (Map[playerLocation][0] != -1) {
 			trail.dropCrumb(playerLocation);
@@ -80,6 +92,12 @@ public class Player {
 	}
 
 	// the player moves south when the user types "S"
+	/**
+	 * @param trail will drop a crumb at the previous locale if the player
+	 * 				wants to backtrack
+	 * if they are able to move north, this method will allow them to do so
+	 * or they will be told that they cannot move that way
+	 */
 	public static void moveSouth(BreadcrumbTrail trail) {
 		if (Map[playerLocation][1] != -1) {
 			trail.dropCrumb(playerLocation);
@@ -94,6 +112,12 @@ public class Player {
 	}
 
 	// the player moves east when the user types "E"
+	/**
+	 * @param trail will drop a crumb at the previous locale if the player
+	 * 				wants to backtrack
+	 * if they are able to move north, this method will allow them to do so
+	 * or they will be told that they cannot move that way
+	 */
 	public static void moveEast(BreadcrumbTrail trail) {
 		if (Map[playerLocation][2] != -1) {
 			trail.dropCrumb(playerLocation);
@@ -108,6 +132,12 @@ public class Player {
 	}
 
 	// the player moves west when the user types "W"
+	/**
+	 * @param trail will drop a crumb at the previous locale if the player
+	 * 				wants to backtrack
+	 * if they are able to move north, this method will allow them to do so
+	 * or they will be told that they cannot move that way
+	 */
 	public static void moveWest(BreadcrumbTrail trail) {
 		if (Map[playerLocation][3] != -1) {
 			trail.dropCrumb(playerLocation);
@@ -149,19 +179,13 @@ public class Player {
 		}
 	}
 	
-	// method that returns the player's location
-	public static int getPlayerLocation() {
-		return playerLocation;
-	}
-
-	// method for backtracking breadcrumbs
-	public static void backtrackLocale(BreadcrumbTrail trail) {
-		if (trail.hasNoMoreCrumbs() == false) {
-			playerLocation = trail.pickupCrumb();
-		}
-	}
-
 	// the method is used when the player wants to backtrack
+	/**
+	 * @param trail once a crumb has been dropped, a player has the ability to 
+	 * 				backtrack, but if they run out of crumbs, they will not
+	 * 				be able to backtrack and too many backtracks will cause the player
+	 * 
+	 */
 	public static void callBacktrack(BreadcrumbTrail trail) {
 		// the player loses when they backtrack too much
 		if (trail.currCrumb == -1 && trail.hasNoMoreCrumbs() == true
@@ -183,6 +207,18 @@ public class Player {
 			System.out.print(" You are now in " + currRoom.getLocation() + "." + " "
 					+ currRoom.getLocationDescription());
 		}
+	}
+	
+	// method for backtracking breadcrumbs
+	public static void backtrackLocale(BreadcrumbTrail trail) {
+		if (trail.hasNoMoreCrumbs() == false) {
+			playerLocation = trail.pickupCrumb();
+		}
+	}
+	
+	// method that returns the player's location
+	public static int getPlayerLocation() {
+		return playerLocation;
 	}
 
 }

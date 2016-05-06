@@ -20,6 +20,10 @@ public class BreadcrumbTrail {
 	}
 
 	// push
+	/**
+	 * @param currLoc
+	 * 					gets the Player's current location
+	 */
 	public void dropCrumb(int currLoc) {
 		if (hasNoMoreCrumbs() == false) {
 			pickupCrumb[currCrumb + 1] = currLoc;

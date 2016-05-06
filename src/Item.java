@@ -107,14 +107,6 @@ public class Item {
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
 		int itemIndex = LimitedUseItem.findItem(part2);
 		String item = "";
-		/**
-		 * @param item
-		 * 
-		 * @param intemIndex
-		 *            at this point, similar to the take command, the drop
-		 *            command will handle all possible outcomes for dropped
-		 *            items
-		 */
 		if (itemIndex >= 0) {
 			item = Player.inventory.get(itemIndex).item;
 		} 
@@ -156,14 +148,6 @@ public class Item {
 		input = inputSource.nextLine();
 		int itemIndex = LimitedUseItem.findItem(input);
 		String item = "";
-		/**
-		 * @param item
-		 * 
-		 * @param intemIndex
-		 *            at this point, similar to the take command, the drop
-		 *            command will handle all possible outcomes for dropped
-		 *            items
-		 */
 		if (itemIndex >= 0) {
 			item = Player.inventory.get(itemIndex).item;
 		} 
@@ -196,12 +180,7 @@ public class Item {
 		}
 	}
 
-	/**
-	 * method for examining an item
-	 * 
-	 * @param currLoc
-	 * @param currentRoomList
-	 */
+	// method for examining an item
 	public static void examineItem() {
 		int currLoc = Player.getPlayerLocation();
 		ArrayList<Item> currentRoomList = TextAdventure.locale[currLoc].getItemList();
@@ -209,7 +188,7 @@ public class Item {
 		if (currentRoomList.isEmpty()) {
 			if (isExplored == false) {
 				System.out.print("It seems that there are no items for you to take here.");
-			} 
+			}
 		}
 		if (!currentRoomList.isEmpty()) {
 			if (isExplored == false) {
@@ -287,8 +266,17 @@ public class Item {
 		}
 	}
 
-	// method checks to see if the item the user found in the location exists there
-	// this method is called in promptTakeItem()
+	/**
+	 * @param input
+	 * 					takes the user input
+	 * @param items
+	 * 					looks for all of the items
+	 * @return
+	 * 					if true, it will return the input
+	 * 					if false, it will say that it is not the item one found in this location
+	 * 
+	 * this method is called in promptTakeItem()
+	 */
 	public static int promptFindItemInList(String input, ArrayList<Item> items) {
 		int size = items.size();
 		for (int i = 0; i < size; i++) {
@@ -299,8 +287,17 @@ public class Item {
 		return -1;
 	}
 	
-	// method checks to see if the item the user found in the location exists there
-	// this method is called in takeItem()
+	/**
+	 * @param part2
+	 * 					takes the user input
+	 * @param items
+	 * 					looks for all of the items
+	 * @return
+	 * 					if true, it will return the input
+	 * 					if false, it will say that it is not the item one found in this location
+	 * 
+	 * this method is called in takeItem()
+	 */
 	public static int findItemInList(String part2, ArrayList<Item> items) {
 		int size = items.size();
 		for (int i = 0; i < size; i++) {

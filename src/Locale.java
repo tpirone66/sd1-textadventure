@@ -29,17 +29,21 @@ public class Locale {
 	/**
 	 * these get methods look for the corresponding variables and returns them
 	 * 
-	 * @param location
+	 * @return location
 	 *            returns the player's location
 	 * 
-	 * @param locationDescription
+	 * @return locationDescription
 	 *            returns the description of the player's location
 	 * 
-	 * @param itemList
+	 * @return itemList
 	 *            returns any item that might be at that location
 	 * 
-	 * @param itemDescription
+	 * @return itemDescription
 	 *            returns the description of an item at a location
+	 *            
+	 * @return hasVisited
+	 * 			  returns if the locale has been discovered
+	 * 
 	 */
 	public String getLocation() {
 		return location;
@@ -56,21 +60,35 @@ public class Locale {
 	public String getItemDescription() {
 		return itemDescription;
 	}
-
-	// adds item to the location when the game starts
-	public Item addItem(Item i) {
-		itemList.add(i);
-		return i;
-	}
 	
-	// checks to see if a locale has been discovered
 	public boolean getHasVisited() {
 		return hasVisited;
 	}
 
-	// checks to see if an item has been discovered
+	/**
+	 * @param i 
+	 * 				represents an item 
+	 * @return
+	 * 				returns item
+	 */
+	public Item addItem(Item i) {
+		itemList.add(i);
+		return i;
+	}
+
+	/**
+	 * @param Item
+	 * 				checks to see if an item has been discovered at a locale
+	 * @return
+	 * 				returns false or true depending on if it has been discovered
+	 */
 	public boolean isDiscovered(ArrayList<Item> Item) {
-		return false;
+		if (hasVisited == false) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 }

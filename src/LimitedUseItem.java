@@ -73,11 +73,6 @@ public class LimitedUseItem extends Item {
 				System.out.println("You cannot use the " + part2 + " here!");
 			}
 		}
-		/**
-		 * @param part2
-		 * @param text
-		 * 
-		 */
 		if (!foundItem(part2) && text == true) {
 			System.out.println("You don't have the " + part2 + ", " + Player.name + "!");
 			// not exactly a failure, but the wizard will subtract 10 points and put you back at location 0
@@ -156,11 +151,6 @@ public class LimitedUseItem extends Item {
 				System.out.println("You cannot use the " + input + " here!");
 			}
 		}
-		/**
-		 * @param input
-		 * @param text
-		 * 
-		 */
 		if (!promptFoundItem(input) && text == false) {
 			System.out.println("You don't have the " + input + ", " + Player.name + "!");
 			// not exactly a failure, but the wizard will subtract 10 points and put you back at location 0
@@ -173,8 +163,15 @@ public class LimitedUseItem extends Item {
 		}
 	}
 
-	// this method checks to see if what the user typed in appears in the inventory or game
-	// this method is called in promptUseItem()
+	/**
+	 * @param input
+	 * 					checks to see if what the user typed in appears in the inventory or game
+	 * @return
+	 * 					if it exists, it will return true
+	 * 					if it does not exist, it will return false
+	 * 
+	 * this method is called in promptUseItem()
+	 */
 	public static boolean promptFoundItem(String input) {
 		int size = Player.inventory.size();
 		for (int i = 0; i < size; i++) {
@@ -185,9 +182,14 @@ public class LimitedUseItem extends Item {
 		return false;
 	}
 	
-	/*
-	 * this method will search through the inventory and find an item based off
-	 * of the user's input and in turn will allow them to use it
+	/**
+	 * @param input
+	 * 					will search through the inventory and find an item based off
+	 * 					of the user's input and in turn will allow them to use it
+	 * @return
+	 * 					if it is in the inventory, they can use it
+	 * 					if it is not in the inventory, they cannot use it
+	 * 
 	 * this method is called in promptUseItem()
 	 */
 	public static int promptFindItem(String input) {
@@ -200,8 +202,15 @@ public class LimitedUseItem extends Item {
 		return -1;
 	}
 	
-	// this method checks to see if what the user typed in appears in the inventory or game
-	// this method is called in useItem()
+	/**
+	 * @param part2
+	 * 					checks to see if what the user typed in appears in the inventory or game
+	 * @return
+	 * 					if it exists, it will return true
+	 * 					if it does not exist, it will return false
+	 * 
+	 * this method is called in useItem()
+	 */
 	public static boolean foundItem(String part2) {
 		int size = Player.inventory.size();
 		for (int i = 0; i < size; i++) {
@@ -212,9 +221,14 @@ public class LimitedUseItem extends Item {
 		return false;
 	}
 
-	/*
-	 * this method will search through the inventory and find an item based off
-	 * of the user's input and in turn will allow them to use it
+	/**
+	 * @param part2
+	 * 					will search through the inventory and find an item based off
+	 * 					of the user's input and in turn will allow them to use it
+	 * @return
+	 * 					if it is in the inventory, they can use it
+	 * 					if it is not in the inventory, they cannot use it
+	 * 
 	 * this method is called in useItem()
 	 */
 	public static int findItem(String part2) {
