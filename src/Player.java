@@ -14,7 +14,7 @@ public class Player {
 	static ArrayList<Item> inventory = new ArrayList<>();
 	static int score = 0;
 	static int actionCount = 10;
-	static Locale currRoom = TextAdventure.locale[Player.playerLocation];
+	//static Locale currRoom = TextAdventure.locale[Player.playerLocation];
 
 	/**
 	 * @return will return the handbook if it is in the inventory
@@ -83,6 +83,7 @@ public class Player {
 		if (Map[playerLocation][0] != -1) {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][0];
+			Locale currRoom = TextAdventure.locale[Player.playerLocation];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out
 					.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
@@ -103,6 +104,7 @@ public class Player {
 		if (Map[playerLocation][1] != -1) {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][1];
+			Locale currRoom = TextAdventure.locale[Player.playerLocation];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out
 					.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
@@ -123,6 +125,7 @@ public class Player {
 		if (Map[playerLocation][2] != -1) {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][2];
+			Locale currRoom = TextAdventure.locale[Player.playerLocation];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out
 					.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
@@ -143,6 +146,7 @@ public class Player {
 		if (Map[playerLocation][3] != -1) {
 			trail.dropCrumb(playerLocation);
 			playerLocation = Map[playerLocation][3];
+			Locale currRoom = TextAdventure.locale[Player.playerLocation];
 			System.out.print("\nCurrent location: " + playerLocation + ".");
 			System.out
 					.print(" You are now in " + currRoom.getLocation() + "." + " " + currRoom.getLocationDescription());
@@ -203,6 +207,7 @@ public class Player {
 		// the player backtracks as normal
 		else if (trail.currCrumb != -1 && trail.hasNoMoreCrumbs() == false) {
 			Player.backtrackLocale(trail);
+			Locale currRoom = TextAdventure.locale[Player.playerLocation];
 			System.out.print("\nCurrent location: " + Player.playerLocation + ".");
 			System.out.print(" You are now in " + currRoom.getLocation() + "." 
 					+ " " + currRoom.getLocationDescription());
